@@ -1,0 +1,111 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"enhance": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"coverView": true,
+		"nodeModules": true,
+		"autoAudits": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.9.0",
+	"appid": "wx507b9c287ae6a263",
+	"projectname": "likedong_sports_master",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": 1,
+					"name": "分享到活动列表",
+					"pathName": "pages/activityList/index",
+					"query": "",
+					"scene": 1007
+				},
+				{
+					"id": 2,
+					"name": "长按识别二维码",
+					"pathName": "pages/activityDetail/activityDetail",
+					"query": "scene=1-1",
+					"scene": 1048
+				},
+				{
+					"id": 3,
+					"name": "扫码签到",
+					"pathName": "pages/signIn/signIn",
+					"query": "activityId=1206779896571092994&uid=1206759786061938690",
+					"scene": 1011
+				},
+				{
+					"id": 3,
+					"name": "pages/signIn/signIn",
+					"pathName": "pages/signIn/signIn",
+					"query": "scene=2-2",
+					"scene": 1012
+				},
+				{
+					"id": -1,
+					"name": "pages/activityDetail/activityDetail",
+					"pathName": "pages/activityDetail/activityDetail",
+					"query": "scene=1207558221455323137",
+					"scene": 1012
+				},
+				{
+					"id": -1,
+					"name": "赛事分享",
+					"pathName": "gamePages/pages/gameDetail/gameDetail",
+					"query": "id=4",
+					"scene": null
+				},
+				{
+					"id": 6,
+					"name": "场馆分享",
+					"pathName": "pages/venuesDetail/venuesDetail",
+					"query": "scene=25",
+					"scene": 1011
+				}
+			]
+		}
+	}
+}

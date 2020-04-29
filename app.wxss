@@ -1,0 +1,333 @@
+
+@import "/vant-weapp/dist/common/index.wxss";
+page{
+  --button-warning-background-color: #F26746;
+  --button-border-radius: 10rpx;
+}
+
+/* input */
+.lkd-field-right .van-field__input {
+  text-align: right;
+  font-size: 30rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+
+/* label */
+.lkd-field-right .van-cell__title {
+  font-size: 30rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+
+/* error */
+.lkd-field-right .van-field__error-message {
+  text-align: right;
+}
+.lkd-field-right .van-cell__title{
+  max-width: 300rpx!important;
+}
+.lkd-field-right.lkd_key .van-cell__title{
+  max-width: 200rpx!important;
+}
+.mar_b_50{
+  margin-bottom: 50rpx;
+}
+.mar_t_10{
+  margin-top: 10rpx;
+}
+.mar_t_20{
+  margin-top: 20rpx;
+}
+.mar_t_50{
+  margin-top: 50rpx;
+}
+.mar_b_20 {
+  margin-bottom: 20rpx;
+}
+.mar_b_10 {
+  margin-bottom: 10rpx;
+}
+.mar_r_20{
+  margin-right: 20rpx;
+}
+.mar_r_40{
+  margin-right: 40rpx;
+}
+.mar_r_30{
+  margin-right: 30rpx;
+}
+.mar_l_30{
+  margin-left: 30rpx;
+}
+.mar_r_10{
+  margin-right: 10rpx;
+}
+.mar_r_80{
+  margin-right: 80rpx;
+}
+.mar_30{
+  margin: 0 30rpx;
+}
+.mar_b_30{
+  margin-bottom: 30rpx;
+}
+.pad_l_10{
+  padding-left: 10rpx;
+}
+.pad_lr_20{
+  padding: 0 20rpx;
+}
+.pad_b_20{
+  padding-bottom: 20rpx;
+}
+.pad_r_20{
+  padding-right: 20rpx;
+}
+.pad_b_30{
+  padding-bottom: 30rpx;
+}
+.textAlign{
+  text-align: center;
+}
+.textRight{
+  text-align: right;
+  box-sizing: border-box;
+}
+.width100{
+  width:100rpx;
+}
+.pad_t_30{
+  padding-top: 30rpx;
+}
+.pad_t_20{
+  padding-top: 20rpx;
+}
+.pad_b_50{
+  padding-top: 50rpx;
+}
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+}
+.icon image {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.font_36 {
+  font-size: 36rpx;
+}
+
+.font_26 {
+  font-size: 26rpx;
+}
+.font_28{
+  font-size: 28rpx;
+}
+.font_30{
+  font-size: 30rpx;
+}
+.font_24 {
+  font-size: 24rpx;
+}
+.font_36 {
+  font-size: 36rpx;
+}
+
+/* flex */
+.flex_center{
+  justify-content: center;
+}
+.flex_align{
+  align-items: center;
+}
+.flex_middle{
+  align-items: center;
+}
+.flex_row {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+.flex_row_wrap{
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+.flex_col{
+  display: flex;
+  flex-flow: column nowrap;
+}
+.font_weight{
+  font-weight: 900;
+}
+.flex_btw{
+  justify-content: space-between
+}
+.flex_grow{
+  flex-grow: 1
+}
+.flew_shrink{
+  flex-shrink: 0
+}
+.font_30{
+  font-size: 30rpx;
+}
+.font_28{
+  font-size: 28rpx;
+}
+
+.rowLine{
+  position: absolute;
+  top: 0;
+  right: 45%;
+  line-height: 100rpx;
+  z-index: 99;
+}
+/* 箭头 */
+
+.icon_jt {
+  width: 13rpx;
+  height: 23rpx;
+}
+
+.wxapp-modal {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+}
+
+.modal-header {
+  padding-top: 20rpx;
+  z-index: 999;
+}
+
+.modal-content .modal-body {
+  padding: 30rpx;
+  font-size: 28rpx;
+  color: #adb2bb;
+  z-index: 999;
+}
+
+.wxapp-modal .content {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  z-index: 1000;
+  width: 80%;
+  margin: 0 0 0 -40%;
+  background: #fff;
+  text-align: center;
+  border-radius: 20rpx;
+}
+
+.wxapp-modal .content .header {
+  margin: auto;
+  width: 100%;
+  height: 100rpx;
+  font-weight: bold;
+  line-height: 100rpx;
+  text-align: center;
+}
+
+.wxapp-modal .content .body {
+  margin: auto;
+  width: 100%;
+  padding: 0 0 40rpx 0;
+}
+
+.wxapp-modal .content .footer {
+  margin: auto;
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-top: 1px #eee solid;
+}
+
+.wxapp-modal .content .footer button {
+  display: inline-block;
+  width: 49%;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: #fff;
+  border-radius: 0;
+}
+
+.wxapp-modal .content .footer button::after {
+  border: none;
+}
+
+.wxapp-modal .content .footer .cancel {
+  color: #000;
+  border-right: 1px #eee solid;
+}
+
+.wxapp-modal .content .footer .confirm {
+  color: rgba(232, 56, 13, 1);
+}
+
+.wxapp-modal .mask, .mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-scroll {
+  height: 700rpx;
+  padding: 0 35rpx;
+  line-height: 50rpx;
+  color: #858c8e;
+  font-size: 26rpx;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.protocol-content {
+  height: 700rpx;
+  padding: 0 35rpx;
+  line-height: 50rpx;
+  overflow-y: scroll;
+  color: #858c8e;
+  font-size: 26rpx;
+  text-align: left;
+  -webkit-overflow-scrolling: touch;
+}
+
+.protocol-content view {
+  text-indent: 25rpx;
+}
+
+.add-modle-input {
+  width: 80%;
+  margin: 0 auto;
+  padding: 6rpx 12rpx;
+  line-height: 40rpx;
+  border: 2rpx solid #eaeaea;
+  border-radius: 5rpx;
+  text-align: left;
+}
+.lkd_sure_btns{
+  display: block;
+  margin: 0 30rpx;
+  box-sizing: border-box;
+  height: 72rpx;
+  line-height: 72rpx;
+  border-radius: 10rpx;
+  text-align: center;
+  color: white;
+  margin-top: 80rpx;
+  background-color: #F26746;
+}

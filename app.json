@@ -1,0 +1,126 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/myAccount/myAccount",
+
+    "pages/cachIn/cachIn",
+  
+    "pages/myCardDetail/myCardDetail",
+    "pages/myCard/myCard",
+    "pages/cardList/cardList",
+    "pages/cardDetail/cardDetail",
+    "pages/venuesDetail/venuesDetail",
+    "pages/signupTotal/signupTotal",
+    "pages/myVenue/myVenue",
+    "pages/venuesList/venuesList",
+    "pages/orderDetail/orderDetail",
+    "pages/reserveOrder/reserveOrder",
+    "pages/activityList/index",
+    "pages/mine/mine",
+    "pages/activityDetail/activityDetail",
+    "pages/issue/issue",
+    "pages/userInfo/userInfo",
+    "pages/signupList/signupList",
+    "pages/involved/involved",
+    "pages/collection/collection",
+    "pages/launch/launch",
+    "pages/outstanding/outstanding",
+    "pages/selfInfo/selfInfo",
+    "pages/pageTemplate/cropper/cropper",
+    "pages/vote/vote",
+    "pages/signIn/signIn",
+    "pages/personal/personal",
+    "pages/activeType/activeType",
+    "pages/news/news",
+    "pages/logs/logs",
+    "pages/address/address",
+    "pages/personalAuthentication/personalAuthentication",
+    "pages/clockIn/clockIn",
+    "pages/component/authorize",
+    "pages/component/poster/poster",
+    "pages/settledIn/settledIn",
+    "pages/myActive/myActive",
+    "pages/allBalls/allBalls",
+    "pages/webviews/webviews"
+  ],
+  "subpackages": [
+    {
+      "root": "gamePages",
+      "pages": [
+        "pages/add_group/add_group",
+        "pages/add_single/add_single",
+        "pages/g_issue/g_issue",
+        "pages/gameDetail/gameDetail",
+        "pages/gameList/gameList",
+        "pages/component/addTag/addTag",
+        "pages/gamePageList/gamePageList",
+        "pages/applySingle/applySingle",
+        "pages/applyTeam/applyTeam",
+        "pages/addTeamMember/addTeamMember"
+      ]
+    }
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "栎刻动体育",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "#FF5E3A",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "pages/images/index.png",
+        "selectedIconPath": "pages/images/index_a.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "pages/images/mine.png",
+        "selectedIconPath": "pages/images/mine_a.png"
+      }
+    ]
+  },
+  "usingComponents": {
+    "van-button": "vant-weapp/dist/button/index",
+    "van-cell": "vant-weapp/dist/cell/index",
+    "van-cell-group": "vant-weapp/dist/cell-group/index",
+    "van-icon": "vant-weapp/dist/icon/index",
+    "van-search": "vant-weapp/dist/search/index",
+    "van-field": "vant-weapp/dist/field/index",
+    "van-dropdown-menu": "vant-weapp/dist/dropdown-menu/index",
+    "van-dropdown-item": "vant-weapp/dist/dropdown-item/index",
+    "van-switch": "vant-weapp/dist/switch/index",
+    "van-datetime-picker": "vant-weapp/dist/datetime-picker/index",
+    "van-tag": "vant-weapp/dist/tag/index",
+    "van-stepper": "vant-weapp/dist/stepper/index",
+    "van-sticky": "vant-weapp/dist/sticky/index",
+    "van-action-sheet": "vant-weapp/dist/action-sheet/index",
+    "van-tabs": "vant-weapp/dist/tabs/index",
+    "van-tab": "vant-weapp/dist/tab/index",
+    "van-popup": "vant-weapp/dist/popup/index",
+    "van-image": "vant-weapp/dist/image/index",
+    "van-rate": "vant-weapp/dist/rate/index",
+    "van-submit-bar": "vant-weapp/dist/submit-bar/index",
+    "van-radio": "vant-weapp/dist/radio/index",
+    "van-radio-group": "vant-weapp/dist/radio-group/index",
+    "van-steps": "vant-weapp/dist/steps/index",
+    "van-notify": "vant-weapp/dist/notify/index",
+    "van-uploader": "vant-weapp/dist/uploader/index",
+    "van-collapse": "vant-weapp/dist/collapse/index",
+    "van-collapse-item": "vant-weapp/dist/collapse-item/index",
+    "van-dialog": "vant-weapp/dist/dialog/index"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "sitemapLocation": "sitemap.json",
+  "navigateToMiniProgramAppIdList": [
+    "wx74d68057620f067c",
+    "wxeaec887eafb26fca"
+  ]
+}
