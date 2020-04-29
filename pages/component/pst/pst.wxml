@@ -1,0 +1,22 @@
+<view class="pst_cover" wx:if="{{showpost}}" catchtouchmove="_touchmove"></view>
+
+<view class="pst_box" catchtouchmove="_touchmove" catchtap="closePoste" hidden='{{!showpost}}'>
+    <view catchtap="_touchmove">
+        <canvas canvas-id="myCanvas"
+            style="margin-top:100rpx;width:{{imgWidth}}px;height: {{imgHeight}}px;margin-left:{{imgLeft}}px;"></canvas>
+    </view>
+
+    <view class="cvs_btns" catchtap="_touchmove">
+        <view class="brn_box" catchtap="saveShareImg">
+            <image class="cvs_img" src="/static/cvs2.png" mode="widthFix"></image>
+            <view>点击下载</view>
+        </view>
+        <view style="position:relative;">
+            <view class="brn_box" style="height: 100%;">
+                <image class="cvs_img" src="/static/cvs1.png" mode="widthFix"></image>
+                <view>微信好友</view>
+            </view>
+            <button class="shareBtn" open-type="share"></button>
+        </view>
+    </view>
+</view>

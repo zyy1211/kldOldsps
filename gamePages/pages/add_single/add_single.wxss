@@ -1,0 +1,74 @@
+/* pages/game/add_single/add_single.wxss */
+.add_single{
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  background-color: #f0f0f0;
+}
+.title {
+    font-size: 32rpx;
+    color: #333;
+    padding: 20rpx 0 20rpx 30rpx;
+    font-weight: 900;
+  }
+  .note{
+      font-size: 20rpx;
+      color: #f26746;
+      padding-bottom: 20rpx;
+      padding-left:30rpx;
+  }
+  .lkd_item {
+    background: white;
+    padding: 0 0 0 30rpx;
+    box-sizing: border-box;
+  }
+  .min_item {
+    min-height: 98rpx;
+  }
+  .item_right {
+    padding-right: 30rpx;
+  }
+
+  .smallRed{
+    font-size: 20rpx;
+    color: #F26746;
+    position: absolute;
+    bottom: 3rpx;
+    left: 0;
+  }
+  .radioItem{
+    font-size: 30rpx;
+    height: 100rpx;
+    position: relative;
+    width: 360rpx;
+  }
+  .border{
+    border:1rpx solid #AEAEAE;
+    width: 200rpx;
+    height: 50rpx;
+    border-radius: 20rpx;
+  }
+  .small_size{
+    font-size: 26rpx;
+    text-align: center;
+  }
+  .small_size .van-field__input {
+    font-size: 26rpx;
+  }
+  
+  .small_size .van-cell {
+    padding-right: 0;
+    padding-left: 0;
+    width: 230rpx;
+  }
+  .submit {
+    width: 690rpx;
+    height: 72rpx;
+    line-height: 72rpx;
+    background:#F26746;
+    border-radius: 10px;
+    color: white;
+    font-size: 26rpx;
+    letter-spacing: 2rpx;
+    margin: 60rpx auto;
+}

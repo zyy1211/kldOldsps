@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "报名名单",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black",
+  "enablePullDownRefresh": true
+}

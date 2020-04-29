@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "赛事列表",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "publishNav": "/pages/component/publishNav"
+  }
+}

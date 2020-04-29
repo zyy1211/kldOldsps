@@ -1,0 +1,39 @@
+/* pages/game/add_group/add_group.wxss */
+
+@import '../g_issue/g_issue.wxss';
+.title {
+    font-size: 32rpx;
+    color: #333!important;
+    padding: 20rpx 0 20rpx 30rpx;
+    font-weight: 900;
+  }
+.smallRed{
+  font-size: 20rpx;
+  color: #F26746;
+  position: absolute;
+  bottom: 3rpx;
+  left: 0;
+}
+.radioItem{
+  font-size: 30rpx;
+  height: 100rpx;
+  position: relative;
+  width: 360rpx;
+}
+  .border{
+    border:1rpx solid #AEAEAE;
+    width: 200rpx;
+    height: 50rpx;
+    border-radius: 20rpx;
+  }
+    .submit {
+    width: 690rpx;
+    height: 72rpx;
+    line-height: 72rpx;
+    background:#F26746;
+    border-radius: 10px;
+    color: white;
+    font-size: 26rpx;
+    letter-spacing: 2rpx;
+    margin: 60rpx auto;
+}

@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "活动详情",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black",
+  "usingComponents":{
+    "authorize":"../component/authorize",
+    "my-poster":"../component/poster/poster"
+  }
+
+}

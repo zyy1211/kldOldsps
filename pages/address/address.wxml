@@ -1,0 +1,26 @@
+<view class="reAddress">
+    <view class="searchBox">
+        <view  bindtap="navigator">{{city}}</view>
+        <van-icon size="30rpx" class="city" name="arrow" />
+        <view class="search-input">
+            <input bindinput="scInput" value="{{searchValue}}" auto-focus placeholder="请输入地址" />
+        </view>
+        <view bindtap="bindAddressInput" class="search_btns">搜索</view>
+    </view>
+    <view class="address" bindtap="choiseGps">
+        <view>{{address}}</view>
+        <view catchtap="getFixedLocation" class="btns">重新定位</view>
+    </view>
+    <view class="nearby">
+        <view class="nbyItem" wx:if="{{adsList.length>0}}" wx:for="{{adsList}}" wx:key="{{index}}" bindtap="choiseLocation" data-item="{{item}}">
+            <view class="lctBox">
+                <view class="locationName">
+                    {{item.title}}
+                </view>
+                <view class="distance">{{item.address}}</view>
+            </view>
+            <view class="distance">{{item.distance}}km</view>
+        </view>
+    </view>
+</view>
+<authorize id="authorize"></authorize>

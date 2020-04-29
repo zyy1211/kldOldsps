@@ -1,0 +1,86 @@
+@import '../pageTemplate/active-detail-temp/active-detail-temp.wxss';
+.personal{
+    font-size: 24rpx;
+    color: #333;
+}
+
+.personal .header{
+    color: #FFF;
+    background:linear-gradient(0deg,rgba(243,83,44,1),rgba(241,100,66,1),rgba(238,123,95,1));
+    padding-bottom: 60rpx;
+}
+.header_user{
+    position: relative;
+}
+.left_item,.right_item{
+    flex:1;
+}
+.header_user .info{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+.header_user .name{
+    font-size: 36rpx;
+    font-weight: 900;
+}
+.header_user .edit{
+    width: 31rpx;
+    height: 32rpx;
+    margin-left: 18rpx;
+    margin-top: 3rpx;
+}
+.header_user .address{
+    font-size: 24rpx;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    margin-top: 27rpx;
+}
+.header_user .ads_img{
+    width: 23rpx;
+    height: 23rpx;
+    margin-right: 11rpx;
+}
+.left_item{
+    padding-left: 62rpx;
+
+}
+.right_item{
+    position: absolute;
+    right: 62rpx;
+    top: 0;
+}
+
+.header_user .right_item image{
+    width: 100rpx;
+    height: 100rpx;
+}
+.personal .row_list{
+    display: flex;
+    flex-flow: row nowrap;
+    margin-top: 100rpx;
+}
+.personal .col_list{
+    flex: 1;
+    text-align: center;
+}
+.personal .col_num{
+    font-size: 36rpx;
+    font-weight: 900;
+    margin-bottom: 20rpx;
+}
+.personal .col_text{
+    font-size: 24rpx;
+}
+.card{
+    background: white;
+    padding: 48rpx 0;
+    border-top-left-radius: 40rpx;
+    border-top-right-radius: 40rpx;
+    margin-top: -40rpx;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}

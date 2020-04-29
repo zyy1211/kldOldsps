@@ -1,0 +1,110 @@
+<!--index.wxml-->
+
+<view class="home">
+  <view class="search">
+    <van-search value="{{ value }}" placeholder="场馆/球馆/教练/赛事" />
+  </view>
+  <view>
+    <swiper circular="true" autoplay interval="3000">
+      <swiper-item bindtap="toGzh">
+        <image class="banner" src="{{banner2}}" mode="widthFix"></image>
+      </swiper-item>
+      <swiper-item bindtap="toLanjue">
+        <image class="banner" src="{{banner1}}" mode="widthFix"></image>
+      </swiper-item>
+      <!-- <swiper-item bindtap="toActivityList">
+        <image class="banner" src="/static/banner2.png" mode="widthFix"></image>
+      </swiper-item> -->
+
+    </swiper>
+  </view>
+  <!-- <van-image width="100" fit="cover" height="100" src="https://www.likedong.top/images/2020-03/06/3_7_1583458961519a.jpg" /> -->
+
+
+  <!-- 公告 -->
+  <!-- <view class="flex_row msg_box mar_t_10">
+    <view class="msg_text">公告：</view>
+    <swiper class="flex_grow msg_height pad_lr_20" autoplay="{{true}}" circular='{{true}}' vertical='{{true}}'
+      display-multiple-items="{{1}}">
+      <block wx:for="{{msg}}" wx:key="item">
+        <swiper-item>
+          <view class="van-ellipsis">{{item}}哒哒哒哒哒哒多多多多多多多多多多多多多多多多多多多多多多多多多多多多哒哒哒哒哒哒多多多多多多多多多多多多多多多多多多多多多多</view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view> -->
+
+  <view class="font_weight title_left mar_t_20">场馆预约</view>
+  <!-- 类型 -->
+  <view class="typeList flex_row_wrap">
+    <view class="typeItem flex_col flex_middle" wx:for="{{typeList}}" wx:key="{{index}}" bindtap="toVenuesList"
+      data-key="{{item.sportsName}}">
+      <image class="type_img" src="{{apiImg + item.imageUrl }}" style="border-radius: 50%;"></image>
+      <view class="mar_t_10">{{item.sportsName}}</view>
+    </view>
+    <!-- 更多 -->
+    <view class="typeItem flex_col flex_middle" bindtap="toVenuesList" data-key="-1">
+      <image class="type_img" src="/static/more.png"></image>
+      <view class="mar_t_10">更多</view>
+    </view>
+  </view>
+
+  <!-- 公开赛事 -->
+  <view class="cardList">
+    <view class="title flex_row flex_btw pad_b_20">
+      <view class="font_weight title_left">公开赛事</view>
+      <view class="flex_row flex_middle" bindtap="toGameList">
+        <view>更多赛事</view>
+        <van-icon name="arrow" />
+      </view>
+    </view>
+    <view class="active_card">
+      <view class="atv_item" wx:for="{{dataList1}}" wx:key="{{item.id}}" data-cid="{{item.id}}" bindtap="toDetail1">
+        <view class="flex_row flex_btw">
+          <view class="van-ellipsis flex_grow font_30">{{item.name}}</view>
+          <!-- <view class="flew_shrink" style="color: #F26746;" wx:if="{{ item.chargeMode == 0 }}">免费</view> -->
+          <!-- <view class="flew_shrink" style="color: #F26746;" wx:if="{{ item.chargeMode == 1 }}">线上收费</view> -->
+          <!-- <view class="flew_shrink" style="color: #F26746;" wx:if="{{ item.chargeMode == 2 }}">线下收费</view> -->
+        </view>
+        <view class="font_28 font_time">活动时间：{{item.setime}}</view>
+        <van-button class="mar_r_40" plain type="primary" size="mini">{{item.sportName}}</van-button>
+        <van-button class="mar_r_40" wx:if="{{item.single}}" plain type="primary" size="mini">单项赛</van-button>
+        <van-button wx:if="{{item.team}}" plain type="primary" size="mini">团体赛</van-button>
+        <!-- <van-button plain type="primary" size="mini">{{item.expand}}</van-button> -->
+      </view>
+    </view>
+    <view class="border_10"></view>
+  </view>
+
+  <!-- 活动发布 -->
+  <view class="cardList">
+    <view class="title flex_row flex_btw pad_b_20">
+      <view class="font_weight title_left">活动报名</view>
+      <view class="flex_row flex_middle" bindtap="toActiveList">
+        <view>更多活动</view>
+        <van-icon name="arrow" />
+      </view>
+    </view>
+    <view class="active_card">
+      <view class="atv_item" wx:for="{{dataList}}" wx:key="{{index}}" data-id="{{item.id}}" bindtap="toDetail">
+        <view class="flex_row flex_btw">
+          <view class="van-ellipsis flex_grow font_30">{{item.title}}</view>
+          <view class="flew_shrink" style="color: #F26746;" wx:if="{{ item.chargeMode == 0 }}">免费</view>
+          <view class="flew_shrink" style="color: #F26746;" wx:if="{{ item.chargeMode == 1 }}">线上收费</view>
+          <view class="flew_shrink" style="color: #F26746;" wx:if="{{ item.chargeMode == 2 }}">线下收费</view>
+        </view>
+        <view class="font_28 font_time">活动时间：{{item.setime}}</view>
+        <view class="font_28 font_time">报名人数：{{item.appliedNum}}/{{item.participantsNum}}已报名</view>
+        <van-button plain type="primary" size="mini">{{item.expand}}</van-button>
+      </view>
+    </view>
+    <view class="border_10"></view>
+  </view>
+
+</view>
+<authorize id="authorize"></authorize>
+
+
+<!-- <pst id='pst'></pst> -->
+
+<!-- <button wx:if="{{ihidden}}" style="position: fixed;bottom: 100rpx;">按钮</button> -->

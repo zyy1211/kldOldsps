@@ -1,0 +1,13 @@
+<view class="addTag lkd-field-right" hover-class="none" hover-stop-propagation="false">
+    <view>
+        <van-field value="{{ information }}" confirm-type="完成" required clearable="{{true}}" label="标签名称"
+            placeholder="请输入名称" data-key="information" bind:input="bindDate" />
+    </view>
+    <view>
+        <van-field value="{{ type }}" confirm-type="完成" required clearable="{{true}}" label="类型"
+            placeholder="请输入类型" data-key="type" bind:input="bindDate" />
+    </view>
+
+    <button bindtap="submit" class="submit">保存</button>
+
+</view>

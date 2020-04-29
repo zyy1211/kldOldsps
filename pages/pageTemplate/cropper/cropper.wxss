@@ -1,0 +1,33 @@
+
+.cropper-wrapper{
+    position: relative;
+}
+.cropper-buttons{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+    background: black;
+    width: 100vw;
+    height: 100px;
+    padding-top: 30px;
+    box-sizing: border-box;
+    z-index: 999999;
+}
+.btns{
+    float: right;
+    margin-right: 50rpx;
+}
+.cancel{
+    padding: 0 20rpx;
+    color: white;
+    font-size: 26rpx;
+    height: 50rpx;
+    letter-spacing: 5rpx;
+}
+.getCropperImage{
+    background: #e8380d;
+    border-radius: 5rpx;
+}

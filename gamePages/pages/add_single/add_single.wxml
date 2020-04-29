@@ -1,0 +1,138 @@
+<view class="lkd-field-right add_single" hover-class="none" hover-stop-propagation="false">
+  <view class="title">请设置单项赛项目</view>
+  <view>
+    <van-field value="{{ eventName }}" required border="{{ false }}" confirm-type="完成" clearable="{{true}}" label="组别名称"
+      placeholder="请输入组别名称" data-key="eventName" bind:input="bindDateFile" />
+    <!-- <view style="background: white;" class="note van-hairline--bottom">组别名称默认为A、B...等,如果填写“组别名称”则以填写的组别名称进行编组</view> -->
+  </view>
+
+  <view class="lkd_item">
+    <view class="van-hairline--bottom flex_row flex_btw">
+      <view class="star">组别类型：</view>
+      <view class="item_right">
+        <van-dropdown-menu>
+          <van-dropdown-item bind:change="bindDateFile" data-key='eventType' value="{{ eventType }}" options="{{ option_type }}" />
+        </van-dropdown-menu>
+      </view>
+    </view>
+  </view>
+
+  <view class="lkd_item">
+    <view class="van-hairline--bottom flex_row flex_btw" style="padding: 30rpx 0;">
+      <view class="star">年龄区间：</view>
+      <view class="flex_row small_size item_right" style="position: relative;">
+        <!-- <van-field  placeholder="请选择最小时间" value="{{ minAgeTime }}" border="{{ false }}" readonly data-key="minAge"
+          bindtap="showDate" /> -->
+      <input type="number" placeholder="最小年龄" value="{{minAge}}" data-key="minAge" bind:input="bindDate" bind:blur="bindBlur"
+        class="textRight pad_lr_20 mar_r_10 border" type="text" />
+      <!-- <view class="rowLine">--</view> -->
+      <input type="number" placeholder="最大年龄" value="{{maxAge}}" data-key="maxAge" bind:input="bindDate" bind:blur="bindBlur"
+        class="textRight pad_lr_20 mar_r_10 border" type="text" />
+      <!-- <van-field placeholder="请选择最大时间" value="{{ maxAgeTime }}" border="{{ false }}" readonly data-key="maxAge"
+          bindtap="showDate" /> -->
+    </view>
+  </view>
+</view>
+
+<view class="lkd_item">
+  <view class="van-hairline--bottom">
+    <view class="flex_row flex_btw min_item">
+      <view>允许降组报名：</view>
+      <view class="item_right">
+        <van-switch active-color="#F26746" checked="{{ isDecline }}" data-key="isDecline" bind:change="onChange"
+          size="24px" />
+      </view>
+    </view>
+    <view style="padding-left:0rpx;" class="note van-hairline--bottom">(开启后,可允许高年龄人群加入低年龄组别报名)</view>
+  </view>
+</view>
+
+<view class="lkd_item">
+  <view class="van-hairline--bottom">
+    <view class="flex_row flex_btw min_item">
+      <view>是否免费：</view>
+      <view class="item_right">
+        <van-switch active-color="#F26746" checked="{{ isFree }}" data-key="isFree" bind:change="onChange"
+          size="24px" />
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- <view class="lkd_item">
+    <view class="van-hairline--bottom flex_row flex_btw">
+      <view class="star">报名费用：</view>
+      <view class="item_right">
+        <van-dropdown-menu>
+          <van-dropdown-item value="{{ competitionRule }}" options="{{ option_type }}" />
+        </van-dropdown-menu>
+      </view>
+    </view>
+  </view> -->
+
+<van-radio-group value="{{applyType}}" bind:change="changeRadio">
+  <view class="lkd_item">
+    <view class="van-hairline--bottom">
+      <view class="flex_row">
+        <van-radio class="mar_r_20" name="0"></van-radio>
+        <view class="radioItem">
+          <view class="mar_t_20">总队数</view>
+          <view class="smallRed">请输入报名总队伍数量上限</view>
+        </view>
+        <view class="flex_row item_right">
+          <input type="number" value="{{applyNumTeam}}" data-key="applyNumTeam" bind:input="bindDate"
+            class="textRight pad_lr_20 mar_r_10 border" type="text" />
+          <view>队</view>
+        </view>
+      </view>
+
+      <view class="flex_row flex_btw mar_t_30">
+        <view style="margin:20rpx 0 20rpx 60rpx;">单项费用</view>
+        <view class="flex_row">
+          <input class="textRight pad_lr_20 mar_r_10 border" value="{{priceNumTeam}}" data-key="priceNumTeam"
+            bind:input="bindDate" type="text" />
+          <view style="padding-right: 12rpx;">元/项</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="lkd_item">
+    <view class="van-hairline--bottom">
+      <view>
+        <view class="flex_row">
+          <van-radio class="mar_r_20" name="1"></van-radio>
+          <view class="radioItem">
+            <view class="mar_t_20">总人数</view>
+            <view class="smallRed">请输入报名总人数数量上限</view>
+          </view>
+          <view class="flex_row item_right">
+            <input type="number" value="{{applyNumPeople}}" data-key="applyNumPeople" bind:input="bindDate"
+              class="textRight pad_lr_20 mar_r_10 border" type="text" />
+            <view>人</view>
+          </view>
+        </view>
+      </view>
+
+      <view class="flex_row flex_btw mar_t_30">
+        <view style="margin:20rpx 0 20rpx 60rpx;">每人费用</view>
+        <view class="flex_row">
+          <input class="textRight pad_lr_20 mar_r_10 border" value="{{priceNumPeople}}" data-key="priceNumPeople"
+            bind:input="bindDate" type="text" />
+          <view style="padding-right: 12rpx;">元/人</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</van-radio-group>
+
+
+<button bindtap="submit" class="submit">保存</button>
+
+
+</view>
+
+
+<van-action-sheet show="{{ !hidden_date }}" bind:click-overlay="showDate">
+  <van-datetime-picker type="date" value="{{ currentDate }}" min-date="{{ minDate }}" bind:input="onInput"
+    bind:confirm="confirm" bind:cancel="showDate" />
+</van-action-sheet>

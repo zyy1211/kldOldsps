@@ -1,0 +1,90 @@
+/* pages/pageTemplate/active-detail/active-detail.wxss */
+
+.card_item{
+    position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+.mask{
+    opacity: 0.6;
+}
+.card_item .item_img,.card_item .item_info{
+    width: 664rpx;
+}
+.card_item .item_img{
+    position: relative;
+}
+.item_images{
+    width: 664rpx;
+    height: 160rpx;
+    vertical-align: middle;
+}
+.card_item .type_btn{
+    padding: 0 26rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    background-color: #F26746;
+    font-size: 24rpx;
+    color: white;
+    position: absolute;
+    right: 15rpx;
+    bottom: 26rpx;
+    opacity:0.9;
+}
+.card_item .item_info{
+    border: 1rpx solid #E1E0E0;
+    box-sizing: border-box;
+    margin-bottom: 19rpx;
+    padding: 22rpx;
+}
+.card_item .info_title{
+    font-size: 30rpx;
+}
+.card_item .info_main{
+    font-size: 24rpx;
+    color: #666666;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    margin-top: 15rpx;
+}
+.card_item .info_icon{
+    width: 21rpx;
+    height: 21rpx;
+    margin-right: 10rpx;
+}
+.card_item .float_right{
+    position: absolute;
+    right: 17rpx;
+    bottom: 55rpx;
+    text-align: right;
+}
+.card_item .btn_common{
+    font-size: 24rpx;
+    height: 44rpx;
+    line-height: 44rpx;
+    letter-spacing: 2rpx;
+    color: white;
+}
+.card_item .btn_active{
+    background-color: #E8380D;
+    margin-top: 10rpx;
+    padding: 0 20rpx;
+}
+.card_item .btn_disable{
+    padding: 0 10rpx;
+    background-color: #868686;
+}
+.card_item .progress{
+    border-radius: 10rpx;
+    overflow: hidden;
+    border: 1rpx solid #4F4F4F;
+    background-color: white;
+}
+.card_item .heart{
+    width: 30rpx;
+    height: 27rpx;
+    margin-bottom: 44rpx;
+    
+}

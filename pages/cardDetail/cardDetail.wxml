@@ -1,0 +1,122 @@
+<view class="cardDetail" style="padding-bottom: 60rpx;">
+    <view class="cardList">
+        <view class="card">
+
+
+            <image wx:if="{{type=='次数卡'}}" class="cardimg" src="/static/card0.png" mode="widthFix"></image>
+            <image wx:if="{{type=='折扣卡'}}" class="cardimg" src="/static/card1.png" mode="widthFix"></image>
+            <image wx:if="{{type=='充值卡'}}" class="cardimg" src="/static/card2.png" mode="widthFix"></image>
+            <image wx:if="{{type=='固定场次卡'}}" class="cardimg" src="/static/card3.png" mode="widthFix"></image>
+
+            <image class="cardlogo" src="/static/cardlogo.png" mode="widthFix"></image>
+            <view class="cardName">
+                <view class="van-ellipsis title">{{name}}{{detail.type}}</view>
+                <view class="van-ellipsis flex_row title_sm">
+                    <view>{{detail.name}}</view>
+                    <view class="mar_l_30">{{detail.sportType}}</view>
+                </view>
+                <view wx:if="{{detail.type=='次数卡'}}" class="van-ellipsis text">
+                    {{detail.content}}次/{{detail.sellingPrice}}元</view>
+
+                <view wx:if="{{detail.type=='折扣卡'}}" class="van-ellipsis text">
+                    {{detail.content}}折/{{detail.sellingPrice}}元</view>
+
+
+                <view wx:if="{{detail.type=='充值卡'}}" class="van-ellipsis text">{{detail.content}}元/{{detail.sellingPrice}}元</view>
+
+                <!-- <view wx:if="{{detail.type=='固定场次卡'}}" class="van-ellipsis text flex_row">
+                    <view class="mar_r_20">{{detail.useDate}}</view>
+                    <view>{{detail.useTime}}</view>
+                </view> -->
+
+                <view class="van-ellipsis text flex_row">
+                    <view class="mar_r_20">{{detail.useTime}}</view>
+                    <view>{{detail.useDate}}</view>
+                </view>
+
+                <view class="flex_row">
+                    <!-- <view class="cardbtn btn1"></view> -->
+                    <view wx:if="{{detail.effectiveType == 2}}" class="time">有效期：{{detail.effectiveDate}}个月</view>
+                    <view wx:else class="time">有效期至：{{detail.expirationEnd}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view class="coll">
+        <van-collapse value="{{ activeNames }}" bind:change="onChange" customClass="celclass">
+            <van-collapse-item title="{{name}}会员卡使用说明（{{detail.type}}）" customClass="cusclass" name="1">
+                <van-icon slot="right-icon" name="plus" />
+                <text class="textdetail">{{detail.detail}}</text>
+            </van-collapse-item>
+        </van-collapse>
+    </view>
+
+    <view class="item flex_row border" wx:if="{{type == '固定场次卡'}}">
+        <view class="line mar_r_20"></view>
+        <view class="name">选择固定场馆</view>
+    </view>
+
+    <view class="flex_row" wx:if="{{type == '固定场次卡'}}" style="justify-content: space-around;margin: 45rpx 0;">
+        <view class="isSelect sele1 van-ellipsis">{{sportType}}</view>
+        <view class="isSelect sele2">
+            <van-dropdown-menu>
+                <van-dropdown-item bind:change="tabsChange" data-key="boutId" value="{{ boutId }}" options="{{ option1 }}" />
+            </van-dropdown-menu>
+        </view>
+        <view class="isSelect sele3">
+            <van-dropdown-menu>
+                <van-dropdown-item bind:change="tabsChange" data-key="week"  value="{{ week }}" options="{{ option2 }}" />
+            </van-dropdown-menu>
+        </view>
+        <view class="isSelect sele4">
+            <van-dropdown-menu>
+                <van-dropdown-item bind:change="tabsChange" data-key="time" value="{{ time }}" options="{{ option3 }}" />
+            </van-dropdown-menu>
+        </view>
+    </view>
+
+
+
+
+    <!-- <view class="flex_row" style="margin: 30rpx 0;border: 1px solid red;">
+        <view class="isSelect sele1">
+           <view class="flex_row">
+            <view class="seltvalue van-ellipsis">{{value1}}</view>
+            <van-icon name="arrow-down" />
+           </view>
+           <view class="optn">
+               <view class="optitem van-ellipsis" wx:for="{{option1}}" wx:key="{{item.text}}">{{item.text}}</view>
+           </view>
+        </view>
+    </view> -->
+
+    <view class="item flex_row">
+        <view class="line mar_r_20"></view>
+        <view class="name">请输入您的个人信息</view>
+    </view>
+    <view class="item flex_row">
+        <view class="name">姓名：</view>
+        <view class="value">
+            <input type="text" placeholder="请输入姓名" value="{{userName}}" data-key="userName" bind:input="bindDate" />
+        </view>
+    </view>
+    <view class="item flex_row">
+        <view class="name">身份证号：</view>
+        <view class="value">
+            <input placeholder="请输入身份证号" value="{{idNum}}" maxlength="18" data-key="idNum" bind:input="bindDate" />
+        </view>
+    </view>
+    <view class="item flex_row border">
+        <view class="name">手机号：</view>
+        <view class="value">
+            <input  placeholder="请输入手机号"  value="{{phone}}" type="number" maxlength="11" data-key="phone" bind:input="bindDate" />
+        </view>
+    </view>
+    <view class="item flex_row backg">
+        <image class="notify_icon" mode="widthFix" src="/static/in.png"></image>
+        <view>录入身份信息，为了修改会员卡支付密码，检验您的身 分信息用。让您的个人资料加密保存。</view>
+    </view>
+
+    <button bindtap="submit" class="submit">微信支付</button>
+</view>

@@ -1,0 +1,31 @@
+<view class="" hover-class="none" hover-stop-propagation="false">
+    <van-sticky>
+        <view style="border-bottom: 10rpx solid #F0F0F0;">
+            <van-tabs line-height="1" active="{{ tabActive }}" bind:click="onChange">
+                <van-tab title="我发起的"></van-tab>
+                <van-tab title="我参与的"></van-tab>
+                <van-tab title="我收藏的"></van-tab>
+            </van-tabs>
+        </view>
+    </van-sticky>
+
+
+    <view class="launchCom">
+        <view class="launch_main" hover-class="none" hover-stop-propagation="false">
+            <import src="../pageTemplate/active-detail-temp/active-detail-temp" />
+            <block wx:for="{{dataList}}" wx:key='{{item}}'>
+                <view class="" bindtap="toDetail" data-id="{{item.id}}" hover-class="none"
+                    hover-stop-propagation="false">
+                    <template is="activeDetailTemp" data="{{item,img_host}}" />
+                </view>
+                <button
+                    wx:if="{{item.registrationStatus != 0 && item.registrationStatus < 4 && item.needToSign == true && tabActive != 2}}"
+                    data-uid='{{item.uid}}' data-id="{{item.id}}" class="signIn" bindtap="signByIds">签到</button>
+                <button data-id="{{item.id}}" wx:if="{{ item.registrationStatus > 3 && tabActive == 0}}"
+                    data-id="{{item.id}}" class="signIn" bindtap="toIssue">再次编辑/发布</button>
+                <!-- <button data-id="{{item.id}}"
+                    data-id="{{item.id}}" class="signIn" bindtap="toIssue">再次编辑/发布</button> -->
+            </block>
+        </view>
+    </view>
+</view>

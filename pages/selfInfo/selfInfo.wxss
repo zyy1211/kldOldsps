@@ -1,0 +1,53 @@
+/* pages/selfInfo/selfInfo.wxss */
+.selfInfo{
+    background: white;
+    font-size: 26rpx;
+    color: #333;
+}
+.selfItem{
+    height: 98rpx;
+    padding: 0 45rpx;
+    box-sizing: border-box;
+    border-bottom: 2rpx solid #F0F0F0;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.selfRight{
+    color: #999;
+    text-align: right;
+}
+
+.selfImg{
+    width: 66rpx;
+    height: 66rpx;
+    vertical-align: top;
+}
+.sex{
+    width: 68rpx;
+    height: 33rpx;
+    line-height: 33rpx;
+    border: 1px solid #E8380D;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+}
+.active{
+    background:  #E8380D;
+}
+.sex_m{
+    border-top-left-radius: 10rpx;
+    border-bottom-left-radius: 10rpx;
+}
+.sex_w{
+    border-top-right-radius: 10rpx;
+    border-bottom-right-radius: 10rpx;
+}
+.selfText{
+    padding: 20rpx 45rpx;
+}
+.textarea{
+    padding:0 45rpx;
+    color: #999;
+}

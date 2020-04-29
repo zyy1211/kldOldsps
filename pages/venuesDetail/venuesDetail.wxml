@@ -1,0 +1,217 @@
+<view class="venuesDetail">
+    <view class="swiper">
+        <swiper indicator-dots="true" circular="true">
+            <block wx:for="{{detailData.imagesPath}}" wx:key="{{index}}">
+                <swiper-item>
+                    <van-image width="100%" height='230' fit="cover" src="{{ apiImg + item }}" />
+                </swiper-item>
+            </block>
+        </swiper>
+    </view>
+    <view class="mainText">
+        <view class="title_block">
+            <view class="title flex_row flex_btw">
+                <view class="van-ellipsis">{{detailData.sName}}</view>
+                <view class="flex_row">
+                    <van-rate size="12" readonly value="{{ detailData.grade }}" />
+                    <view>{{ detailData.grade }}</view>
+                </view>
+            </view>
+        </view>
+        <view class="detail">杭州最大的集体育、娱乐、生态休闲于一体的体育公园，开创了国内全民 健身和休闲观赏功能相结合的先河</view>
+        <view class="address flex_row flex_btw" bindtap="openMap">
+            <view class="flex_row">
+                <van-icon name="location" size="13" style="margin-right: 10rpx;" />
+                <view>{{detailData.sAddr}}{{detailData.sAddrDesc}}</view>
+            </view>
+            <image class="mar_r_10" style="width: 40rpx;" src="/static/v3.png" mode="widthFix"></image>
+        </view>
+        <view class="phone flex_row flex_btw" bindtap="makeCall">
+            <view>{{detailData.contactPhone}}</view>
+            <image class="mar_r_10" style="width: 40rpx;" src="/static/v4.png" mode="widthFix"></image>
+        </view>
+        <view class="flex_row flex_btw">
+            <view class="tabsBlock flex_row_wrap">
+                <van-button wx:for="{{detailData.facility1}}" wx:key="{{index}}" class="tabs" plain type="primary"
+                    size="small">{{item}}</van-button>
+            </view>
+            <image class="mar_r_10" bindtap="tapmMask" style="width: 37rpx;flex-shrink: 0;" src="/static/share.png" mode="widthFix" ></image>
+        </view>
+    </view>
+
+    <view>
+        <view class="cardTitle" wx:if="{{cardList.length != 0}}">场馆优惠/会员卡</view>
+        <scroll-view scroll-x="true">
+            <view class="flex_row" style="width: 1050rpx;">
+                <view bindtap="toCard" data-type="{{item}}" style="position: relative;" wx:for="{{cardList}}"
+                    wx:key="{{item}}">
+                    <image wx:if="{{item == '次数卡' }}" class="cardimg mar_r_20" src="{{'/static/card0.png' }}" mode="widthFix"></image>
+                    <image wx:if="{{item == '折扣卡' }}" class="cardimg mar_r_20" src="{{'/static/card1.png' }}" mode="widthFix"></image>
+                    <image wx:if="{{item == '充值卡' }}" class="cardimg mar_r_20" src="{{'/static/card2.png' }}" mode="widthFix"></image>
+                    <image wx:if="{{item == '固定场次卡' }}" class="cardimg mar_r_20" src="{{'/static/card3.png' }}" mode="widthFix"></image>
+                    <view class="cardName">{{item}}</view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+    <!-- 固定 -->
+    <view style="position: sticky;top: 0;background-color: white;z-index: 99;margin-bottom: 30rpx;">
+
+        <!-- 篮球羽毛球 -->
+        <view class="tabsList">
+            <scroll-view scroll-x="true">
+                <view class="flex_row">
+                    <view wx:for="{{sportType1}}" bindtap="changeType" data-key="type" data-value="{{item}}"
+                        wx:key="{{index}}" class="typeTabs flew_shrink {{type == item ? 'tabsActive' : ''}}">{{item}}
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+        <!-- 星期 -->
+        <scroll-view scroll-x="true">
+            <view class="flex_row ">
+                <view class="dayItem mar_r_20" wx:for="{{detailData.chooseDate}}" wx:key="{{index}}"
+                    bindtap="changeType" data-key="date" data-value="{{item.time}}" data-days="{{item}}">
+                    <view class="daytext flex_col flex_btw flex_align {{ date == item.time ? 'active' : '' }}">
+                        <view>{{item.week}}</view>
+                        <view>{{item.date}}</view>
+                    </view>
+                    <view class="triangle {{ date == item.time ? 't_active' : '' }}"></view>
+                </view>
+            </view>
+
+        </scroll-view>
+
+        <view class="filedMark">
+            <view class="markBlock">
+                <view class="timeblock"></view>
+            </view>
+            <view class="contM" style="overflow-x: hidden;border-bottom: 1rpx solid #f0eeee;">
+                <view class="flex_row" style="margin-left:-{{left}}px;">
+                    <view class="markBlock" wx:for="{{place}}" wx:key="{{index}}">
+                        <view class="mark van-ellipsis" style="text-align: center;">{{item.name}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view class="filedMark mar_b_30">
+        <view>
+            <view style="margin-top:-{{top}}px;">
+                <view wx:for="{{18}}" wx:key="{{index}}" class="timeblock">
+                    <view class="timeText"> {{index+7}}:00</view>
+                </view>
+            </view>
+        </view>
+        <view class="contM">
+            <scroll-view scroll-x="true" scroll-y="true" bindscroll="scroll">
+                <view class="flex_row">
+                    <view class="markBlock" wx:for="{{place}}" wx:key="{{index}}">
+                        <view class="descList">
+                            <block wx:for="{{item.desc}}" wx:for-index="ids" wx:for-item="it" wx:key="{{ids}}">
+                                <view wx:if="{{ it.price > 0 ||  it.price == 0}}" bindtap="choisePlace"
+                                    data-index="{{index}}" data-ids="{{ids}}" data-id="{{item.id}}"
+                                    data-sname="{{item.name}}" data-item="{{it}}" data-father="{{ item.desc }}"
+                                    class="block van-ellipsis {{it.canChoose == true ? 'active' : ''}}">￥{{it.price}}
+                                </view>
+                                <view wx:if="{{ it.price == -1 || it.price == -2 }}"
+                                    class="block disable flex_row flex_center">
+                                    <image wx:if="{{ it.price == -1 }}" class="isImg" src="/static/no.png" />
+                                    <image wx:if="{{ it.price == -2 }}" class="isImg" src="/static/user.png" />
+                                </view>
+                            </block>
+                        </view>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+
+
+    <!-- <view class="filedMark">
+        <view class="markBlock">
+            <view class="timeblock"></view>
+        </view>
+        <view class="contM" style="overflow-x: hidden;">
+            <view class="flex_row" style="margin-left:-{{left}}px;">
+                <view class="markBlock" wx:for="{{place}}" wx:key="{{index}}">
+                    <view class="mark van-ellipsis" style="text-align: center;">{{item.name}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view class="filedMark mar_b_30">
+        <view
+            style="height: 640rpx;margin-top: -20rpx;padding-top: 20rpx;box-sizing: border-box;overflow-y: hidden;">
+            <view style="margin-top:-{{top}}px;">
+                <view wx:for="{{18}}" wx:key="{{index}}" class="timeblock">
+                    <view class="timeText">{{index+7}}:00</view>
+                </view>
+            </view>
+        </view>
+        <view class="contM" style="height: 600rpx;">
+            <scroll-view scroll-x="true" scroll-y="true" bindscroll="scroll">
+                <view class="flex_row">
+                    <view class="markBlock" wx:for="{{place}}" wx:key="{{index}}">
+                        <view class="descList">
+                            <block wx:for="{{item.desc}}" wx:for-index="ids" wx:for-item="it" wx:key="{{ids}}">
+                                <view wx:if="{{ it.price > 0 ||  it.price == 0}}" bindtap="choisePlace"
+                                    data-index="{{index}}" data-ids="{{ids}}" data-id="{{item.id}}"
+                                    data-sname="{{item.name}}" data-item="{{it}}"
+                                    class="block van-ellipsis {{it.canChoose == true ? 'active' : ''}}">￥{{it.price}}
+                                </view>
+                                <view wx:if="{{ it.price == -1 || it.price == -2 }}"
+                                    class="block disable flex_row flex_center">
+                                    <image wx:if="{{ it.price == -1 }}" class="isImg" src="/static/no.png" />
+                                    <image wx:if="{{ it.price == -2 }}" class="isImg" src="/static/user.png" />
+                                </view>
+                            </block>
+                        </view>
+                    </view>
+                </view>
+            </scroll-view>
+        </view>
+    </view> -->
+
+
+
+
+
+
+    <!-- 选择区域 -->
+    <view class="selectL whiteBackgound bottomFixed">
+        <scroll-view class="select-ul boxModel textAlign" scroll-x="true">
+            <block wx:if='{{reLists.length != 0 }}'>
+                <block wx:for='{{reLists}}' wx:key='index'>
+                    <view class="select-li boxModel">
+                        <text class='Y flex_row van-ellipsis'>{{item.name}}</text>
+                        <text class='Y flex_row van-ellipsis'>{{item.sname}}</text>
+                    </view>
+                </block>
+            </block>
+            <block wx:else>
+                <view class="yd textAlign">
+                    <view class='rect boxModel isTrue'></view>
+                    <view>已选择</view>
+                </view>
+                <view class="yd textAlign">
+                    <view class='rect boxModel unKnow'></view>
+                    <view>可预定</view>
+                </view>
+                <view class="yd textAlign">
+                    <view class='rect boxModel saled'></view>
+                    <view>已售完</view>
+                </view>
+            </block>
+        </scroll-view>
+        <button class='btn {{reLists.length == 0 ? "" : "btnActive"}}' bindtap="submit">确定</button>
+    </view>
+</view>
+
+<authorize id="authorize"></authorize>
+
+<van-action-sheet show="{{ isFlag }}" actions="{{ actions }}" cancel-text="取消" bind:select="onSelect"
+bind:click-overlay="tapmMask" bind:cancel="tapmMask" />
+<poster id="getPoster"></poster>

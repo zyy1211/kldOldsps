@@ -1,0 +1,23 @@
+<view>
+
+    <van-search value="{{ value }}" bind:change="onChange" placeholder="请输入搜索关键词" />
+       
+  <view class="letter-box">
+    <form reportSubmit bindsubmit="getKeyWord" style="position: relative;"
+      class="form-for-formid letter-item {{item.title===seletedId?'active':''}}" data-id="{{item}}"
+      wx:if="{{province.length!==0}}" wx:for="{{province}}" wx:key="{{index}}">
+      <button formType="submit" type="default"></button>
+      {{item.title}}  
+    </form>
+  </view>
+  <view class="content-box">
+    <scroll-view scrollY scroll-into-view="{{intoView}}" style="height:100%;">
+      <view class="city-box" wx:if="{{city.length!==0}}">
+        <view wx:for="{{city}}" wx:key="{{index}}">
+          <view id="{{item.parent_code}}" wx:if="{{city[index].parent_code != city[index -1].parent_code}}">{{item.parent_code}}</view>
+          <view class="city-letter-title van-hairline--bottom" bindtap="choiseItem" data-item="{{item}}" id="{{item.parent_code}}">{{item.title}}</view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>

@@ -1,0 +1,116 @@
+<view class="cardDetail">
+    <view class="cardList" style="padding-bottom: 0!important;">
+        <view class="card">
+            <image wx:if="{{detailData.cardType=='次数卡'}}" class="cardimg" src="/static/card0.png" mode="widthFix">
+            </image>
+            <image wx:if="{{detailData.cardType=='折扣卡'}}" class="cardimg" src="/static/card1.png" mode="widthFix">
+            </image>
+            <image wx:if="{{detailData.cardType=='充值卡'}}" class="cardimg" src="/static/card2.png" mode="widthFix">
+            </image>
+            <image wx:if="{{detailData.cardType=='固定场次卡'}}" class="cardimg" src="/static/card3.png" mode="widthFix">
+            </image>
+
+            <image class="cardlogo" src="/static/cardlogo.png" mode="widthFix"></image>
+            <view class="cardName">
+                <view class="van-ellipsis title">{{detailData.sname}}{{detailData.cardType}}</view>
+                <view class="van-ellipsis flex_row title_sm">
+                    <view>{{detailData.cardName}}</view>
+                    <view class="mar_l_30">{{detailData.cardType}}</view>
+                </view>
+                <view wx:if="{{detailData.cardType=='次数卡'}}" class="van-ellipsis text">
+                    {{detailData.balance}}次/{{detailData.sellingPrice}}元</view>
+
+                <view wx:if="{{detailData.cardType=='折扣卡'}}" class="van-ellipsis text">
+                    {{detailData.discount}}折/{{detailData.balance}}元</view>
+
+
+                <view wx:if="{{detailData.cardType=='充值卡'}}" class="van-ellipsis text">
+                    {{detailData.discount}}元/{{detailData.balance}}元</view>
+
+                <view wx:if="{{detailData.cardType=='固定场次卡'}}" class="van-ellipsis text flex_row">
+                    <view class="mar_r_20">{{detailData.boutName}}</view>
+                    <view class="mar_r_20">{{detailData.week}}</view>
+                    <view>{{detailData.time}}</view>
+                </view>
+
+                <view wx:else class="van-ellipsis text flex_row">
+                    <view class="mar_r_20">{{detailData.useTime}}</view>
+                    <view>{{detailData.useDate}}</view>
+                </view>
+
+                <view class="flex_row">
+                    <!-- <view class="cardbtn btn1"></view> -->
+                    <view wx:if="{{detailData.effectiveType == 2}}" class="time">有效期：{{detailData.effectiveDate}}个月
+                    </view>
+                    <view wx:else class="time">有效期至：{{detailData.expirationEnd}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <view class="flex_row" style="align-items: flex-start;">
+        <view wx:if="{{detailData.cardType=='次数卡'}}" class="linecol btn11"></view>
+        <view wx:if="{{detailData.cardType=='折扣卡'}}" class="linecol btn22"></view>
+        <view wx:if="{{detailData.cardType=='充值卡'}}" class="linecol btn33"></view>
+        <view wx:if="{{detailData.cardType=='固定场次卡'}}" class="linecol btn44"></view>
+
+        <view>
+            <view class="dinfo dinfo1 flex_row">
+                <view wx:if="{{detailData.cardType=='次数卡'}}"  class="doc btn11"></view>
+                <view  wx:if="{{detailData.cardType=='折扣卡'}}" class="doc btn22"></view>
+                <view  wx:if="{{detailData.cardType=='充值卡'}}" class="doc btn33"></view>
+                <view wx:if="{{detailData.cardType=='固定场次卡'}}" class="doc btn44"></view>
+                <view class="away" wx:if="{{ detailData.cardType=='次数卡' }}">剩余次数：{{ detailData.balance }}次</view>
+                <view class="away" wx:elif="{{ detailData.cardType=='固定场次卡' }}"></view>
+                <view class="away" wx:else>剩余金额：{{ detailData.balance }}</view>
+            </view>
+            <view class="dinfo flex_row">
+                <view wx:if="{{detailData.cardType=='次数卡'}}"  class="doc btn11"></view>
+                <view  wx:if="{{detailData.cardType=='折扣卡'}}" class="doc btn22"></view>
+                <view  wx:if="{{detailData.cardType=='充值卡'}}" class="doc btn33"></view>
+                <view wx:if="{{detailData.cardType=='固定场次卡'}}" class="doc btn44"></view>
+                <view class="away">购买时间：{{ detailData.buyDate }}</view>
+            </view>
+            <view class="dinfo flex_row">
+                <view wx:if="{{detailData.cardType=='次数卡'}}"  class="doc btn11"></view>
+                <view  wx:if="{{detailData.cardType=='折扣卡'}}" class="doc btn22"></view>
+                <view  wx:if="{{detailData.cardType=='充值卡'}}" class="doc btn33"></view>
+                <view wx:if="{{detailData.cardType=='固定场次卡'}}" class="doc btn44"></view>
+                <view class="away">结束时间：{{ detailData.expirationEnd }}</view>
+            </view>
+        </view>
+
+
+    </view>
+
+    <view class="coll">
+        <van-collapse value="{{ activeNames }}" bind:change="onChange" customClass="celclass">
+            <van-collapse-item title="{{name}}会员卡使用说明（{{detailData.cardType}}）" customClass="cusclass" name="1">
+                <van-icon slot="right-icon" name="plus" />
+                <text class="textdetail">{{detailData.detail}}</text>
+            </van-collapse-item>
+        </van-collapse>
+    </view>
+
+    <view class="item flex_row">
+        <view class="line mar_r_20"></view>
+        <view class="name">使用记录</view>
+    </view>
+    <view class="outlist">
+        <block wx:for="{{ detailData.records }}" wx:key="{{index}}">
+            <view class="flex_row flex_btw outitem van-hairline--bottom">
+                <view>
+                    <view class="van-ellipsis outtitle">{{detailData.sname}}{{detailData.cardType}}</view>
+                    <view class="van-ellipsis outtime">{{item.showDate}}</view>
+                </view>
+                <view class="flex_row" wx:if="{{detailData.cardType=='次数卡' || detailData.cardType=='固定场次卡' }}">
+                    <view class="outcs">-1</view>
+                    <view class="outsl">次</view>
+                </view>
+                <view class="flex_row" wx:else>
+                    <view class="outcs">-￥{{item.number}}</view>
+                </view>
+            </view>
+        </block>
+    </view>
+</view>

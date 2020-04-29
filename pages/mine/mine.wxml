@@ -1,0 +1,131 @@
+<!--pages/mine/mine.wxml-->
+<view class="mine" hover-class="none" hover-stop-propagation="false">
+    <!-- bindtap="navigate" -->
+    <view data-url="{{'../personal/personal?id='+ userInfo.id }}" class="mine_header" hover-class="none"
+        hover-stop-propagation="false">
+        <view class="header_con" hover-class="none" hover-stop-propagation="false">
+            <view wx:if="{{userLogoUrl !== 0}}" style="position: relative">
+                <image style="border-radius: 50%;" class="userImg" src="{{userLogoUrl}}" lazy-load="false" binderror=""
+                    bindload=""></image>
+                <image wx:if="{{userInfo.gender==1}}" class="sex_img" src="/static/mine8.png" bindload="" binderror="">
+                </image>
+                <image wx:if="{{userInfo.gender==0}}" class="sex_img" src="/static/mine9.png" bindload="" binderror="">
+                </image>
+            </view>
+            <image wx:else class="userImg" src="../images/my1.png" lazy-load="false" binderror="" bindload=""></image>
+            <text wx:if="{{isLogin}}" class="header_name" selectable="false" space="false"
+                decode="false">{{ nickName}}</text>
+            <text wx:if="{{!isLogin}}" bindtap="navigate" class="header_name" selectable="false" space="false"
+                decode="false">立即登录</text>
+        </view>
+        <!-- <i class="icon icon-arrow">
+            <image class="" src="../images/jt.png" lazy-load="false" binderror="" bindload=""></image>
+        </i> -->
+    </view>
+
+    <view class="col_list" hover-class="none" hover-stop-propagation="false">
+        <view class="col_title">我的订单</view>
+        <view class="row" hover-class="none" hover-stop-propagation="false">
+            <view bindtap="navigate" data-url="../myActive/myActive" class="col">
+                <image class="col_num" src="/static/mine1.png"></image>
+                <view class="col_text" selectable="false" space="false" decode="false">
+                    我的活动
+                </view>
+            </view>
+            <view bindtap="navigate" data-url="../myVenue/myVenue" class="col">
+                <image class="col_num" src="/static/mine10.png"></image>
+                <view class="col_text" selectable="false" space="false" decode="false">
+                    场馆订单
+                </view>
+            </view>
+            <view bindtap="navigate" class="col">
+                <!-- <image class="col_num" src="/static/mine11.png"></image>
+                <view class="col_text" selectable="false" space="false" decode="false">
+                    商城订单
+                </view> -->
+            </view>
+
+            <view bindtap="navigate" class="col">
+                <!-- <image class="col_num" src="/static/mine2.png"></image>
+                <view class="col_text" selectable="false" space="false" decode="false">
+                    我的赛事
+                </view> -->
+            </view>
+        </view>
+    </view>
+
+    <view class="row_list" hover-class="none" hover-stop-propagation="false">
+        <!-- data-url="../myAccount/myAccount" -->
+        <view bindtap="navigate"  class="row_item" hover-class="none" hover-stop-propagation="false">
+            <image class="row_img" src="/static/mine3.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false"
+                binderror="" bindload=""></image>
+            <view class="row_text">我的账户</view>
+            <view class="icon_text">￥0</view>
+            <van-icon class="icon_jt" name="arrow" />
+        </view>
+        <view bindtap="navigate" class="row_item" hover-class="none" hover-stop-propagation="false">
+            <image class="row_img" src="/static/mine4.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false"
+                binderror="" bindload=""></image>
+
+            <view class="row_text">我的积分</view>
+            <view class="icon_text">10</view>
+            <van-icon class="icon_jt" name="arrow" />
+        </view>
+        <view bindtap="navigate" data-url="../myCard/myCard" class="row_item" hover-class="none" hover-stop-propagation="false">
+            <image class="row_img" src="/static/mine5.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false"
+                binderror="" bindload=""></image>
+            <view class="row_text">我的会员卡</view>
+            <van-icon class="icon_jt" name="arrow" />
+        </view>
+        <view bindtap="navigate" class="row_item" hover-class="none" hover-stop-propagation="false">
+            <image class="row_img" src="/static/mine6.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false"
+                binderror="" bindload=""></image>
+            <view class="row_text">我的优惠券</view>
+            <van-icon class="icon_jt" name="arrow" />
+        </view>
+
+    </view>
+
+    <!-- <view class="row_list" hover-class="none" hover-stop-propagation="false">
+        <view bindtap="navigate" data-url="../involved/involved" class="row_item" hover-class="none"
+            hover-stop-propagation="false">
+            <image class="row_img" src="../images/my1.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false"
+                binderror="" bindload=""></image>
+            <view class="row_text">我参加的</view>
+            <image class="icon_jt" src="../images/jt.png"></image>
+        </view>
+        <view bindtap="navigate" data-url="../launch/launch" class="row_item" hover-class="none"
+            hover-stop-propagation="false">
+            <image class="row_img" src="../images/my2.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false"
+                binderror="" bindload=""></image>
+            <view class="row_text">我发起的</view>
+            <image class="icon_jt" src="../images/jt.png"></image>
+        </view>
+        <view bindtap="navigate" data-url="../collection/collection" class="row_item" hover-class="none"
+            hover-stop-propagation="false">
+            <image class="row_img" src="../images/star.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false"
+                binderror="" bindload=""></image>
+            <view class="row_text">我收藏的</view>
+            <image class="icon_jt" src="../images/jt.png"></image>
+        </view>
+    </view> -->
+
+    <view class="flex_row flex_btw rz_item">
+        <view class="flex_row">
+            <image class="rz_img" src="/static/mine7.png"></image>
+            <view class="rz_text">申请入驻商户</view>
+        </view>
+        <view catchtap="settledIn" class="rz_btn flex_row flex_center">立即申请</view>
+
+    </view>
+    <!-- <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">获取用户信息</button> -->
+
+    <!-- <button bindtap="toSignin">签到</button>
+        <button bindtap="toVote">投票</button> -->
+    <!-- <button bindtap="saveUser">保存</button> -->
+
+    <view bindtap="makeCall" class="customerSvs flex_row flex_center">
+        客服热线：{{phoneNumber}}
+        <image class="phone_img" src="/static/mine12.png"></image>
+    </view>
+</view>

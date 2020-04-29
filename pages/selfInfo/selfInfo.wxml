@@ -1,0 +1,38 @@
+<!--pages/selfInfo/selfInfo.wxml-->
+<view class="selfInfo">
+    <view class="selfItem">
+        <view class="selfLeft">头像</view>
+        <view class="selfRight">
+            <image class="selfImg" src="../images/my1.png"></image>
+        </view>
+    </view>
+    <view class="selfItem">
+        <view class="selfLeft">昵称</view>
+        <view class="selfRight">
+            <input bindchange="bindData" data-key="name" type="text" value="{{name}}" />
+        </view>
+    </view>
+    <view class="selfItem">
+        <view class="selfLeft">性别</view>
+        <view class="selfRight">
+            <view class="sex sex_m">男</view>
+            <view class="sex sex_w">女</view>
+        </view>
+    </view>
+    <view class="selfItem">
+        <view class="selfLeft">所在城市</view>
+        <view class="selfRight">
+            <input bindchange="bindData" data-key="address" type="text" value="{{address}}" />
+        </view>
+    </view>
+    <view class="selfItem">
+        <view class="selfLeft">手机号码</view>
+        <view class="selfRight">
+            <input bindchange="bindData" data-key="phone" type="text" value="{{phone}}" />
+        </view>
+    </view>
+    <view class="selfText">个人介绍</view>
+    <view class="textarea">
+        <textarea bindchange="bindData" data-key="textarea" type="text" value="{{textarea}}" > </textarea>
+    </view>
+</view>

@@ -1,0 +1,54 @@
+/* pages/component/pst/pst.wxss */
+
+.pst_cover{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000;
+    overflow: hidden;
+    z-index: 998;
+    color: #fff;
+    opacity: 0.8;
+
+}
+.pst_box{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+    /* border: 1rpx solid red; */
+}
+
+.cvs_btns{
+    /* border: 1rpx solid blue; */
+    height: 120rpx;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    color: white;
+    font-size: 24rpx;
+}
+.cvs_img{
+    width: 45rpx;
+    height: 45rpx;
+}
+.brn_box{
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: space-around;
+}
+.shareBtn{
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* border: 1rpx solid red; */
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+}

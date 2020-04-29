@@ -1,0 +1,41 @@
+
+var filterDate = function (text) {
+    return text.slice(5,16)
+  }
+  var filterSeconds = function(text){
+    if(text != undefined){
+      return text.slice(0,-3)
+    }
+    
+  }
+  var spliceText = function(text){
+     text = text.replace('全部','');
+     return text;
+  }
+  var isImgUrl = function(url){
+    if(url.indexOf('tmp') == -1){
+      return false
+    }else{
+      return true
+    }
+  }
+
+  var totalMoney = function (gender,priceMan,priceWoman,takeMan,takeWoman) {
+    var base = gender==1 ? priceMan : priceWoman;
+    var takenM = takeMan ? takeMan : '0';
+    var takenWm = takeWoman ? takeWoman : '0';
+    var total =  parseFloat(base) + (parseFloat(takenM) * parseFloat(priceMan)) + (parseFloat(takenWm) * parseFloat(priceWoman));
+    return (total.toFixed(2));
+
+    }
+    var editMoney = function(baseM,newsM){
+      return ((parseFloat(baseM) - parseFloat(newsM)).toFixed(2))
+    }
+  module.exports = {
+    filterDate: filterDate,
+    totalMoney: totalMoney,
+    filterSeconds:filterSeconds,
+    spliceText:spliceText,
+    editMoney:editMoney,
+    isImgUrl:isImgUrl
+  }

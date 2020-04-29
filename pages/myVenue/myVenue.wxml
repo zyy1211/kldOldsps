@@ -1,0 +1,61 @@
+<view class="" hover-class="none" hover-stop-propagation="false">
+    <van-sticky>
+        <view style="border-bottom: 10rpx solid #F0F0F0;">
+            <van-tabs line-height="1" active="{{ tabActive }}" bind:click="onChange">
+                <van-tab title="全部"></van-tab>
+                <van-tab title="待支付"></van-tab>
+                <van-tab title="待核销"></van-tab>
+                <van-tab title="已核销"></van-tab>
+                <van-tab title="退款中"></van-tab>
+                <van-tab title="退款完成"></van-tab>
+                <van-tab title="退款失败"></van-tab>
+                <van-tab title="已取消"></van-tab>
+            </van-tabs>
+        </view>
+    </van-sticky>
+
+    <view class="myVenue">
+        <block wx:for="{{dataList}}" wx:key="{{index}}">
+            <view class="venueItem" data-sceneId="{{item.scene.id}}" bindtap="toDetail">
+                <view class="flex_row flex_btw">
+                    <view>
+                        <view class="van-ellipsis title">{{item.scene.stadiumName}}</view>
+                        <view class="order_num">订单编号：{{item.scene.id}}</view>
+                    </view>
+                    <view class="status">{{
+                    item.scene.orderStatus === 0 ? '未支付' :
+                    (item.scene.orderStatus === 1 ? '待核销' :
+                    (item.scene.orderStatus === 2 ? '已核销' :
+                    (item.scene.orderStatus === 3 ? '退款中' :
+                    (item.scene.orderStatus === 4 ? '退款成功' :
+                    (item.scene.orderStatus === 5 ? '退款失败' :
+                    (item.scene.orderStatus === 6 ? '已取消' : '未知'))))))
+                    }}</view>
+                </view>
+                <view class="list_d">
+                    <block wx:for="{{item.descList}}" wx:for-item="itm" wx:for-index="idx">
+                        <view class="flex_row flex_btw item_d">
+                            <view class="flex_row">
+                                <view class="van-ellipsis">{{itm.boutName}}</view>
+                                <view>{{itm.showDate}}</view>
+                            </view>
+                            <view class="i_money">￥{{itm.price}}</view>
+                        </view>
+                    </block>
+                </view>
+                <view class="jifen mar_t_10">
+                    <view>积分抵扣</view>
+                    <view class="i_money">-￥0</view>
+                </view>
+                <view class="flex_row flex_btw">
+                    <view class="date_g">{{item.scene.createTimeFormat}}</view>
+                    <view class="flex_row mar_t_10">
+                        <view class="gj">共计</view>
+                        <view class="i_money">￥{{item.scene.price}}</view>
+                    </view>
+                </view>
+            </view>
+        </block>
+    </view>
+
+</view>

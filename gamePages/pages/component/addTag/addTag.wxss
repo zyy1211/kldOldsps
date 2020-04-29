@@ -1,0 +1,18 @@
+/* gamePages/pages/component/addTag/addTag.wxss */
+
+.addTag{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+}
+.submit {
+    width: 690rpx;
+    height: 72rpx;
+    line-height: 72rpx;
+    background:#F26746;
+    border-radius: 10px;
+    color: white;
+    font-size: 26rpx;
+    letter-spacing: 2rpx;
+    margin-top: 300rpx;
+}

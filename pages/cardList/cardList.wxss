@@ -1,0 +1,129 @@
+/* pages/cardList/cardList.wxss */
+.cardList{
+    padding-bottom: 40rpx;
+}
+.cardList,.cardItem {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardList .card {
+    width: 691rpx;
+    height: 324rpx;
+    position: relative;
+    box-sizing: border-box;
+}
+.coll{
+    width: 691rpx;
+    text-align: left;
+}
+.cardlogo {
+    width: 90rpx;
+    position: absolute;
+    top: 26rpx;
+    right: 35rpx;
+}
+
+.cardimg {
+    width: 691rpx;
+}
+
+.cardName {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid red; */
+    color: white;
+    padding: 26rpx 54rpx;
+    box-sizing: border-box;
+    letter-spacing: 3rpx;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+}
+
+.title {
+    font-size: 30rpx;
+    font-weight: bold;
+    margin-bottom: 10rpx;
+}
+
+.title_sm {
+    font-size: 26rpx;
+    font-weight: 400;
+    font-style:italic;
+}
+.text{
+    /* margin: 25rpx 0; */
+    margin-left: 70rpx;
+    font-size: 32rpx;
+}
+.cardbtn{
+    width:200rpx;
+    height:53rpx;
+    line-height: 53rpx;
+    text-align: center;
+    background:white;
+  
+    opacity:0.78;
+    border-radius:25rpx;
+  
+    font-size: 26rpx;
+    margin-right: 30rpx;
+}
+.btn1{
+    box-shadow:0px 0px 18px 0px #02b6cc;
+    color: #02b6cc;
+}
+.btn2{
+    box-shadow:0px 0px 18px 0px #489dff;
+    color: #489dff;
+}
+.btn4{
+    box-shadow:0px 0px 18px 0px #fc3a2b;
+    color: #fc3a2b;
+}
+.btn3{
+    box-shadow:0px 0px 18px 0px #8183fb;
+    color: #8183fb;
+}
+
+
+.btn11{
+    background-color: #02b6cc;
+}
+.btn22{
+    background-color: #489dff;
+}
+.btn44{
+    background-color: #fc3a2b;
+}
+.btn33{
+    background-color: #8183fb;
+}
+
+.time{
+    font-size: 26rpx;
+}
+
+.textdetail{
+    font-size: 24rpx;
+    color: #666;
+}
+
+
+.cusclass .van-collapse-item__content{
+    line-height: 26rpx;
+    /* padding-left: 10rpx;
+    padding-right: 10rpx; */
+}
+.celclass .van-cell{
+    font-weight: 900;
+    font-size: 28rpx;
+    /* padding-left: 10rpx;
+    padding-right: 10rpx; */
+}

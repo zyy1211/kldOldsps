@@ -1,0 +1,52 @@
+<template name="activeDetailTemp">
+  <view class="card_item" hover-class="none"  data-id="{{item.id}}" hover-stop-propagation="false">
+    <view class="item_img" style="opacity:{{item===1 ? '0.6' : '1'}}">
+      <image class="item_images"  src="{{img_host+item.imageUri}}" mode="widthFix"></image>
+      
+      <button class="type_btn">{{item.expand}}</button>
+    </view>
+
+    <view class="item_info" style="opacity:{{item===1 ? '0.6' : '1'}}" hover-class="none" hover-stop-propagation="false">
+      <view class="flex_row flex_btw">
+        <view class="info_title van-ellipsis" hover-class="none" hover-stop-propagation="false">{{item.title}}</view>
+        <view class="flew_shrink" style="font-size: 26rpx;">{{item.isOpen == true ? '公开' : '不公开'}}</view>
+      </view>
+      <view class="info_main" hover-class="none" hover-stop-propagation="false">
+        <image class="info_icon" src="../images/per_ads.jpg" bindload="" binderror=""></image>
+        <!-- <image class="info_icon" src="../images/per_ads_d.jpg" bindload="" binderror=""></image> -->
+        <view class="" hover-class="none" hover-stop-propagation="false">{{item.location}}{{item.clubName}}</view>
+      </view>
+      <view class="info_main" hover-class="none" hover-stop-propagation="false">
+        <image class="info_icon" src="../images/per_time.jpg" bindload="" binderror=""></image>
+        <!-- <image class="info_icon" src="../images/per_time_d.jpg" bindload="" binderror=""></image> -->
+        <wxs src="../../filter.wxs" module="tools" />
+        <view class="" hover-class="none" hover-stop-propagation="false">{{item.setime}}</view>
+      </view>
+      <view class="info_main" hover-class="none" hover-stop-propagation="false">
+        <image class="info_icon" src="../images/per_bq.png" bindload="" binderror=""></image>
+        <!-- <image class="info_icon" src="../images/per_bq_d.png" bindload="" binderror=""></image> -->
+        <view class="" hover-class="none" hover-stop-propagation="false">{{item.tag}}</view>
+      </view>
+      <view class="info_main" hover-class="none" hover-stop-propagation="false">
+        <image class="info_icon" src="../images/per_use.jpg" bindload="" binderror=""></image>
+        <!-- <image class="info_icon" src="../images/per_use_d.jpg" bindload="" binderror=""></image> -->
+        <view class="" hover-class="none" hover-stop-propagation="false">{{item.appliedNum}}/{{item.participantsNum}}已报名</view>
+      </view>
+
+      <view class="float_right" hover-class="none" hover-stop-propagation="false">
+        <!-- <image wx:if="{{item.enshrine ==true }}" class="heart" src="../images/heart_a.png"></image>
+        <image wx:else class="heart" src="../images/heart.png"></image> -->
+        <progress class="progress" percent="10" activeColor="#2C39E8" backgroundColor="white" />
+        <view wx:if="{{item.registrationStatus == 1}}" class="btn_common btn_active" hover-class="none" hover-stop-propagation="false">
+          报名中
+        </view>
+      </view>
+      <view wx:if="{{item.registrationStatus == 2}}" class="float_right btn_common btn_disable" hover-class="none" hover-stop-propagation="false">报名已满</view>
+      <view wx:if="{{item.registrationStatus == 3}}" class="float_right btn_common btn_disable" hover-class="none" hover-stop-propagation="false">报名已结束</view>
+      <view wx:if="{{item.registrationStatus == 4}}" class="float_right btn_common btn_disable" hover-class="none" hover-stop-propagation="false">活动结束</view>
+      <view wx:if="{{item.registrationStatus == 5}}" class="float_right btn_common btn_disable" hover-class="none" hover-stop-propagation="false">活动取消</view>
+      <view wx:if="{{item.registrationStatus == 0}}" class="float_right btn_common btn_active" hover-class="none" hover-stop-propagation="false">审核中</view>
+    </view>
+
+  </view>
+</template>

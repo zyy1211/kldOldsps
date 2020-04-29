@@ -1,0 +1,9 @@
+{
+
+  "navigationBarBackgroundColor":"#F26746",
+  "navigationBarTitleText": "产品中心",
+
+  "usingComponents": {
+    "navBar": "../component/nvb/index"
+  }
+}

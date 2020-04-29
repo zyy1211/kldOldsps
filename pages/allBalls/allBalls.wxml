@@ -1,0 +1,20 @@
+<view class='con'>
+
+  <view class="typeList flex_row_wrap">
+    <view class="typeItem flex_col flex_middle" wx:for="{{typeList}}" wx:key="{{index}}" bindtap="toReserveCenter"
+      data-key="{{item.sportsName}}">
+      <image style="border-radius: 50%;" class="type_img" src="{{ apiImg + item.imageUrl  }}"></image>
+      <view class="mar_t_10">{{item.sportsName}}</view>
+    </view>
+  </view>
+  <!-- <view class="ball-box whiteBackgound">
+    <view class='detail flexAlign'>
+      <block wx:for='{{typeList}}' wx:key='index'>
+        <view class='list flexColumnCenter' data-key='{{item}}' bindtap='toReserveCenter'>
+          <image class='icon' src='{{apiImg+item.img}}' />
+          <view class='sportName font-color-rgbaTwo'>{{item}}</view>
+        </view>
+      </block>
+    </view>
+  </view> -->
+</view>

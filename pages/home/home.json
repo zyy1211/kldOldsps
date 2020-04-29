@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "栎刻动体育",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "authorize": "../component/authorize",
+    "pst":"../component/pst/pst"
+  }
+}

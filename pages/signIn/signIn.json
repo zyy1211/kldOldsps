@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "活动人员名单",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black",
+  "enablePullDownRefresh": true,
+  "usingComponents":{
+    "my-poster":"../component/poster/poster"
+  }
+
+}

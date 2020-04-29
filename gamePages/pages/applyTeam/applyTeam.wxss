@@ -1,0 +1,91 @@
+.applyteam {
+    padding-bottom: 60rpx;
+    background-color: #f0f0f0;
+  }
+  
+  .lkd_item {
+    background: white;
+    padding: 0 0 0 30rpx;
+    box-sizing: border-box;
+  }
+  
+  .star {
+    position: relative;
+    flex-shrink: 0;
+  }
+  
+  .star:before {
+    position: absolute;
+    content: "*";
+    left: -15rpx;
+    top: 6rpx;
+    font-size: 14px;
+    color: #ee0a24;
+  }
+  
+  .min_item {
+    min-height: 98rpx;
+  }
+  
+  .title {
+    font-size: 32rpx;
+    color: #f26746;
+    padding: 20rpx 0 20rpx 30rpx;
+    font-weight: 900;
+  }
+  
+  .submit {
+    width: 690rpx;
+    height: 72rpx;
+    line-height: 72rpx;
+    background: #F26746;
+    border-radius: 10px;
+    color: white;
+    font-size: 26rpx;
+    letter-spacing: 2rpx;
+    margin-top: 40rpx;
+  }
+  
+  .form {
+    position: relative;
+    padding-bottom: 98rpx;
+    background-color: white;
+    margin-bottom: 10rpx;
+  }
+  
+  .addBtn {
+    position: absolute;
+    right: 20rpx;
+    bottom: 20rpx;
+  
+  }
+  
+  .formItem {
+    height: 98rpx;
+  }
+  
+  .formItem>view {
+    width: 25%;
+    flex-shrink: 1;
+    text-align: center;
+  }
+  
+  .form .icon {
+    margin: 0 auto;
+  }
+
+  .notify {
+    font-size: 24rpx;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20rpx 30rpx;
+    background:white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    box-shadow:0 0 10px #f0f0f0;
+}
+.notify view{
+  line-height: 50rpx;
+}

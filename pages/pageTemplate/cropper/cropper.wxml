@@ -1,0 +1,17 @@
+<!--pages/pageTemplate/cropper/cropper.wxml-->
+
+<import src="./we-cropper.wxml" />
+
+<view class="cropper-wrapper">
+    <template is="we-cropper" data="{{...cropperOpt}}" />
+    <view class="cropper-buttons">
+        <!-- <view class="cancel" bindtap="toback">
+            取消
+        </view>
+        <view class="cancel getCropperImage" bindtap="getCropperImage">
+            生成图片
+        </view> -->
+        <van-button class="btns" size="small" catchtap="toback"  type="default">取消</van-button>
+        <van-button class="btns" size="small" catchtap="getCropperImage"  type="warning">生成图片</van-button>
+    </view>
+</view>

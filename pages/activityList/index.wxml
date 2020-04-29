@@ -1,0 +1,77 @@
+<view class="home" id="container">
+  <view class="home_card">
+    <view class="topitem">
+      <image class="ads_img" src="../images/h_address.jpg"></image>
+      <input bindtap="toAddress" disabled class="address_input" type="text" value='{{address}}' />
+    </view>
+  </view>
+  <van-sticky>
+    <van-dropdown-menu>
+      <van-dropdown-item catchtouchmove="_touchmove" bind:change="tabsChange" data-key="time" value="{{ time }}"
+        options="{{ optionsDate }}" />
+      <van-dropdown-item catchtouchmove="_touchmove" bind:change="tabsChange" data-key="distance" value="{{ distance }}"
+        options="{{ addressList }}" />
+      <van-dropdown-item catchtouchmove="_touchmove" bind:change="tabsChange" data-key="chargeModel"
+        value="{{ chargeModel }}" options="{{ selectMoney }}" />
+      <van-dropdown-item catchtouchmove="_touchmove" bind:change="tabsChange" data-key="type" value="{{ type }}"
+        options="{{ selectType }}" />
+    </van-dropdown-menu>
+  </van-sticky>
+
+  <view class="h_main" hover-class="none" hover-stop-propagation="false" wx:if="{{dataList.length >0}}">
+    <view class="h_item" wx:for="{{dataList}}" wx:key="{{index}}">
+      <view class="item_main" data-id="{{item.id}}" bindtap="toDetail">
+        <view class="item_title">
+          <view class="van-ellipsis">{{item.title}}</view>
+          <view wx:if="{{item.enshrine == true}}" data-id="{{item.id}}" data-key="1" class="actv_btn noactv_btn flew_shrink"
+            data-index="{{index}}" catchtap="follow ">已收藏</view>
+
+          <view wx:else class="actv_btn flew_shrink" data-id="{{item.id}}" data-index="{{index}}" catchtap="follow">
+            <van-icon name="plus" />收藏
+          </view>
+        </view>
+        <view class="item_ct">
+          <view class="row">
+            <image class="iocn_h" src="../images/ad.png"></image>
+            <view class="text_h">{{item.location}}</view>
+          </view>
+          <view class="row" hover-class="none" hover-stop-propagation="false">
+            <image class="iocn_h" src="../images/tm.png"></image>
+            <!-- <wxs src="../filter.wxs" module="tools" /> -->
+            <view class="text_h">{{item.setime}}</view>
+            <!-- <view class="text_h">{{item.activityStartTime}} --
+              {{item.activityEndTime}}</view> -->
+          </view>
+          <view class="row" hover-class="none" hover-stop-propagation="false">
+            <image class="iocn_h" src="../images/re.png"></image>
+            <view class="text_h">{{item.appliedNum}}/{{item.participantsNum}}已报名</view>
+          </view>
+          <view class="row">
+            <image class="iocn_h" src="../images/qb.png"></image>
+            <view class="text_h">{{item.tag}}</view>
+          </view>
+
+          <view class="waterDrop">
+            <image class="dropImg" src="../images/drop.png" mode="widthFix" lazy-load="false" binderror="" bindload="">
+            </image>
+            <view class="dropText">{{item.expand}}</view>
+          </view>
+
+
+        </view>
+        <view class="flex_row flex_btw jl">
+          <view wx:if="{{ item.chargeMode == 0 }}">免费</view>
+          <view wx:if="{{ item.chargeMode == 1 }}">线上收费</view>
+          <view wx:if="{{ item.chargeMode == 2 }}">线下收费</view>
+          <view class="flex_row">
+            <van-icon name="location-o" />
+            <view>{{item.distance}}km</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+</view>
+<authorize id="authorize"></authorize>
+<publishNav type="activity"></publishNav>

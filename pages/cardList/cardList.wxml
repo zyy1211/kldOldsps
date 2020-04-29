@@ -1,0 +1,58 @@
+<!--pages/cardList/cardList.wxml-->
+
+
+<view class="cardList">
+    <view class="cardItem" wx:for="{{cardList}}" wx:key="{{item.id}}">
+        <view class="card">
+            <image wx:if="{{type=='次数卡'}}" class="cardimg" src="/static/card0.png" mode="widthFix"></image>
+            <image wx:if="{{type=='折扣卡'}}" class="cardimg" src="/static/card1.png" mode="widthFix"></image>
+            <image wx:if="{{type=='充值卡'}}" class="cardimg" src="/static/card2.png" mode="widthFix"></image>
+            <image wx:if="{{type=='固定场次卡'}}" class="cardimg" src="/static/card3.png" mode="widthFix"></image>
+            <image class="cardlogo" src="/static/cardlogo.png" mode="widthFix"></image>
+            <view class="cardName">
+                <view class="van-ellipsis title">{{name}}{{type}}</view>
+                <view class="van-ellipsis flex_row title_sm">
+                    <view>{{item.name}}</view>
+                    <view class="mar_l_30">{{item.sportType}}</view>
+                </view>
+                <view wx:if="{{type=='次数卡'}}" class="van-ellipsis text">{{item.content}}次/{{item.sellingPrice}}元</view>
+
+                <view wx:if="{{type=='折扣卡'}}" class="van-ellipsis text">{{item.content}}折/{{item.sellingPrice}}元</view>
+
+
+                <view wx:if="{{type=='充值卡'}}" class="van-ellipsis text">{{item.content}}元/{{item.sellingPrice}}元</view>
+
+                <!-- <view wx:if="{{type=='固定场次卡'}}" class="van-ellipsis text flex_row">
+                    <view class="mar_r_20">{{item.useDate}}</view>
+                    <view>{{item.useTime}}</view>
+                </view> -->
+
+                <view class="van-ellipsis text flex_row">
+                    <view class="mar_r_20">{{item.useTime}}</view>
+                    <view>{{item.useDate}}</view>
+                </view>
+
+                <view class="flex_row">
+                    <view bindtap="toCardDetail" data-sporttype="{{item.sportType}}" data-usedate="{{item.useDate}}"
+                        data-usetime="{{item.useTime}}" data-name="{{name}}" data-id="{{item.id}}">
+                        <view  wx:if="{{type=='次数卡'}}" class="cardbtn btn1">领取开通</view>
+                        <view  wx:if="{{type=='折扣卡'}}" class="cardbtn btn2">领取开通</view>
+                        <view  wx:if="{{type=='充值卡'}}" class="cardbtn btn3">领取开通</view>
+                        <view  wx:if="{{type=='固定场次卡'}}" class="cardbtn btn4">领取开通</view>
+                    </view>
+                    <view wx:if="{{item.effectiveType == 2}}" class="time">有效期：{{item.effectiveDate}}个月</view>
+                    <view wx:else class="time">有效期至：{{item.expirationEnd}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="coll">
+            <van-collapse value="{{ activeNames }}" bind:change="onChange" customClass="celclass">
+                <van-collapse-item title="{{name}}会员卡使用说明（{{type}}）" customClass="cusclass" name="{{item.id}}">
+                    <van-icon slot="right-icon" name="plus" />
+
+                    <text class="textdetail">{{item.detail}}</text>
+                </van-collapse-item>
+            </van-collapse>
+        </view>
+    </view>
+</view>

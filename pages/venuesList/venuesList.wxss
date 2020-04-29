@@ -1,0 +1,69 @@
+/* pages/venuesList/venuesList.wxss */
+
+.list{
+    display: flex;
+    flex-flow: column nowrap;
+    color: #333;
+}
+.venuesList .list{
+    padding: 0 30rpx;
+    box-sizing: border-box;
+}
+.item{
+    /* border: 1px solid red; */
+    position: relative;
+}
+.venuesList .list .item{
+    margin-bottom:146rpx;
+}
+.item .itemBlock{
+    width: 100%;
+    height: 180rpx;
+    position: absolute;
+    bottom:-90rpx ;
+    left: 0;
+    /* border: 1px solid yellow; */
+    padding: 0 30rpx;
+    box-sizing: border-box;
+}
+.item .itemText{
+    height: 100%;
+    background-color: white;
+    box-shadow:0rpx 8rpx 10rpx 1rpx rgba(4,0,0,0.23);
+    border-radius: 20rpx;
+    padding: 26rpx;
+    box-sizing: border-box;
+    position: relative;
+    /* border: 1px solid red; */
+}
+.item .title{
+    font-size: 30rpx;
+}
+.item .price{
+    font-size: 26rpx;
+    color: #F26746;
+    font-weight: 900;
+    position: absolute;
+    top: 50rpx;
+    right: 30rpx;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+    align-items: center;
+
+}
+.item .sm_text{
+    font-size: 20rpx;
+    color: #333;
+    font-weight: 500;
+}
+.address{
+    font-size: 26rpx;
+    color: #666;
+}
+.distance{
+    position: absolute;
+    right: 30rpx;
+    bottom: 16rpx;
+    font-size: 26rpx;
+}

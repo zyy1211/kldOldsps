@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "我参与的",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    
+  }
+}

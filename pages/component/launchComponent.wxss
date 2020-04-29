@@ -1,0 +1,58 @@
+/* pages/launchCom/launchCom.wxss */
+@import '../pageTemplate/active-detail-temp/active-detail-temp.wxss';
+
+.launchCom {
+    font-size: 28rpx;
+    color: #333;
+    padding-top: 20rpx;
+    padding-bottom: 40rpx;
+}
+.launchCom .launch_main {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    
+}
+.launchCom .tabs {
+    height: 76rpx;
+    line-height: 50rpx;
+    /* line-height: 76rpx; */
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+
+.launchCom .tabs .tab {
+    flex: 1;
+    text-align: center;
+    /* letter-spacing: 4rpx; */
+}
+
+.launchCom .active {
+    color: #E8380D;
+    position: relative;
+}
+
+.launchCom .active:after {
+    position: absolute;
+    content: '';
+    width: 64rpx;
+    height: 2rpx;
+    bottom: 0;
+    background: #E8380D;
+    left: calc(50% - 32rpx);
+}
+
+
+
+.launchCom .signIn {
+    width: 664rpx;
+    height: 54rpx;
+    line-height: 54rpx;
+    background: rgba(232, 56, 13, 1);
+    border-radius: 10rpx;
+    font-size: 24rpx;
+    color: white;
+    margin-bottom: 21rpx;
+}

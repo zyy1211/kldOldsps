@@ -1,0 +1,49 @@
+
+
+.reserveOrder{
+
+}
+.reserveOrder .waitPay{
+  height: 250rpx;
+  background:linear-gradient(0deg,rgba(242,103,70,1),rgba(241,141,117,1));
+  font-size: 28rpx;
+  color: white;
+}
+.waitPay .wait{
+  font-size: 34rpx;
+}
+.cont{
+  padding: 0 33rpx 50rpx;
+}
+.cont .item{
+  height: 92rpx;
+}
+.cont .border{
+  border-bottom: 1rpx solid #F0F0F0;
+}
+.cont .title{
+  font-size: 32rpx;
+  color: #333;
+  font-weight: 900;
+}
+.cont .font6{
+  font-size: 26rpx;
+  color: #666666;
+}
+.sm_title{
+  font-size: 30rpx;
+  color: #333;
+}
+.orderList{
+  font-size: 24rpx;
+  color: #666;
+}
+.orderItem{
+  margin-bottom: 33rpx;
+}
+.red{
+  color: #E11616;
+}
+
+
+

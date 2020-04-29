@@ -1,0 +1,28 @@
+<!--pages/activeType/activeType.wxml-->
+
+<view class="activeType" hover-class="none" hover-stop-propagation="false">
+    <view wx:for="{{typeList}}" wx:key="{{item.id}}" wx:if="{{item.sportsNames.length>0}}">
+        <view class="title" hover-class="none" hover-stop-propagation="false">{{item.sportTypeName}}</view>
+        <view class="list" hover-class="none" hover-stop-propagation="false">
+            <view class="card">
+                <view class="item" data-id="{{tsm}}" bindtap="chooseType" wx:for="{{item.sportsNames}}"
+                    wx:for-item="tsm" wx:key="{{tsm.id}}" hover-class="none" hover-stop-propagation="false">
+                    <image class="type_img"  src="{{ img_host + tsm.imageUri}}" lazy-load="false" binderror=""
+                        bindload=""></image>
+                    <view class="type_text" hover-class="none" hover-stop-propagation="false">{{tsm.sportName}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view wx:if="{{isIndex != ''}}">
+        <view style="margin-top: 20rpx;" class="list" hover-class="none" hover-stop-propagation="false">
+            <view class="card">
+                <view class="item" data-id="{{allBtn}}" bindtap="chooseType" hover-class="none"
+                    hover-stop-propagation="false">
+                    <image class="type_img" src="../images/all.png" lazy-load="false" binderror="" bindload=""></image>
+                    <view class="type_text" hover-class="none" hover-stop-propagation="false">全部</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,46 @@
+<view class="vote">
+    <view class="vote_tabs">
+        <view class="vt_tab vote_active">投票首页</view>
+        <view class="vt_tab">赛事详情</view>
+        <view class="vt_tab">投票规则</view>
+    </view>
+    <view class="vote_title">“威克多杯"羽毛球邀请赛投票</view>
+    <view class="vote_share">
+        <view class="air_img">
+            <image class="vote_air" src="../images/v_air.png"></image>333
+        </view>
+        <image class="share_img" src="../images/v_share.png"></image>
+    </view>
+    <view class="share_time">投票时间：11月8日上午9点--17日19点结束</view>
+    <image class="v_banner" src="../images/v_banner.png"></image>
+    <view class="sc_item">
+        <view class="vote_input">
+            <input class="" placeholder="请输入名字或序号" />
+            <image class="search_img" src="../images/v_search.png"></image>
+        </view>
+        <image class="vote_filter" src="../images/v_filter.png"></image>
+    </view>
+    <view class="notify">
+        <view class="nty_left">
+            <image class="v_vo_img" src="../images/v_vo.png"></image>
+            <view>每个人每天给每支队伍最多投2票</view>
+        </view>
+        <view class="nty_right">今日可用票数<view style="color: #E8380D;margin-left: 6rpx;">4</view>
+        </view>
+    </view>
+    <view class="note_list">
+        <block wx:for="{{noteList}}">
+            <view class="note_item">
+                <view class="item_id">011</view>
+                <view
+                    class="item_name {{index==0 ? 'item_one' : (index==1 ? 'item_two' : (index==2 ? 'item_three' : (index == 3 ? 'item_four' : '')))}}">
+                    <view>王佳磊</view>
+                    <view>吕佳琳</view>
+                </view>
+                <view class="item_type">D组：混双组</view>
+                <view class="item_type">14003票</view>
+                <view class="item_btn">投票</view>
+            </view>
+        </block>
+    </view>
+</view>

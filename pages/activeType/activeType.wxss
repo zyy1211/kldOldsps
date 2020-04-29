@@ -1,0 +1,49 @@
+/* pages/activeType/activeType.wxss */
+.activeType{
+    width: 100vw;
+    min-height: 100vh;
+    background-color: #F0F0F0;
+    font-size: 20rpx;
+    color: #333;
+    padding: 0rpx 30rpx;
+}
+.title{
+    font-size: 26rpx;
+    height: 52rpx;
+    line-height: 52rpx;
+    font-weight: 900;
+}
+.list{
+    background-color: white;
+    width: 690rpx;
+    padding-top: 39rpx;
+    border-radius:10px;
+}
+.card{
+    width: 632rpx;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    margin: 0 auto;
+}
+.item{
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 0 24rpx;
+    margin-bottom: 36rpx;
+}
+.item image{
+    width: 78rpx;
+    height: 79rpx;
+}
+.type_text{
+    padding: 0 6rpx;
+    text-align: justify;
+    margin-top: 12rpx;
+  }
+.type_text::after{
+    width: 100%;
+    display: inline-block;
+    content: '';
+}
+  

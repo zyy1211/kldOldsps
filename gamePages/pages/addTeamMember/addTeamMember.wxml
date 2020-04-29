@@ -1,0 +1,74 @@
+<view class="applySingle lkd-field-right">
+        <view>
+            <van-field value="{{ form.name }}" confirm-type="完成" required clearable="{{true}}" label="姓名" placeholder="请输入姓名"
+                data-key="name"  bind:input="bindDate" />
+        </view>
+
+        <view>
+            <view class="van-hairline--bottom flex_row flex_btw" style="background-color: white;">
+                <view class="item_right">
+                    <van-dropdown-menu>
+                        <van-dropdown-item bind:change="bindDate"  data-key='idCardType' value="{{ form.idCardType }}" options="{{ option_type }}" />
+                    </van-dropdown-menu>
+                </view>
+                <van-field value="{{ form.idCardVal }}" maxlength="18" confirm-type="完成" clearable placeholder="请输入证件号码"
+                    data-key="idCardVal"  bind:input="bindDate" />
+            </view>
+        </view>
+
+
+        <view class="lkd_item" hidden="{{ form.idCardType == '身份证' }}">
+            <view class="van-hairline--bottom flex_row flex_btw">
+                <view class="star">出生日期：</view>
+                <view>
+                    <van-field placeholder="请选择出生日期" value="{{ form.birthdayName }}" border="{{ false }}" readonly
+                        data-key="birthday"  bindtap="showDate" />
+                </view>
+            </view>
+        </view>
+
+        <view class="lkd_item">
+            <view class="van-hairline--bottom flex_row flex_btw">
+              <view class="star">角色：</view>
+              <view class="item_right mar_r_30">
+                <van-dropdown-menu>
+                  <van-dropdown-item bind:change="bindDate" value="{{ form.role }}" data-key="role" options="{{ option_type1 }}" />
+                </van-dropdown-menu>
+              </view>
+            </view>
+          </view>
+
+        <view>
+            <van-field value="{{ form.phone }}" maxlength="11" type="number" data-key="phone"  required clearable label="手机号："
+                bind:input="bindDate" placeholder="请输入手机号">
+            </van-field>
+        </view>
+        <view class="lkd_item">
+            <view class="van-hairline--bottom flex_row flex_btw min_item">
+                <view>性别：</view>
+                <view class="item_right flex_row">
+                    <van-button class="mar_r_20" size="small" bindtap="changeSex" data-key="1" 
+                        type="{{form.gender =='1' ? 'warning' : ''}}">男</van-button>
+                    <van-button class="mar_r_20" size="small" bindtap="changeSex" data-key="0"  type="{{form.gender == '0' ? 'warning' : ''}}">
+                        女
+                    </van-button>
+                </view>
+            </view>
+        </view>
+
+        <block wx:for="{{form.otherMsg}}" wx:for-index="ids" wx:key="{{ids}}">
+            <view>
+                <van-field value="{{ item[item.information] }}" confirm-type="完成" required clearable="{{true}}" label="{{item.information}}" placeholder="请输入{{item.information}}"
+                    data-key="{{'otherMsg['+ ids+'].' +item.information}}"  bind:input="bindDate" />
+            </view>
+        </block>
+
+    <button bindtap="submit" wx:if="{{ edits==-1 }}" class="submit">添加队员</button>
+    <button bindtap="submit" wx:else class="submit">修改队员</button>
+
+</view>
+
+<van-action-sheet show="{{ !hidden_date }}" bind:click-overlay="showDate">
+    <van-datetime-picker type="date" value="{{ currentDate }}" min-date="{{ minDate }}" bind:input="onInput"
+        bind:confirm="confirm" bind:cancel="showDate" />
+</van-action-sheet>

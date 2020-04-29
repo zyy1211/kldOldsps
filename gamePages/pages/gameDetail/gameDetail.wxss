@@ -1,0 +1,62 @@
+/* pages/game/gameDetail/gameDetail.wxss */
+.gameDetail{
+  padding-bottom: 60rpx;
+}
+.imgbox{
+    padding: 0 20rpx;
+    box-sizing: border-box;
+}
+.title{
+    padding: 0 20rpx;
+    box-sizing: border-box;
+    font-size: 34rpx;
+    color: #333;
+}
+.lkd_item {
+    background: white;
+    padding: 0 0 0 30rpx;
+    box-sizing: border-box;
+  }
+  .small_size .van-field__input {
+    font-size: 26rpx;
+  }
+  
+  .small_size .van-cell {
+    padding-right: 0;
+    padding-left: 0;
+    width: 230rpx;
+  }
+.act_detail {
+    background: white;
+    border-radius: 10rpx;
+    padding: 30rpx;
+    box-sizing: border-box;
+}
+.img_detail{
+  background: white;
+  border-radius: 10rpx;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.detail_img{
+    width: 650rpx;
+    margin: 0 auto;
+}
+.font{
+    font-size: 30rpx;
+    color: #323233;
+}
+
+.submit {
+  width: 690rpx;
+  height: 72rpx;
+  line-height: 72rpx;
+  background:#F26746;
+  border-radius: 10px;
+  color: white;
+  font-size: 26rpx;
+  letter-spacing: 2rpx;
+  margin-top: 60rpx;
+}

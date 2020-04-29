@@ -1,0 +1,55 @@
+.myVenue{
+    box-sizing: border-box;
+    font-size: 28rpx;
+    color: #666;
+}
+.myVenue .venueItem{
+    border-bottom: 10rpx solid #F0F0F0;
+    padding: 30rpx;
+}
+.myVenue .title{
+    font-size: 30rpx;
+    color: #333;
+    font-weight: 900;
+}
+.myVenue .order_num{
+    font-size: 28rpx;
+    color:#666;
+    margin: 10rpx 0;
+}
+.myVenue .status{
+    font-size: 34rpx;
+    color: #333;
+    font-weight: 900;
+}
+.myVenue .list_d{
+    background: #F0F0F0;
+    font-size: 28rpx;
+    color: #666;
+    padding: 16rpx;
+}
+.item_d{
+    /* margin-bottom: 30rpx; */
+    line-height: 50rpx;
+}
+.i_money{
+    color: #F35B37;
+    width: 120rpx;
+    text-align: right;
+}
+.jifen{
+display: flex;
+flex-flow: row nowrap;
+justify-content: flex-end;
+font-size: 28rpx; 
+}
+.date_g{
+  color: #09C9A2;
+  font-size: 28rpx;
+  align-self: flex-end;
+}
+.gj{
+  font-size: 30rpx;
+  color: #333;
+  font-weight: 900;
+}

@@ -1,0 +1,162 @@
+<view class="settledIn">
+
+    <view class="notify flex_row">
+        <image class="notify_icon" src="/static/in.png"></image>
+        您已完成认证，请完善您的场馆资料
+    </view>
+
+    <view class="set_item flex_col">
+        <view class="set_font_24 bottom_20">场馆名称</view>
+        <view class="set_block set_font_24">
+            <input value="{{sName}}" data-key="sName" bindinput='bindDate' class="like-input" maxlength="20" placeholder="请输入场馆名称" />
+        </view>
+    </view>
+
+    <view class="set_item flex_col">
+        <view class="set_font_24 bottom_20">场馆地址</view>
+        <view class="set_block set_font_24" bindtap="bindChooseLocation">
+            <input value="{{sAddr}}" data-key="sAddr" class="like-input" disabled placeholder="请选择场馆地址" />
+            <view class="item_icon flex_row">
+                <van-icon size="20" color="#F26746" name="location" />
+            </view>
+        </view>
+    </view>
+
+    <view class="set_item flex_col">
+        <view class="set_font_24 bottom_20">详细地址</view>
+        <view class="set_block set_font_24">
+            <input value="{{sAddrDesc}}" data-key="sAddrDesc" bindinput='bindDate' class="like-input" maxlength="20" placeholder="请输入详细地址" />
+        </view>
+    </view>
+
+    <view class="set_item flex_col">
+        <view class="set_font_24 bottom_20">场馆联系人</view>
+        <view class="set_block set_font_24">
+            <input value="{{contactName}}" data-key="contactName" bindinput='bindDate' class="like-input" maxlength="10" placeholder="请输入场馆联系人" />
+        </view>
+    </view>
+
+    <view class="set_item flex_col">
+        <view class="set_font_24 bottom_20">场馆联系电话</view>
+        <view class="set_block set_font_24">
+            <input value="{{contactPhone}}" data-key="contactPhone"  class="like-input" maxlength="11" bindinput='formatNumber'
+                placeholder="请输入场馆联系电话" type="number"></input>
+            <view class="item_icon flex_row">
+                <van-icon size="20" color="#F26746" name="phone" />
+            </view>
+        </view>
+    </view>
+
+    <view class="set_item flex_col">
+        <view class="set_font_24 bottom_20">营业时间</view>
+        <view class="set_font_24 flex_col flex_align">
+            <view class="flex_row">
+                <view class="mar_r_20">周一 ～ 周五</view>
+                <picker bindchange="bindDate" value="{{workDay1}}" data-key="workDay1" mode="time">
+                    <view class="time_block">{{workDay1}}</view>
+                </picker>
+                <view class="line_row">-</view>
+                <picker bindchange="bindDate" value="{{workDay2}}" data-key="workDay2"  mode="time">
+                    <view class="time_block">{{workDay2}}</view>
+                </picker>
+            </view>
+            <view class="flex_row mar_t_20">
+                <view class="mar_r_20">周六 ～ 周日</view>
+                <picker bindchange="bindDate" value="{{dayOff1}}" data-key="dayOff1"  mode="time">
+                    <view class="time_block">{{dayOff1}}</view>
+                </picker>
+                <view class="line_row">-</view>
+                <picker bindchange="bindDate" value="{{dayOff2}}" data-key="dayOff2"  mode="time">
+                    <view class="time_block">{{dayOff2}}</view>
+                </picker>
+            </view>
+        </view>
+    </view>
+
+    <view class="set_item flex_col">
+        <view class="set_font_24 bottom_20">经营性质</view>
+        <view class="set_block set_font_24" data-key="typeShow" bindtap="showSheet">
+            <input class="like-input" value="{{businessNature}}" disabled placeholder="请选择经营性质" />
+            <view class="item_icon flex_row">
+                <van-icon size="16" color="#999" name="arrow-down" />
+            </view>
+
+        </view>
+    </view>
+
+    <view class="set_item flex_col">
+        <view class="set_font_24 bottom_20">场馆类型</view>
+        <view class="set_block set_font_24" data-key="venueShow" bindtap="showSheet">
+            <input class="like-input" value="{{stadiumType}}" disabled placeholder="请输入场馆类型" />
+            <view class="item_icon flex_row">
+                <van-icon size="16" color="#999" name="arrow-down" />
+            </view>
+        </view>
+    </view>
+    <wxs src="../filter.wxs" module="tools" />
+    <view class="set_item flex_col">
+        <view class="set_font_24 bottom_20">场馆照片</view>
+        <swiper>
+            <block wx:for="{{5}}" wx:key="{{index}}">
+              <swiper-item>
+                <view wx:if="{{imagesPath[index] == undefined || imagesPath[index] == ''}}" bindtap="chooseImage" data-index="{{index}}" class="set_font_24 item_block_item flex_col flex_align flex_center">
+                    <image class="img_add" src="/static/in1.png" mode="widthFix"></image>
+                    <view class="text_add">点此来添加场馆照片</view>
+                    <view class="total_add text_add">{{index +1}}/5</view>
+                </view>
+                <view class="item_block_item"  wx:else>
+                    <van-image  width="100%" height='100%' bindtap="chooseImage" data-index="{{index}}" fit="contain" src="{{ tools.isImgUrl(imagesPath[index]) ? imagesPath[index] : img_host + imagesPath[index]  }}" />
+                    <view class="total_add text_add">{{index +1}}/5</view>
+                </view>
+              </swiper-item>
+            </block>
+          </swiper>
+
+    </view>
+
+
+
+    <!-- <view class="flex_row img_list">
+        <view class="img_item" wx:for="{{imagesPath}}" wx:key="{{index}}" >
+            <image class="" src="{{item}}" mode="aspectFit"></image>
+            <van-icon bindtap="delImg" data-index="{{index}}" class="del_icon" name="clear" />
+        </view>
+    </view> -->
+
+    <view class="set_item flex_col">
+        <view class="set_font_24 bottom_20">场馆配套</view>
+        <view class="set_font_24 flex_row_wrap">
+            <view wx:for="{{matching}}" bindtap="chooseDefalutTab" data-type="matching" data-index="{{index}}" wx:key="{{index}}"
+                class="add_tab {{item.checked ? 'add_tab_active' : ''}}">{{item.name}}</view>
+        </view>
+    </view>
+
+    <view class="set_item flex_col">
+        <view class="set_font_24 bottom_20">运动项目</view>
+        <view class="set_font_24 flex_row_wrap">
+            <view wx:for="{{sportEvent}}" bindtap="chooseDefalutTab" data-type="sportEvent" data-index="{{index}}" wx:key="{{index}}"
+                class="add_tab {{item.checked ? 'add_tab_active' : ''}}">{{item.name}}</view>
+        </view>
+    </view>
+
+    <view class="set_item flex_col">
+        <view class="set_font_24 bottom_20">培训项目</view>
+        <view class="set_font_24 flex_row_wrap">
+            <view wx:for="{{training}}" bindtap="chooseDefalutTab" data-type="training" data-index="{{index}}" wx:key="{{index}}"
+                class="add_tab {{item.checked ? 'add_tab_active' : ''}}">{{item.name}}</view>
+        </view>
+    </view>
+
+    <a wx:if="{{editId != -1}}" bindtap="submit" class="btn green_btn">修改信息</a>
+    <a wx:else class="btn red_btn" bindtap="submit" >确认资料</a>
+
+
+</view>
+<!-- 位置 -->
+<authorize id="authorize"></authorize>
+<!-- 弹窗 -->
+<van-action-sheet show="{{ typeShow }}" actions="{{ typeActions }}" bind:close="closeTypeSheet"
+    bind:select="selectTypeSheet" data-key="businessNature" />
+
+<van-action-sheet show="{{ venueShow }}" actions="{{ venueActions }}" bind:close="closeVenueSheet"
+    bind:select="selectTypeSheet" data-key="stadiumType" />

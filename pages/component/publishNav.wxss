@@ -1,0 +1,296 @@
+@import "authorize.wxss";
+
+.tab-bar {
+    position: fixed;
+    z-index: 994;
+    bottom: 50rpx;
+    width: 81rpx;
+    height: 87rpx;
+    right: 60rpx;
+}
+.modal_add_img{
+    width:75rpx;
+    height:75rpx;
+}
+.tab-add-btn {
+    box-sizing: border-box;
+    position: absolute;
+    z-index: 1001;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.icon-tab-add-bg {
+    position: absolute;
+    left: 0;
+    bottom: -1rpx;
+    width: 100%;
+    height: 45rpx;
+}
+
+.icon-tab-add {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 1!important;
+}
+
+.tab-add-box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    font-size: 30rpx;
+    z-index: 999;
+}
+
+.tab-add-box-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255,255,255,0.9);
+}
+
+.add-no-data {
+    width: 577rpx;
+    color: #333;
+    text-align: center;
+}
+
+.add-no-data .icon-warning {
+    width: 104rpx;
+    height: 114rpx;
+    margin-bottom: 30rpx;
+}
+
+.tab-add-box-content {
+    position: absolute;
+    left: 44rpx;
+    right: 44rpx;
+    margin: auto;
+    bottom: 150rpx;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tab-add-box-item {
+    width: 120rpx;
+    margin: 0 50rpx;
+    margin-bottom: 103rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tab-add-img-box {
+    width: 100rpx;
+    height: 100rpx;
+}
+
+.tab-add-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.tab-add-text {
+    color: #333;
+    font-size: 26rpx;
+    text-align: center;
+    margin-top: 22rpx;
+}
+
+.tab-add-text .text-memo {
+    margin-top: 10rpx;
+    color: #999;
+    font-size: 26rpx;
+}
+
+.tab-add-new {
+    position: absolute;
+    top: 0;
+    right: -10rpx;
+    width: 46rpx;
+    height: 18rpx;
+    background: #fd3f3f;
+    border-radius: 20rpx;
+    line-height: 16rpx;
+    text-align: center;
+    font-size: 19rpx;
+    color: #fff;
+    font-style: italic;
+}
+
+.add-animation {
+    transition: transform .2s linear 0ms;
+    transition: transform .2s linear 0ms,-webkit-transform .2s linear 0ms;
+    transform: rotate(45deg);
+    opacity: 1;
+}
+
+.text-animation {
+    animation: textKey .3s ease-in-out;
+}
+
+.content-animation {
+    animation: contentKey .3s ease-in-out;
+}
+
+.add-animation-hide {
+    animation: hideKey .1s linear;
+}
+
+.text-animation-hide {
+    animation: textKeyHide .2s linear;
+}
+
+.content-animation-hide {
+    animation: contentKeyHide .1s linear;
+}
+
+.content-hide {
+    opacity: 0;
+    transform: translateY(100rpx);
+}
+
+@-webkit-keyframes textKey {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: .3;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes textKey {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: .3;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes contentKey {
+    0% {
+        opacity: 0;
+        transform: translateY(100rpx);
+    }
+
+    50% {
+        opacity: .3;
+        transform: translateY(-10rpx);
+    }
+
+    100% {
+        opacity: 1;
+        transform: ranslateY(0);
+    }
+}
+
+@keyframes contentKey {
+    0% {
+        opacity: 0;
+        transform: translateY(100rpx);
+    }
+
+    50% {
+        opacity: .3;
+        transform: translateY(-10rpx);
+    }
+
+    100% {
+        opacity: 1;
+        transform: ranslateY(0);
+    }
+}
+
+@-webkit-keyframes hideKey {
+    0% {
+        transform: rotate(45deg);
+    }
+
+    100% {
+        transform: rotate(0);
+    }
+}
+
+@keyframes hideKey {
+    0% {
+        transform: rotate(45deg);
+    }
+
+    100% {
+        transform: rotate(0);
+    }
+}
+
+@-webkit-keyframes textKeyHide {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes textKeyHide {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes contentKeyHide {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    50% {
+        opacity: .3;
+        transform: translateY(50rpx);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(100rpx);
+    }
+}
+
+@keyframes contentKeyHide {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    50% {
+        opacity: .3;
+        transform: translateY(50rpx);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(100rpx);
+    }
+}

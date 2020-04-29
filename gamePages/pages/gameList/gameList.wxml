@@ -1,0 +1,25 @@
+
+
+<view style="text-align: center;line-height: 50rpx;" wx:if="{{dataList.length == 0}}">暂无数据</view>
+<view class="gameList" wx:else>
+
+    <view class="active_card">
+        <view class="atv_item" wx:for="{{dataList}}" wx:key="{{item.id}}" data-cid="{{item.id}}" bindtap="toDetail">
+            <image class="banner_img" src="{{api + item.image}}" mode="widthFix"></image>
+            <view class="flex_row flex_btw">
+                <view class="van-ellipsis flex_grow font_30">{{item.name}}</view>
+                <!-- <view class="flew_shrink" style="color: #F26746;" wx:if="{{ item.chargeMode == 0 }}">免费</view>
+            <view class="flew_shrink" style="color: #F26746;" wx:if="{{ item.chargeMode == 1 }}">线上收费</view>
+            <view class="flew_shrink" style="color: #F26746;" wx:if="{{ item.chargeMode == 2 }}">线下收费</view> -->
+            </view>
+            <view class="font_28 font_time">活动时间：{{item.setime}}</view>
+            <van-button class="mar_r_40" plain type="primary" size="mini">{{item.sportName}}</van-button>
+            <van-button class="mar_r_40" wx:if="{{item.single}}" plain type="primary" size="mini">单项赛</van-button>
+            <van-button wx:if="{{item.team}}" plain type="primary" size="mini">团体赛</van-button>
+        </view>
+    </view>
+
+</view>
+
+
+<publishNav type="game"></publishNav>

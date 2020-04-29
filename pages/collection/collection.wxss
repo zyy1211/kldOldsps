@@ -1,0 +1,2 @@
+/* pages/collection/collection.wxss */
+@import '../component/launchComponent.wxss';

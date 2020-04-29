@@ -1,0 +1,154 @@
+<!--pages/activityDetail/activityDetail.wxml-->
+<view class="activityDetail" hover-class="none" hover-stop-propagation="false">
+  <view class="banner">
+    <image style="border-radius: 10rpx;" class="banner_img" src="{{api + Activities.imageUri}}" mode="widthFix"></image>
+    <image bindtap="onEnshrine" data-key="{{true}}" wx:if="{{Activities.enshrine}}" class="heart"
+      src="../images/heart_a.png" lazy-load="false" binderror="" bindload=""></image>
+    <image bindtap="onEnshrine" wx:else class="heart" src="../images/heart.png" lazy-load="false" binderror=""
+      bindload=""></image>
+    <!-- <button class='expand' open-type='share'></button> -->
+    <view style="display: inline-block;" class="flw_btn red expand">
+      {{ Activities.expand }}
+    </view>
+    <view hidden="{{Activities.isOpen}}" class="notify">此活动为非公开活动，分享才可报名</view>
+  </view>
+  <view class="shareBox">
+    <view class="shareTitle">{{Activities.title}}</view>
+    <view class="shareBtn" bindtap="tapmMask">分享</view>
+  </view>
+  <view class="fashion" hover-class="none" hover-stop-propagation="false">
+    <view class="fashion_info" hover-class="none" hover-stop-propagation="false">
+      <view class="img_info">
+        <image style="border-radius: 50%;" class="user_img" src="{{userInfo.MemberBasicInfo.avatarUrl}}" bindload=""
+          binderror=""></image>
+        <view>
+          <view class="user_info">
+            <view class="wx_name">{{userInfo.MemberBasicInfo.nickName}}</view>
+            <image wx:if="{{userInfo.MemberBasicInfo.gender==1}}" class="sex_img" src="../images/sex_b_a.png"
+              bindload="" binderror=""></image>
+            <image wx:if="{{userInfo.MemberBasicInfo.gender==0}}" class="sex_img" src="../images/sex_g_a.png"
+              bindload="" binderror=""></image>
+            <!-- <image  class="" src="../images/sex_boy.png" bindload="" binderror=""></image> -->
+          </view>
+          <view class="rel_name">{{Activities.initiator}}</view>
+        </view>
+      </view>
+      <view class="follow">
+        <div catchtap="followPs" data-key="1" wx:if="{{isFollow == 1 }}" class="flw_btn gray">已关注</div>
+        <div catchtap="followPs" wx:else class=" flex_row flw_btn red">
+          <van-icon name="plus" />关注
+        </div>
+      </view>
+    </view>
+    <view wx:if="{{Activities.vxNum != null && Activities.vxNum != ''}}" class="wx_tel" hover-class="none"
+      hover-stop-propagation="false">
+      <view bindtap="makeWx" class="wx_btn" hover-class="none" hover-stop-propagation="false">
+        <image class="wx_icon" src="../images/wx.png"></image>联系微信
+      </view>
+      <view bindtap="makeCall" class="tel_btn" hover-class="none" hover-stop-propagation="false">
+        <image class="tel_icon" src="../images/tel.png"></image>拨打电话
+      </view>
+    </view>
+    <view wx:else bindtap="makeCall" class="wx_tel tel_btn_only" hover-class="none" hover-stop-propagation="false">
+      <image class="tel_icon" src="../images/tel.png"></image>拨打电话
+    </view>
+
+  </view>
+  <view class="person_list" hover-class="none" hover-stop-propagation="false">
+    <view bindtap="toSignUpList" class="regist_card" hover-class="none" hover-stop-propagation="false">
+      <view class="regist_list">
+        <view class="registered">已报名({{Activities.appliedNum}}/{{Activities.participantsNum}})
+          <progress class="progress" percent="{{Activities.appliedNum/Activities.participantsNum *100}}"
+            activeColor="#2c39e89e" backgroundColor="white" />
+        </view>
+        <!-- <image wx:for="{{list}}" wx:key="{{index}}" class="regist_img" src="../images/my1.png"></image> -->
+      </view>
+      <image class="regist_jt" src="../images/jt.png"></image>
+    </view>
+  </view>
+  <view class="specific">
+    <view class="item" bindtap="openMap" hover-class="none" hover-stop-propagation="false">
+      <image class="ads_img" src="../images/fb_ad.png"></image>
+      <view>{{Activities.location}}</view>
+      <view class="navigate">导航</view>
+    </view>
+    <view class="item">
+      <image class="time_img" src="../images/per_time.jpg"></image>
+      <wxs src="../filter.wxs" module="tools" />
+      <!-- <view>
+        {{ Activities.activityStartTime }}---{{ Activities.activityEndTime }}
+      </view> -->
+      <view>{{Activities.setime}}</view>
+      <!-- <view>18:00-20:00</view> -->
+    </view>
+    <view class="item">
+      <image class="time_img" src="../images/cancel.png"></image>
+      <view>{{ Activities.registrationCancelTime }}前可取消报名 </view>
+      <!-- <view>16:00</view> -->
+    </view>
+
+    <view class="item">
+      <view>场馆名称：{{ Activities.clubName }} </view>
+    </view>
+
+    <view class="item">
+      <view>场地号：{{ Activities.specificLocation }} </view>
+    </view>
+
+    <view class="item">
+      <view>费用</view>
+      <view class="fy_item">
+        <image class="boy" src="../images/ps_m.png"></image>{{ActivitiesCondition.priceMan}}元/人
+      </view>
+      <view class="fy_item">
+        <image class="girl" src="../images/ps_wm.png"></image>{{ActivitiesCondition.priceWoman}}元/人
+      </view>
+    </view>
+    <view class="sps_item" wx:if="{{ActivitiesCondition.isPenal == true}}">
+      <view>违约打球：</view>
+      <view wx:if="{{ActivitiesCondition.isPenal}}">取消报名 ，将收取违约金 ，为报名费的{{ActivitiesCondition.penalSum}}%</view>
+    </view>
+  </view>
+
+  <view class="act_detail imgBox" wx:if="{{Activities.description}}">
+    <image bindtap="saveImage" data-key="{{ api + item }}" class="detail_img" wx:for="{{Activities.descImages}}" wx:key="{{index}}" mode="widthFix" class=""
+      src="{{api + item}}"></image>
+  </view>
+
+
+  <view class="act_detail" wx:else>{{Activities.descDetails == null ? '' : Activities.descDetails}}</view>
+  <view class="btns">
+    <view
+      wx:if="{{ Activities.uid == userId && (Activities.registrationStatus == 1 || Activities.registrationStatus ==2) }}"
+      class="img_btn" bindtap="toActivityEdit">
+      <image class="edit_cancel" src="../images/pen.png"></image>
+      <view>编辑活动</view>
+    </view>
+
+    <view
+      wx:if="{{Activities.uid == userId && Activities.appliedNum == 0 && (Activities.registrationStatus ==1 || Activities.registrationStatus ==0) }}"
+      class="img_btn" bindtap="cancelActivity">
+      <image class="edit_cancel" src="../images/book.png"></image>
+      <view>取消活动</view>
+    </view>
+    <view>
+      <view wx:if="{{disableUpload == true}}" class="timer">报名截止还有{{time_diff}}</view>
+      <!-- <view wx:else class="timer">报名已截止</view> -->
+      <button wx:if="{{isApply == false && registrationStatus == 1}}" data-type="0" bindtap="goSignupTotal"
+        class="sure">立即报名</button>
+      <button wx:if="{{isApply == true && registrationStatus < 3 && registrationStatus != 0}}" data-type="1"
+        bindtap="goSignupTotal" class="sure">修改报名</button>
+    </view>
+  </view>
+  <authorize id="authorize"></authorize>
+
+  <van-action-sheet show="{{ isFlag }}" actions="{{ actions }}" cancel-text="取消" bind:select="onSelect"
+    bind:click-overlay="tapmMask" bind:cancel="tapmMask" />
+
+  <!-- 引用组件 -->
+  <my-poster id="getPoster" activityId="{{id}}" avater="{{api + Activities.imageUri}}"
+    productname="{{Activities.title}}" addr="{{Activities.location}}" seTime="{{Activities.setime}}"
+    participantsNum="{{Activities.participantsNum}}"></my-poster>
+  <!-- {{Activities.appliedNum}}/{{Activities.participantsNum}} -->
+
+</view>

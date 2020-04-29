@@ -1,0 +1,10 @@
+
+{
+  "navigationBarTitleText": "我发起的",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    
+  }
+}

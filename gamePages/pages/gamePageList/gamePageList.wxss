@@ -1,0 +1,41 @@
+/* gamePages/pages/gamePageList/gamePageList.wxss */
+.gameList{
+    background: #F0F0F0;
+    padding:0 30rpx;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+}
+.gameType{
+    font-size: 32rpx;
+    color: #333;
+    line-height: 65rpx;
+    font-weight: 600;
+}
+.gameCard{
+    background: white;
+    border-radius: 10rpx;
+    margin-bottom: 20rpx;
+}
+.gameTitle{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    height: 81rpx;
+    padding: 0 20rpx 0 16rpx;
+    box-sizing: border-box;
+    border-bottom: 2rpx dashed #C6C2C2;
+    font-size: 30rpx;
+    color: #333;
+}
+.gameMain{
+    font-size: 26rpx;
+    color: #666;
+    line-height: 60rpx;
+    padding: 10rpx 16rpx;
+    box-sizing: border-box;
+}
+.red{
+    color: #CF5151;
+}

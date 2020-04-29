@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "发布活动",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black",
+  "enablePullDownRefresh": true,
+  "usingComponents":{
+    "mp-dialog": "../component/dialog/dialog",
+    "authorize":"../component/authorize"
+  }
+}

@@ -1,0 +1,46 @@
+<view class="personal" hover-class="none" hover-stop-propagation="false">
+  <view class="header" hover-class="none" hover-stop-propagation="false">
+    <view class="header_user" hover-class="none" hover-stop-propagation="false">
+      <view class="left_item" hover-class="none" hover-stop-propagation="false">
+        <view class="info" hover-class="none" hover-stop-propagation="false">
+          <view class="name" hover-class="none" hover-stop-propagation="false">{{MemberBasicInfo.nickName}}</view>
+          <image bindtap="editInfo" class="edit" src="../images/edit.png" lazy-load="false" binderror="" bindload=""></image>
+        </view>
+        <view class="address"  hover-class="none" hover-stop-propagation="false">
+          <image class="ads_img" wx:if="{{MemberBasicInfo.gender== 1 }}" src="../images/sex_b_a.png" lazy-load="false" binderror="" bindload=""> </image>
+          <image class="ads_img" wx:if="{{MemberBasicInfo.gender== 0 }}" src="../images/sex_g_a.png" lazy-load="false" binderror="" bindload=""></image>
+          <view class="ads" hover-class="none" hover-stop-propagation="false">{{MemberBasicInfo.province}}{{MemberBasicInfo.city}}</view>
+        </view>
+
+      </view>
+      <view class="right_item" hover-class="none" hover-stop-propagation="false">
+        <image class="" style="border-radius: 50%;" src="{{MemberBasicInfo.avatarUrl}}" lazy-load="false" binderror=""
+          bindload=""></image>
+      </view>
+    </view>
+    <view class="row_list" hover-class="none" hover-stop-propagation="false">
+      <view class="col_list" hover-class="none" hover-stop-propagation="false">
+        <view class="col_num" hover-class="none" hover-stop-propagation="false">36</view>
+        <view class="col_text" hover-class="none" hover-stop-propagation="false">关注</view>
+      </view>
+      <view class="col_list" hover-class="none" hover-stop-propagation="false">
+        <view class="col_num" hover-class="none" hover-stop-propagation="false">36</view>
+        <view class="col_text" hover-class="none" hover-stop-propagation="false">粉丝</view>
+      </view>
+      <view class="col_list" hover-class="none" hover-stop-propagation="false">
+        <view class="col_num" hover-class="none" hover-stop-propagation="false">36</view>
+        <view class="col_text" hover-class="none" hover-stop-propagation="false">俱乐部</view>
+      </view>
+      <view class="col_list" hover-class="none" hover-stop-propagation="false">
+        <view class="col_num" hover-class="none" hover-stop-propagation="false">36</view>
+        <view class="col_text" hover-class="none" hover-stop-propagation="false">参加活动</view>
+      </view>
+    </view>
+  </view>
+  <view class="card" hover-class="none" hover-stop-propagation="false">
+    <import src="../pageTemplate/active-detail-temp/active-detail-temp" />
+    <block wx:for="{{list}}" wx:key='{{index}}'>
+      <template is="activeDetailTemp" data="{{item}}" />
+    </block>
+  </view>
+</view>

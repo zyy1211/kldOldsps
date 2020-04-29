@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "赛事详情",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black",
+  "enablePullDownRefresh": true,
+  "usingComponents":{
+    "authorize":"/pages/component/authorize",
+    "my-poster":"/pages/component/poster/poster"
+  }
+
+}

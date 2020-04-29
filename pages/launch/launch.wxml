@@ -1,0 +1,20 @@
+<view class="launchCom" hover-class="none" hover-stop-propagation="false">
+    <view class="tabs">
+        <view data-key="0" bindtap="tabsChange" class="tab {{active == '0' ? 'active' : ''}}">活动</view>
+        <!-- <view data-key="1" bindtap="tabsChange" class="tab {{active == '1' ? 'active' : ''}}">赛事</view> -->
+    </view>
+    <view class="launch_main" hover-class="none" hover-stop-propagation="false">
+        <import src="../pageTemplate/active-detail-temp/active-detail-temp" />
+        <block wx:for="{{dataList}}" wx:key='{{item}}'>
+            <view class="" bindtap="toDetail" data-id="{{item.id}}" hover-class="none" hover-stop-propagation="false">
+                <template is="activeDetailTemp" data="{{item,img_host}}" />
+            </view>
+            <button wx:if="{{item.registrationStatus != 0 && item.registrationStatus < 4 && item.needToSign == true }}" data-uid='{{item.uid}}' data-id="{{item.id}}" class="signIn" bindtap="signByIds">签到</button>
+            <button data-id="{{item.id}}" wx:if="{{ item.registrationStatus > 3 }}" data-id="{{item.id}}" class="signIn" bindtap="toIssue">再次编辑/发布</button>
+            <!-- <button data-id="{{item.id}}" data-id="{{item.id}}" class="signIn" bindtap="toIssue">fabu</button> -->
+        </block>
+    </view>
+</view>
+
+
+<!-- 我发起的 -->

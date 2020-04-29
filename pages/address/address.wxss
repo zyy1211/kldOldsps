@@ -1,0 +1,74 @@
+
+.reAddress{
+    min-height: 100vh;
+    background-color: #F0F0F0;
+    padding-top: 1rpx;
+    font-size: 26rpx;
+}
+.reAddress .searchBox{
+    margin-bottom: 20rpx;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    padding: 20rpx;
+    background-color: white;
+}
+.searchBox .city{
+    margin: 8rpx 26rpx 0 6rpx;
+}
+.search-input{
+    width: 400rpx;
+    height: 50rpx;
+    border: 1rpx solid red;
+    border-radius: 20rpx;
+    padding: 4rpx 20rpx;
+    box-sizing: border-box;
+    margin-right: 30rpx;
+}
+
+.search_btns{
+    padding: 0 20rpx;
+    height: 50rpx;
+    line-height: 50rpx;
+    border-radius: 25rpx;
+    background-color: #E8380D;
+    color: white;
+}
+.reAddress .address{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    padding: 20rpx;
+    background: white;
+    margin-bottom: 20rpx;
+}
+.reAddress .btns{
+    flex-shrink: 1;
+    color: #E8380D;
+    padding: 0 16rpx;
+    box-sizing: border-box;
+}
+.nbyItem{
+    background-color: white;
+    margin-bottom: 2rpx;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    /* height: 98rpx; */
+    padding: 20rpx 30rpx;
+    box-sizing: border-box;
+}
+.lctBox{
+    flex-grow: 1;
+}
+.locationName{
+    color: #333;
+    margin-bottom: 6rpx;
+}
+
+.distance{
+    min-width: 80rpx;
+    color: #666;
+    font-size: 24rpx;
+    /* text-align: center; */
+}

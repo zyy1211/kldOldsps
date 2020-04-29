@@ -1,0 +1,88 @@
+<view class="personalAuth lkd-field-right">
+
+    <view class="notify flex_row">
+        <image class="notify_icon" mode="widthFix" src="/static/in.png"></image>
+        <view wx:if="{{status == 0}}">您的认证资料我们已收到，需要1-3个工作日审核，请耐心等待。</view>
+        <view wx:if="{{status == 2}}">{{cause}}</view>
+        <view wx:if="{{status == 3}}">认证资料填写</view>
+    </view>
+
+    <van-tabs active="{{ certificationType }}" bind:change="onChange" color="#F26746" line-height="2">
+        <van-tab disabled="{{ status == 0 }}" title="企业认证"></van-tab>
+        <van-tab disabled="{{ status == 0 }}" title="个体工商户认证"></van-tab>
+    </van-tabs>
+
+    <view class="mar_b_10 background_white">
+        <van-cell-group>
+            <van-field disabled="{{ status == 0 }}" value="{{ enterpriseName }}" required clearable
+                label="{{label.enterpriseName}}" placeholder="请输入{{label.enterpriseName}}" data-key="enterpriseName"
+                bind:input="onClickIcon" />
+        </van-cell-group>
+
+        <van-cell-group>
+            <van-field disabled="{{ status == 0 }}" value="{{ licenseNum }}" required clearable
+                label="{{label.licenseNum}}" placeholder="请输入{{label.licenseNum}}" data-key="licenseNum"
+                bind:input="onClickIcon" />
+        </van-cell-group>
+
+        <van-cell-group>
+            <van-field disabled="{{ status == 0 }}" value="{{ legalPersonName }}" required clearable
+                label="{{label.legalPersonName}}" placeholder="请输入{{label.legalPersonName}}" data-key="legalPersonName"
+                bind:input="onClickIcon" />
+        </van-cell-group>
+
+        <van-cell-group style="position: relative;">
+            <van-field disabled required clearable label="{{label.licenseTerm}}" />
+            <input class="startTime" disabled bindtap='showStart' value="{{licenseTermStart1}}" placeholder="开始时间" />
+            <view class="lineTime flex_row">/</view>
+            <input class="endTime" disabled bindtap='showEnd' value="{{licenseTermEnd1}}" placeholder="结束时间" />
+            <view class="lkd_sure_btns vt_btn" catchtap="clearEnd">长期</view>
+        </van-cell-group>
+
+        <view style="color: red;font-size: 24rpx;text-align: right;padding-right: 100rpx;">*不填为长期</view>
+    </view>
+    <view class="background_white mar_b_10 card_img_box">
+        <view class="idcard_text">上传{{label.idcard}}身份证正反面：</view>
+        <view class="flex_row flex_btw">
+            <image wx:if="{{idCardFront == ''}}" bindtap="chooseImage" data-key="idCardFront" class="idCardImg"
+                src="/static/auth2.png" mode="widthFix" lazy-load="false" binderror="" bindload="">
+            </image>
+            <van-image class="imgBorder" wx:else width="300rpx" bindtap="chooseImage" height="190rpx"
+                data-key="idCardFront" fit="contain" src="{{ status==0 ? img_host+idCardFront : idCardFront}}" />
+            <image wx:if="{{idCardContrary == ''}}" bindtap="chooseImage" data-key="idCardContrary" class="idCardImg"
+                src="/static/auth3.png" mode="widthFix" lazy-load="false" binderror="" bindload="">
+            </image>
+            <van-image class="imgBorder" wx:else width="300rpx" bindtap="chooseImage" height="190rpx"
+                data-key="idCardContrary" fit="contain"
+                src="{{ status==0 ? img_host+idCardContrary : idCardContrary}}" />
+        </view>
+        <view class="idcard_text">上传{{label.authCard}}营业执照照片：</view>
+        <view class="flex_row">
+            <image wx:if="{{licenseImage == ''}}" bindtap="chooseImage" data-key="licenseImage" class="idCardImg"
+                src="/static/auth1.png" mode="widthFix" lazy-load="false" binderror="" bindload="">
+            </image>
+            <van-image class="imgBorder" wx:else width="300rpx" bindtap="chooseImage" height="190rpx"
+                data-key="licenseImage" fit="contain" src="{{status==0 ? img_host+licenseImage : licenseImage}}" />
+        </view>
+    </view>
+
+    <view class="beCareful">
+        <view>注意：</view>
+        <view>您的入驻申请资料已经提交，请耐心等待，工作人员会在2-5个工作日 之内审核，请时刻留意消息通知！</view>
+        <view>如有疑问可以电话咨询：0571-86610762</view>
+    </view>
+
+    <!-- <view class="lkd_sure_btns" hidden="{{status == 0}}" bindtap="submit">提交认证</view> -->
+    <button class="lkd_sure_btns" hidden="{{status == 0}}" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserInfo" type="primary">提交认证</button>
+
+</view>
+
+
+<van-action-sheet show="{{ startShow }}" round="{{false}}" bind:click-overlay="showStart" catchtouchmove="_touchmove">
+    <van-datetime-picker type="date" title="开始时间" data-keyvalue="licenseTermStart" data-key="licenseTermStart1"
+        bind:confirm="onConfig" bind:cancel="showStart" />
+</van-action-sheet>
+<van-action-sheet show="{{ endShow }}" round="{{false}}" bind:click-overlay="showEnd" catchtouchmove="_touchmove">
+    <van-datetime-picker type="date" title="结束时间" data-keyvalue="licenseTermEnd" data-key="licenseTermEnd1"
+        bind:confirm="onConfig" bind:cancel="showEnd" />
+</van-action-sheet>

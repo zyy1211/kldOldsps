@@ -1,0 +1,104 @@
+<view class="gameList">
+    <block>
+        <view class="gameType" wx:if="{{singleEvents.length != 0}}">单项赛</view>
+        <view class="gameCard" wx:for="{{singleEvents}}" wx:key="{{item.id}}" data-id="{{item.id}}">
+            <!-- title -->
+            <view class="gameTitle">
+                <view class="van-ellipsis">{{item.eventName}}</view>
+                <view class="van-ellipsis font_26">{{item.eventType}}</view>
+            </view>
+            <!-- 内容 -->
+            <view class="gameMain">
+                <view>年龄段 {{item.minAge}}~{{item.maxAge}}岁</view>
+                <view class="flex_row">
+                    <view wx:if="{{item.applyType == 1}}">参赛人数：{{item.appliedNum}}/{{item.applyNumPeople}}</view>
+                    <view wx:if="{{item.applyType == 0}}"> 参赛队伍：{{item.appliedTeamNum}}/{{item.applyNumTeam}}</view>
+                </view>
+                <view class="flex_row">
+                    <view wx:if="{{item.isDecline == 'false'}}">不</view>
+                    <view>允许降组报名</view>
+                    <view class="red">（可允许高年龄人加入本组报名）</view>
+                </view>
+                <view class="flex_row flex_btw">
+                    <view wx:if="{{item.isFree == true}}">免费</view>
+                    <view wx:else>
+                        <view wx:if="{{item.applyType == 1}}">¥ {{item.priceNumPeople}}元</view>
+                        <view wx:if="{{item.applyType == 0}}">¥ {{item.priceNumTeam}}元</view>
+                    </view>
+                    <view>
+                        <van-button bindtap="toDetail" data-eventname="{{item.eventName}}"
+                            data-eventtype="{{item.eventType}}" data-minage="{{item.minAge}}"
+                            data-maxage="{{item.maxAge}}" data-edits="0" data-id="{{ item.id }}"
+                            data-type="{{item.competitionType}}" wx:if="{{item.status==1 && item.applyStatus==0}}"
+                            size="small" type="primary">立即报名
+                        </van-button>
+                        <van-button bindtap="toDetail" data-eventname="{{item.eventName}}"
+                            data-eventtype="{{item.eventType}}" data-minage="{{item.minAge}}"
+                            data-maxage="{{item.maxAge}}" data-edits="1" data-id="{{item.id}}"
+                            data-type="{{item.competitionType}}" wx:if="{{item.applyStatus==1}}" size="small"
+                            type="primary">修改报名
+                        </van-button>
+                        <van-button class="mar_l_30" wx:if="{{item.status==2}}" color="#929291" size="small" type="primary">报名已满
+                        </van-button>
+                        <van-button class="mar_l_30" wx:if="{{item.status==3}}" color="#929291" size="small" type="primary">报名结束
+                        </van-button>
+                    </view>
+                </view>
+
+            </view>
+        </view>
+    </block>
+
+    <block>
+        <view class="gameType" wx:if="{{teamEvents.length != 0}}">团体赛</view>
+        <view class="gameCard" wx:for="{{teamEvents}}" wx:key="{{item.id}}" data-id="{{item.id}}">
+            <!-- title -->
+            <view class="gameTitle">
+                <view class="van-ellipsis">{{item.eventName}}</view>
+                <view class="van-ellipsis font_26">
+                    {{item.genderType == 0 ? '限女性' : (item.genderType == 1 ? '限男性' : '不限性别')}}</view>
+            </view>
+            <!-- 内容 -->
+            <view class="gameMain">
+                <view>年龄段 {{item.minAge}}~{{item.maxAge}}岁</view>
+                <view class="flex_row">
+                    <view wx:if="{{item.applyType == 1}}">参赛人数：{{item.appliedNum}}/{{item.applyNumPeople}}</view>
+                    <view wx:if="{{item.applyType == 0}}"> 参赛队伍：{{item.appliedTeamNum}}/{{item.applyNumTeam}}</view>
+                </view>
+                <view>队伍参赛人数：{{item.minNum}}-{{item.maxNum}}人</view>
+                <view class="flex_row">
+                    <view wx:if="{{item.isDecline == 'false'}}">不</view>
+                    <view>允许降组报名</view>
+                    <view class="red">（可允许高年龄人加入本组报名）</view>
+                </view>
+                <view class="flex_row flex_btw">
+                    <view wx:if="{{item.isFree == true}}">免费</view>
+                    <view wx:else>
+                        <view wx:if="{{item.applyType == 1}}">¥ {{item.priceNumPeople}}元/人</view>
+                        <view wx:if="{{item.applyType == 0}}">¥ {{item.priceNumTeam}}元/项</view>
+                    </view>
+                    <view class="flex_row">
+                        <van-button bindtap="toDetail" data-eventname="{{item.eventName}}"
+                            data-eventtype="{{item.eventType}}" data-minage="{{item.minAge}}"
+                            data-maxage="{{item.maxAge}}" data-id="{{ item.id }}" data-type="{{item.competitionType}}"
+                            wx:if="{{item.status==1 && item.applyStatus==0}}" size="small" type="primary">立即报名
+                        </van-button>
+                        <van-button bindtap="toDetail" data-eventname="{{item.eventName}}"
+                            data-eventtype="{{item.eventType}}" data-minage="{{item.minAge}}"
+                            data-maxage="{{item.maxAge}}" data-edits="1" data-id="{{item.id}}"
+                            data-type="{{item.competitionType}}" wx:if="{{item.applyStatus==1}}" size="small"
+                            type="primary">修改报名
+                        </van-button>
+                        <van-button wx:if="{{item.status==2}}" color="#929291" size="small" type="primary">报名已满
+                        </van-button>
+                        <van-button wx:if="{{item.status==3}}" color="#929291" size="small" type="primary">报名结束
+                        </van-button>
+                    </view>
+                </view>
+
+            </view>
+        </view>
+    </block>
+</view>
+
+<!-- <publishNav type="game"></publishNav> -->

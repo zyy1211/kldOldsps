@@ -1,0 +1,76 @@
+<view class="gameDetail">
+  <van-tabs sticky animated bind:click="onClick" line-height="2" border="false">
+    <van-tab title="赛事详情"></van-tab>
+    <van-tab disabled title="名单公示"></van-tab>
+    <van-tab disabled title="抽签对阵"></van-tab>
+    <van-tab disabled title="比赛结果"></van-tab>
+  </van-tabs>
+
+  <view class="lkd-field-right lkd_key">
+
+    <view class="imgbox mar_t_20">
+
+      <image style="width: 100%;border-radius: 20rpx;" src="{{api + competition.image }}" mode="widthFix"></image>
+    </view>
+    <view>
+      <view class="flex_row flex_btw title mar_t_20">
+        <view class="van-ellipsis pad_l_10">{{competition.name}}</view>
+        <!-- <van-button bindtap="tapmMask" slot="button" size="small" type="primary">分享</van-button> -->
+      </view>
+      <van-field value="{{ competition.competitionType }}" readonly label="赛事类型" />
+      <van-field value="{{ competition.sponsor }}" readonly label="主办方" />
+      <van-field value="{{ competition.organizer }}" readonly label="承办方" />
+      <van-field value="{{ competition.setime }}" readonly label="比赛时间" />
+
+      <!-- <view class="lkd_item">
+        <view class="van-hairline--bottom flex_row flex_btw">
+          <view class="star font">比赛时间：</view>
+          <view class="flex_row small_size item_right">
+            
+            <van-field  value="{{ competition.beginTimeName }}" border="{{ false }}" readonly />
+            <view class="mar_r_30" style="position: relative;">
+              <view class="font" style="position: absolute;left: 15%;top: 25%;z-index: 99;">至</view>
+              <van-field value="{{ competition.endTimeName }}" border="{{ false }}" readonly />
+            </view>
+          </view>
+        </view>
+      </view> -->
+
+      <van-field value="{{ competition.registrationDeadlineName }}" readonly label="截止报名" />
+      <van-field value="{{ competition.listPublicityTimeName }}" readonly label="名单公示" />
+      <van-field value="{{ competition.drawTimeName }}" readonly label="比赛抽签" />
+      <van-field value="{{ competition.drawPublicityTimeName }}" readonly label="抽签公示" />
+      <view>
+        <van-field value="{{ competition.stadiumName }}" label="比赛场馆名称" use-button-slot>
+          <van-button bindtap="openMap" slot="button" size="small" type="primary">导航</van-button>
+        </van-field>
+      </view>
+
+      <van-field class="van-ellipsis" value="{{ competition.location }}" readonly label="详细地址" />
+
+
+      <view class="img_detail van-hairline--bottom" wx:if="{{competition.detailsType == 1}}">
+        <image class="detail_img mar_b_20" wx:for="{{images}}" wx:key="{{index}}" mode="widthFix" class="" src="{{api + item.descImagesPath}}">
+        </image>
+      </view>
+      <view class="act_detail font van-hairline--bottom" wx:else>
+        赛事规程：{{competition.detailsDesc == null ? '' : competition.detailsDesc}}</view>
+
+      <van-field value="{{ competition.linkmanName }}" readonly label="赛事联系人" />
+      <van-field value="{{ competition.linkmanPhone }}" readonly label="联系电话" />
+      <van-field value="{{ competition.linkmanVx }}" readonly label="微信号码" />
+    </view>
+  </view>
+  <button bindtap="toDetail" class="submit">立即报名</button>
+  <view class="flex_row" style="width:690rpx;margin:0 auto">
+    <button style="margin-top: 30rpx;margin-right: 40rpx;" class="mar_r_20" wx:if="{{ competition.uid == userId && (competition.status == 1) }}"
+    bindtap="editGame" class="submit">编辑赛事</button>
+    <button style="margin-top: 30rpx;" wx:if="{{ competition.uid == userId }}"
+    bindtap="cancelGame" class="submit">取消赛事</button>
+  </view>
+
+</view>
+
+
+
+<authorize id="authorize"></authorize>

@@ -1,0 +1,2 @@
+/* pages/involved/involved.wxss */
+@import '../component/launchComponent.wxss';

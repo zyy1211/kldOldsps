@@ -1,0 +1,346 @@
+<!--pages/issue/issue.wxml-->
+<view class="issue" hover-class="none" hover-stop-propagation="false">
+  <form action="">
+    <view bindtap="toActiveType" class="sport item" hover-class="none" hover-stop-propagation="false">
+      <view class="left" hover-class="none" hover-stop-propagation="false">活动类型</view>
+      <view class="right" hover-class="none" hover-stop-propagation="false">
+        <input style="text-align: right;" disabled class="issue_input" data-key="type" bindinput='bindDate'
+          value="{{type.sportName}}" placeholder="活动类型" />
+        <i class="icon icon-arrow">
+          <image class="" src="../images/jt.png" lazy-load="false" binderror="" bindload=""></image>
+        </i>
+      </view>
+    </view>
+
+    <image wx:if="{{isImg}}" bindtap="chooseImage" data-type="1" mode="widthFix" class="active_img" src="{{imagePath}}"
+      lazy-load="false" binderror="" bindload="">
+    </image>
+    <view wx:else bindtap="chooseImage" data-type="1" class="item upload {{isImg ? 'noPadding' : ''}}"
+      hover-class="none" hover-stop-propagation="false">
+      <view class="pla_img" hover-class="none" hover-stop-propagation="false">
+        <image class="note_img" src="../images/upload.png" bindload="" binderror=""></image>
+        <view class="note_text" hover-class="none" hover-stop-propagation="false">
+          上传图片
+        </view>
+      </view>
+    </view>
+
+    <view class="title" hover-class="none" hover-stop-propagation="false">
+      基础信息
+    </view>
+    <view class="item hd_item radius_top" hover-class="none" hover-stop-propagation="false">
+      <view class="left" hover-class="none" hover-stop-propagation="false">
+        活动标题：
+      </view>
+      <view class="right" hover-class="none" hover-stop-propagation="false">
+        <input class="weui-input" data-key="title" bindinput='bindDate' maxlength="30" value="{{title}}"
+          placeholder="请输入活动标题" />
+      </view>
+      <view class="item_bfb" hover-class="none" hover-stop-propagation="false">
+        <view style="color: red;">{{title.length}}</view>/30
+      </view>
+    </view>
+    <view class="tabs radius_bottom" hover-class="none" hover-stop-propagation="false">
+
+      <view class="tab" wx:for="{{tag}}" wx:key="{{item}}" hover-class="none" hover-stop-propagation="false">
+        {{item}}
+        <icon data-item='{{item}}' bindtap="delTag" class="cancel_icon" type="cancel" size="12" />
+      </view>
+      <view class="defalutTab">
+        <view wx:for="{{defalutTab}}" bindtap="chooseDefalutTab" data-index="{{index}}" wx:key="{{index}}"
+          class="add_tab {{item.checked ? 'add_tab_active' : ''}}">{{item.name}}</view>
+        <view bindtap="addtag" hidden="{{tag.length > 7}}" class="add_tab add_tab_active" hover-class="none"
+          hover-stop-propagation="false">
+          <image class="add_img" src="../images/a.png" bindload="" binderror=""></image>
+          添加标签
+        </view>
+      </view>
+    </view>
+    <view class="title" hover-class="none" hover-stop-propagation="false">
+      活动时间
+    </view>
+
+    <view class="time_list radius_top" hover-class="none" hover-stop-propagation="false">
+      <view class="item_key" hover-class="none" hover-stop-propagation="false">报名截止：</view>
+      <view class="item_value" hover-class="none" hover-stop-propagation="false" bindtap="showPicker"
+        data-key="registrationUptoTime">
+        <!-- <picker bindchange="bindDate" data-key="date1" value="{{date1}}" mode="date">
+          <view class="item_date">{{date1}}</view>
+        </picker>
+        <picker bindchange="bindDate" data-key="time1" value="{{time1}}" mode="time">
+          <view class="item_time">{{time1}}</view>
+        </picker> -->
+        <input style="text-align: right;" disabled class="issue_input" value="{{registrationUptoTimeStr}}"
+          placeholder="" />
+        <i class="icon icon-arrow">
+          <image class="" src="../images/jt.png" lazy-load="false" binderror="" bindload=""></image>
+        </i>
+      </view>
+    </view>
+
+    <view class="time_list noBottom" hover-class="none" hover-stop-propagation="false">
+      <view class="item_key" hover-class="none" hover-stop-propagation="false">取消报名截止：</view>
+      <view class="item_value" hover-class="none" hover-stop-propagation="false" bindtap="showPicker"
+        data-key="registrationCancelTime">
+
+        <input style="text-align: right;" disabled class="issue_input" value="{{registrationCancelTimeStr}}"
+          placeholder="" />
+        <!-- <picker bindchange="bindDate" data-key="date2" value="{{date2}}" mode="date">
+          <view class="item_date">{{date2}}</view>
+        </picker>
+        <picker bindchange="bindDate" data-key="time2" value="{{time2}}" mode="time">
+          <view class="item_time">{{time2}}</view>
+        </picker> -->
+        <i class="icon icon-arrow">
+          <image class="" src="../images/jt.png" lazy-load="false" binderror="" bindload=""></image>
+        </i>
+      </view>
+    </view>
+
+    <view class="time_list noBottom" hover-class="none" hover-stop-propagation="false">
+      <view class="item_key" hover-class="none" hover-stop-propagation="false">活动开始：</view>
+      <view class="item_value" hover-class="none" hover-stop-propagation="false" bindtap="showPicker"
+        data-key="activityStartTime">
+        <input style="text-align: right;" disabled class="issue_input" value="{{activityStartTimeStr}}"
+          placeholder="" />
+        <!-- <picker bindchange="bindDate" data-key="date3" value="{{date3}}" mode="date">
+          <view class="item_date">{{date3}}</view>
+        </picker>
+        <picker bindchange="bindDate" data-key="time3" value="{{time3}}" mode="time">
+          <view class="item_time">{{time3}}</view>
+        </picker> -->
+        <i class="icon icon-arrow">
+          <image class="" src="../images/jt.png" lazy-load="false" binderror="" bindload=""></image>
+        </i>
+      </view>
+    </view>
+    <view class="time_list radius_bottom" hover-class="none" hover-stop-propagation="false">
+      <view class="item_key" hover-class="none" hover-stop-propagation="false">活动结束：</view>
+      <view class="item_value" hover-class="none" hover-stop-propagation="false" bindtap="showPicker"
+        data-key="activityEndTime">
+        <input style="text-align: right;" disabled class="issue_input" value="{{activityEndTimeStr}}" placeholder="" />
+        <!-- <picker bindchange="bindDate" data-key="date4" value="{{date4}}" mode="date">
+          <view class="item_date">{{date4}}</view>
+        </picker>
+        <picker bindchange="bindDate" data-key="time4" value="{{time4}}" mode="time">
+          <view class="item_time">{{time4}}</view>
+        </picker> -->
+        <i class="icon icon-arrow">
+          <image class="" src="../images/jt.png" lazy-load="false" binderror="" bindload=""></image>
+        </i>
+      </view>
+    </view>
+    <view class="title" hover-class="none" hover-stop-propagation="false">
+      详细信息
+    </view>
+    <view class="sport item noBottom" hover-class="none" hover-stop-propagation="false">
+      <view class="left" hover-class="none" hover-stop-propagation="false">活动地址：</view>
+      <view bindtap="bindChooseLocation" class="right" style="top: 30rpx;" hover-class="none"
+        hover-stop-propagation="false">
+        <input class="issue_input" disabled data-key="location" bindinput='bindDate' value="{{location}}"
+          placeholder="点击按钮选择活动举办地址" />
+
+        <image class="address" src="../images/fb_ad.png" bindload="" binderror=""></image>
+      </view>
+    </view>
+
+    <view class="siteName radius_bottom " hover-class="none" hover-stop-propagation="false">
+      <view class="" hover-class="none" hover-stop-propagation="false">
+        场馆名称：
+      </view>
+      <input class="address_input" bindchange="bindDate" maxlength='30' data-key="clubName" value="{{clubName}}"
+        placeholder="场馆名称" />
+      <view class="" hover-class="none" hover-stop-propagation="false">
+        场地号：
+      </view>
+      <input class="site_input" bindchange="bindDate" maxlength="30" data-key="specificLocation"
+        value="{{specificLocation}}" placeholder="场地号" />
+    </view>
+
+    <view class="title" hover-class="none" hover-stop-propagation="false">
+      报名详情
+    </view>
+    <view class="sport item noBottom" hover-class="none" hover-stop-propagation="false">
+      <view class="left" hover-class="none" hover-stop-propagation="false">活动总人数：</view>
+      <view class="right" hover-class="none" hover-stop-propagation="false">
+        <input class="weui-input" bindchange="bindDate" type="number" data-key="participantsNum"
+          value="{{participantsNum}}" placeholder="请输入最多参与人数" />
+      </view>
+    </view>
+    <view class="sport item noBottom noRadius" hover-class="none" hover-stop-propagation="false">
+      <view class="left" hover-class="none" hover-stop-propagation="false">允许带人：</view>
+      <view class="right" hover-class="none" hover-stop-propagation="false">
+        <view class="" hover-class="none" hover-stop-propagation="false">
+          <switch bindchange="switchChange" color="#E8380D" data-key="withPeople" checked="{{withPeople}}" />
+        </view>
+      </view>
+    </view>
+
+    <view class="sport item noRadius noBottom" hover-class="none" hover-stop-propagation="false">
+      <view class="left" hover-class="none" hover-stop-propagation="false">设置签到：</view>
+      <view class="right" hover-class="none" hover-stop-propagation="false">
+        <view class="" hover-class="none" hover-stop-propagation="false">
+          <switch bindchange="switchChange" data-key="signIn" color="#E8380D" checked="{{signIn}}" />
+        </view>
+      </view>
+    </view>
+
+    <view class="sport item noRadius noBottom" hover-class="none" hover-stop-propagation="false">
+      <view class="left" hover-class="none" hover-stop-propagation="false">是否公开：</view>
+      <view class="right" hover-class="none" hover-stop-propagation="false">
+        <view class="" hover-class="none" hover-stop-propagation="false">
+          <switch bindchange="switchChange" data-key="isOpen" color="#E8380D" checked="{{isOpen}}" />
+        </view>
+      </view>
+    </view>
+
+    <view class="title zh_title" style="position: relative;" hover-class="none" hover-stop-propagation="false">
+      活动详情
+      <view style="display:inline-block;vertical-align:top;" hidden="{{description != 0}}">（{{descDetails.length}}/10000
+        ）
+      </view>
+      <view bindtap="revice_desc" class="zh_btn" hover-class="none" hover-stop-propagation="false">
+        <view>图片</view>
+        <image class="zh_img" src="../images/zh.png"></image>
+        <view>文字</view>
+      </view>
+    </view>
+    <view class="textarea" hover-class="none" hover-stop-propagation="false">
+
+      <textarea hidden="{{description != 0}}" data-key="descDetails" bindinput='bindDate' value="{{descDetails}}"
+        placeholder-style="color:#999;" maxlength='10000' auto-height
+        style='min-height:140rpx;max-height:300rpx;width:640rpx;' />
+
+      <view wx:for="{{descImages}}" hidden="{{description == 0}}" wx:key="{{item}}" class="desc_image">
+        <image mode="aspectFill" src="{{item}}"></image>
+        <view bindtap="delImages" data-key="{{index}}" class="del">x</view>
+      </view>
+      <view bindtap="chooseImage" data-type="2" hidden="{{description == 0}}" class="desc_add" hover-class="none" hover-stop-propagation="false">+</view>
+    </view>
+    <view class="title" hover-class="none" hover-stop-propagation="false">
+      活动费用
+    </view>
+    <view class="funds" hover-class="none" hover-stop-propagation="false">
+      <view class="funds_sf" hover-class="none" hover-stop-propagation="false">
+        <view style="margin-left: 10rpx;" hover-class="none" hover-stop-propagation="false">
+          收费模式：
+        </view>
+        <radio-group class="radio-group" value="{{chargeMode}}" bindchange="radioChange">
+          <radio disabled="{{ editId !=-1 && draft != 'true' }}" color="#E8380D" class="radio" wx:for-items="{{items}}" wx:key="value" value="{{item.value}}" checked="{{item.checked}}">
+            <text>{{item.name}}</text>
+          </radio>
+        </radio-group>
+      </view>
+      <view wx:if="{{chargeMode !=0 }}" class="radio_fy" hover-class="none" hover-stop-propagation="false">
+        <image src="../images/ps_m.png" class="ps_img"></image>
+        <input class="tab_fy" disabled="{{ editId !=-1 && draft != 'true' }}" type="digit" bindchange="bindDate" data-key="priceMan" value="{{priceMan}}" placeholder="" />
+        <view style="margin-right: 50rpx;" hover-class="none" hover-stop-propagation="false">
+          元/人
+        </view>
+        <image src="../images/ps_wm.png" class="ps_img_wm"></image>
+        <input class="tab_fy" disabled="{{ editId !=-1 && draft != 'true' }}" type="digit" bindchange="bindDate" data-key="priceWoman" value="{{priceWoman}}" placeholder="" />
+        <view class="" hover-class="none" hover-stop-propagation="false">
+          元/人
+        </view>
+      </view>
+    </view>
+    <view hidden="{{chargeMode !=1}}" class="title" hover-class="none" hover-stop-propagation="false">
+      违约处罚
+    </view>
+
+    <view hidden="{{chargeMode !=1}}" class="punish" hover-class="none" hover-stop-propagation="false">
+      <view class="" hover-class="none" hover-stop-propagation="false">
+        取消报名,将收取违约金,为报名费的
+      </view>
+      <picker bindchange="bindSelect" range="{{penalList}}" value="{{index}}">
+        <view class="input_num"> {{penalSum}}</view>
+      </picker>
+      %
+      <switch color="#E8380D" checked="{{isPenal}}" bindchange="onChange" />
+    </view>
+    <view class="title" hover-class="none" hover-stop-propagation="false">
+      发起人信息
+    </view>
+    <view class="sport item noBottom" hover-class="none" hover-stop-propagation="false">
+      <view class="left" hover-class="none" hover-stop-propagation="false">微信昵称：</view>
+      <view class="right" hover-class="none" hover-stop-propagation="false">
+        <input class="phoneInput" data-key="initiator" bindinput='bindDate' maxlength='10' value="{{initiator}}" placeholder="请填写姓名" />
+      </view>
+    </view>
+    <view class="sport item noBottom noRadius" hover-class="none" hover-stop-propagation="false">
+      <view class="left" hover-class="none" hover-stop-propagation="false">联系电话：</view>
+      <view class="right" hover-class="none" hover-stop-propagation="false">
+          <van-button type="primary" wx:if="{{ phoneNum == '' || phoneNum == null}}" open-type="getPhoneNumber" lang="zh_CN" bindgetphonenumber="getphonenumber" size="mini">获取</van-button>
+        <input class="phoneInput" maxlength="11" data-key="phoneNum" bindinput='bindDate' placeholder="请填写联系电话" type="number" value="{{phoneNum}}"></input>
+      </view>
+    </view>
+    <view class="sport item noRadius" hover-class="none" hover-stop-propagation="false">
+      <view class="left" hover-class="none" hover-stop-propagation="false">微信号：</view>
+      <view class="right" hover-class="none" hover-stop-propagation="false">
+        <input class="phoneInput" data-key="vxNum" bindinput='bindDate' maxlength='30' placeholder="请填写微信号" value="{{vxNum}}"></input>
+      </view>
+    </view>
+    <view class="agreeBox" hover-class="none" hover-stop-propagation="false">
+      <checkbox-group bindchange="checkBoxChange">
+        <checkbox value="1" checked="{{agree}}" />
+      </checkbox-group>
+
+      <view bindtap="modalAgree">我同意栎刻动活动发布协议</view>
+    </view>
+    <button wx:if="{{ editId ==-1 }}" bindtap="submit" class="submit">发布活动</button>
+    <button wx:else bindtap="submit" class="submit">修改活动</button>
+  </form>
+
+</view>
+<view class="wxapp-modal" hidden="{{dialogShow}}">
+  <view bindtap="closeAddModal" class="mask"></view>
+  <view class="content">
+    <view class="header">新增标签</view>
+    <view class="body">
+      <input bindinput="usernameInput" class="add-modle-input" maxlength="10" value="{{tagName}}"></input>
+    </view>
+    <view class="footer">
+      <button bindtap="closeAddModal" class="cancel" type="default">取消</button>
+      <button bindtap="tapDialogButton" class="confirm" type="default">确定</button>
+    </view>
+  </view>
+</view>
+
+<view class="wxapp-modal" hidden="{{dialogAgree}}" catchtouchmove="_touchmove">
+  <view bindtap="closeDialogAgree" class="mask"></view>
+  <view class="content" style="top:10%">
+    <view class="header">栎刻动体育平台活动发布免责声明</view>
+    <view class="body">
+      <scroll-view scroll-y="true" class="modal-scroll">
+        <view>在您使用“栎刻动体育平台”之前，请务必仔细阅读并理解本声明。您使用栎刻动体育平台时，您的使用行为将被视为对本声明全部内容的认可。</view>
+        <view>一、	只有符合下列条件的平台用户才能使用本平台进行活动发布：</view>
+        <view>1、年满十八周岁，并具有完全民事行为能力，且通过了平台的个人的实名认证的自然人；</view>
+        <view>2、根据中国法律、法规、行政规章成立并合法存在的且通过了平台的企事业单位实名认证的法人、非法人组织以及其他社会团体；</view>
+        <view>二、	发布者通过使用本平台发布相关活动（内容涉及包括但不限于发布人信息、报名人信息、活动信息等），发布者应自行确保发布内容的真实性、合法性、正确性、安全性，并独自承担因发布的相关内容而产生纠纷所造成的经济损失或法律责任。本平台不承担因发布者发布虚假、不合法、不正确或不安全信息导致的任何的法律后果，且一旦平台接到被侵权人通知、举报或投诉，平台会采取删除、屏蔽、断开链接等必要措施，由此产生的法律责任全部由发布者承担。</view>
+        <view>三、	本平台作为信息中介平台，发布者发布的内容或信息（包括但不限于公司名称、联系人及联络内容，内容的描述和说明，相关图片、视频等）均由发布者自行提供，发布者应依法对其发布的内容承担全部责任。本平台对此等内容的准确性、完整性、合法性以及真实性均不承担任何责任。同时，本平台对任何使用和提供本平台内容的商业活动及其风险不承担任何责任。</view>
+        <view>四、	凡是违反法律、法规以及互联网相关管理条例，如涉及黄、涉赌等违法、违规信息，平台会一律删除，由此产生的法律责任全部由发布者承担，本平台不承担任何责任。</view>
+        <view>五、	因网络状况、通讯线路、第三方平台等任何原因而导致发布者不能正常使用本平台，本平台不承担任何法律责任。</view>
+        <view>六、	本平台尊重并保护所有使用本平台用户（不限于且包括发布者）的个人隐私权，用户注册的用户名、电子邮件地址、联系方式等个人资料，非经用户本人许可或根据相关法律、法规的强制性规定必须提供，本平台不会主动地泄露给第三方。</view>
+        <view>七、	本声明以及其修改权、更新权及最终解释权均属本平台运营方所有。</view>
+      </scroll-view>
+    </view>
+    <view class="footer" bindtap="closeDialogAgree">
+      <button class="confirm" bindtap="_defaultAgree" style="width:100%;" type="default">我同意</button>
+    </view>
+  </view>
+</view>
+
+<van-action-sheet show="{{ pickerShow }}" round="{{false}}" bind:click-overlay="showPicker" catchtouchmove="_touchmove">
+  <van-datetime-picker
+  type="datetime"
+  min-date="{{ minDate }}"
+   formatter="{{ formatter }}"
+   bind:cancel="showPicker"
+   bind:confirm="onConfirm"
+/>
+</van-action-sheet>
+
+
+<authorize id="authorize"></authorize>
+<view hidden="{{isHidden}}" catchtouchmove="touchHandler" catchinput="touchHandler" catchtap="touchHandler" class="loading"></view>
+

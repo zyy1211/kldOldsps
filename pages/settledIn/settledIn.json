@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "入驻",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black",
+  "enablePullDownRefresh": true,
+  "usingComponents":{
+    "authorize":"../component/authorize"
+  }
+}

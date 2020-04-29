@@ -1,0 +1,35 @@
+<view class="signIn">
+    <view class="signin_title">已签到人员({{signedData.length}})</view>
+    <block wx:for="{{signedData}}" wx:key="{{index}}">
+        <view class="sign_in_item">
+            <view class="sign_in_left">
+                <image class="sign_in_img" src="{{item.avatarUrl}}"></image>
+                <view>{{item.nickName}}</view>
+            </view>
+            <view class="sign_gray">已签到</view>
+        </view>
+    </block>
+    <view class="signin_title">未签到人员({{unSignedData.length}})</view>
+    <checkbox-group bindchange="checkboxChange">
+        <block wx:for="{{unSignedData}}" wx:key="{{index}}">
+            <view class="sign_in_item">
+                <view class="sign_in_left">
+                    <view class="sign_in_doc"></view>
+                    <checkbox wx:if="{{ isSelf == 'true' }}" value="{{item.applyUser}}" checked="{{item.checked}}" />
+                    <image class="sign_in_img" src="{{item.avatarUrl}}"></image>
+                    <view>{{item.nickName}}</view>
+                </view>
+                <view class="sign_red">未签到</view>
+            </view>
+
+        </block>
+    </checkbox-group>
+
+    <view class="sign_in_btns">
+        <view class="sign_btn btns_green" wx:if="{{isSelf == 'true' }}" bindtap="signByIds">手动签到</view>
+        <!-- <view class="sign_btn btns_red" wx:if="{{isSelf == 'false' }}">扫码签到</view> -->
+        <!-- <view class="sign_btn btns_red" bindtap="createPoster" wx:if="{{isSelf == 'true' }}">生成扫码签到二维码</view> -->
+    </view>
+</view>
+
+  <my-poster id="getPoster" activityId="{{activityId}}" uid="{{uid}}"></my-poster>

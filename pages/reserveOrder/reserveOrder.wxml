@@ -1,0 +1,77 @@
+<view class="reserveOrder">
+  <view class="cont">
+    <view class="item border flex_row flex_btw">
+      <view class="title">场馆</view>
+      <view class="font6">{{order.detailData.sName}}</view>
+    </view>
+    <view class="orderList flex_col">
+      <view class="item sm_title flex_row">预定场次：</view>
+      <block wx:for="{{order.reLists}}" wx:key="{{index}}">
+        <view class="flex_row flex_btw orderItem">
+          <view class="flex_row flex_btw">
+            <view class="van-ellipsis mar_30">{{item.sname}}</view>
+            <view class="flew_shrink">{{order.days.date}}日 {{item.name}}</view>
+          </view>
+          <view class="red">¥{{item.price}}</view>
+        </view>
+      </block>
+    </view>
+    <view class="item border flex_row flex_btw">
+      <view class="title">费用结算</view>
+    </view>
+
+
+    <view style="height: 120rpx;font-size: 28rpx;color: #666;" class="van-hairline--bottom" bindtap="toCard">
+      <view class="flex_row flex_btw flex_align" style="height: 80rpx;">
+        <view>会员卡</view>
+        <van-icon name="arrow" />
+      </view>
+      <view class="flex_row van-ellipsis" style="position: absolute;bottom: 10rpx;left: 0;font-weight: 900;">
+        <view class="mar_r_20">{{cardObj.sname }}</view>
+        <view class="mar_r_20">{{cardObj.cardType }}</view>
+        <view>{{cardObj.sportType }}</view>
+      </view>
+
+    </view>
+
+    <view class="orderList flex_col">
+      <view class="item sm_title flex_row">付款</view>
+      <view class="flex_row flex_btw mar_b_10">
+        <view class="van-ellipsis font_26">场地费用</view>
+        <view class="red font_28">¥{{order.total}}</view>
+      </view>
+      <!-- <view class="flex_row flex_btw mar_b_10">
+        <view class="van-ellipsis font_26">积分抵扣</view>
+        <view class="red font_28">0</view>
+      </view> -->
+      <view class="flex_row flex_btw pad_b_30 border">
+        <view class="van-ellipsis font_30">合计支付</view>
+        <view class="red font_28">¥{{order.total}}</view>
+      </view>
+    </view>
+
+    <view class="item border flex_row flex_btw">
+      <view class="font6">手机号码</view>
+      <view class="font6">{{order.phone}}</view>
+    </view>
+
+    <view class="flex_row flex_btw pad_t_30">
+      <view style="width: 100%;" class="flex_row flex_btw">
+        <view class="flex_row">
+          <view class="font_30">微信支付：</view>
+          <view class="font_36">{{ order.total }}</view>
+        </view>
+        <view wx:if="{{ myCardId != '' }}" class="flex_row mar_l_30">
+          <view class="font_30">会员卡支付：</view>
+          <view class="font_36">{{ endTotal }}</view>
+        </view>
+      </view>
+      <!-- <van-button type="primary">申请退款</van-button>
+      <van-button color="#B2B2B2">已完成</van-button> -->
+    </view>
+    <view class="flex_row flex_btw mar_t_50">
+      <van-button custom-style="padding:0 100rpx" bindtap="submit" type="warning">微信支付 </van-button>
+      <van-button custom-style="padding:0 100rpx" bindtap="submit_card" type="warning">会员卡支付 </van-button>
+    </view>
+  </view>
+</view>

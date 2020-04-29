@@ -1,0 +1,32 @@
+<view class="outstanding">
+    <view class="ots_tabs">
+        <view bindtap="changeTabs" data-key="0" class="ots_ing {{active==0 ? 'ots_active' : ''}}">待结算金额</view>
+        <view bindtap="changeTabs" data-key="1" class="ots_ed {{active==1 ? 'ots_active' : ''}}">已结算金额</view>
+    </view>
+    <view class="ots_list">
+        <block wx:for="{{list}}">
+            <view class="ots_item">
+                <view>
+                    <view class="ots_key">活动名称：</view>
+                    <view class="ots_value">第八届羽毛球赛事杯</view>
+                </view>
+                <view>
+                    <view class="ots_key">付款时间：</view>
+                    <view class="ots_value">2019-10-30 19:35:11</view>
+                </view>
+                <view>
+                    <view class="ots_key">付款单号：</view>
+                    <view class="ots_value">51221133454236</view>
+                </view>
+                <view>
+                    <view class="ots_key">付款人名：</view>
+                    <view class="ots_value">吴彦祖本租</view>
+                </view>
+                <view>
+                    <view class="ots_key">待付金额：</view>
+                    <view class="ots_value ots_money">50元</view>
+                </view>
+            </view>
+        </block>
+    </view>
+</view>

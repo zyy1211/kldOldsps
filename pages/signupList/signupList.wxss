@@ -1,0 +1,100 @@
+/* pages/signupList/signupList.wxss */
+.signup_list {
+    background-color: #F0F0F0;
+    padding: 0 30rpx;
+    box-sizing: border-box;
+    min-height: 100vh;
+}
+.list{
+    width: 690rpx;
+    border-radius: 10rpx;
+    overflow: hidden;
+}
+.signup_title {
+    font-size: 26rpx;
+    color: #E8380D;
+    line-height: 53rpx;
+    font-weight: 900;
+}
+
+.signup_item {
+    padding: 18rpx;
+    background: rgba(255, 255, 255, 1);
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: row nowrap;
+}
+.signup_bottom{
+    border-bottom: 2rpx solid #F0F0F0;
+}
+.signup_radius{
+    border-radius: 10rpx;
+    margin-bottom: 13rpx;
+    background: rgba(255, 255, 255, 1);
+    overflow: hidden;
+}
+.signup_real{
+    font-size: 26rpx;
+    color: #333;
+    padding: 0 18rpx;
+    box-sizing: border-box;
+    line-height: 45rpx;
+}
+.signup_real_top{
+    border-top: 2rpx solid #F0F0F0;
+}
+.signup_img{
+    width: 66rpx;
+    height: 66rpx;
+
+}
+.signup_info{
+    flex-grow: 1;
+    margin-left: 17rpx;
+}
+.signup_time{
+    font-size: 22rpx;
+    color: #999999;
+}
+.signup_min{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    font-size: 26rpx;
+    color: #333;
+}
+.signup_name{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items:center;
+}
+
+.signup_carry{
+    font-size: 24rpx;
+    color: #666;
+    display: flex;
+    flex-flow: row nowrap;
+}
+.signup_girl{
+    margin-right: 20rpx;
+}
+.signup_sex{
+    width: 23rpx;
+    height: 23rpx;
+    margin-left: 10rpx;
+}
+.signup_time{
+    font-size: 22rpx;
+    color: #999;
+    margin-top: 6rpx;
+}
+.signup_tel{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+.vote_tel{
+    width: 18rpx;
+    height: 22rpx;  
+    margin-left: 20rpx;
+}

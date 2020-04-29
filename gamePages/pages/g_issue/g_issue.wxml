@@ -1,0 +1,337 @@
+<view class="g_issue lkd-field-right">
+  <view class="mar_b_20">
+    <van-cell-group>
+      <van-field value="{{ competitionTypeObj.sportName }}" readonly required clearable label="赛事类型" placeholder="类型"
+        icon="arrow" bindtap="toActiveType" />
+    </van-cell-group>
+  </view>
+  <!-- <view class="uploadImg">圖片上傳</view> -->
+
+
+  <view wx:if="{{isImg}}" style="margin: 0 auto;background: white;width: 690rpx;">
+    <image class="active_img" bindtap="chooseImage" data-type="1" mode="widthFix" src="{{imagePath}}" lazy-load="false"
+      binderror="" bindload="">
+    </image>
+  </view>
+  <view wx:else bindtap="chooseImage" data-type="1" class="item upload {{isImg ? 'noPadding' : ''}}" hover-class="none"
+    hover-stop-propagation="false">
+    <view class="pla_img" hover-class="none" hover-stop-propagation="false">
+      <image class="note_img" src="/pages/images/upload.png" bindload="" binderror=""></image>
+      <view class="note_text" hover-class="none" hover-stop-propagation="false">
+        上传图片
+      </view>
+    </view>
+  </view>
+
+  <view class="title">赛事信息</view>
+  <view>
+    <view>
+      <van-field value="{{ name }}" confirm-type="完成" required clearable="{{true}}" label="赛事名称" placeholder="请输入赛事名称"
+        data-key="name" bind:input="bindDate" />
+    </view>
+
+    <view class="lkd_item">
+      <view class="van-hairline--bottom flex_row flex_btw">
+        <view class="star">赛制类型：</view>
+        <view class="item_right">
+          <van-dropdown-menu>
+            <van-dropdown-item bind:change="bindDate" data-key='competitionRule' value="{{ competitionRule }}"
+              options="{{ option_type }}" />
+          </van-dropdown-menu>
+        </view>
+      </view>
+    </view>
+
+    <view>
+      <van-field value="{{ sponsor }}" confirm-type="完成" required clearable="{{true}}" label="主办方"
+        placeholder="请输入主办方名称" data-key="sponsor" bind:input="bindDate" />
+    </view>
+
+    <view>
+      <van-field value="{{ organizer }}" confirm-type="完成" clearable="{{true}}" label="承办方" placeholder="请输入承办方名称"
+        data-key="organizer" bind:input="bindDate" />
+    </view>
+
+    <view class="lkd_item">
+      <view class="van-hairline--bottom flex_row flex_btw min_item">
+        <view>赛事是否公开：</view>
+        <view class="item_right">
+          <van-switch active-color="#F26746" checked="{{ isOpen }}" data-key="isOpen" bind:change="onChange"
+            size="24px" />
+        </view>
+      </view>
+    </view>
+
+    <view class="lkd_item">
+      <view class="van-hairline--bottom flex_row flex_btw min_item">
+        <view>是否签到审核：</view>
+        <view class="item_right">
+          <van-switch active-color="#F26746" checked="{{ isSignIn }}" data-key="isSignIn" bind:change="onChange"
+            size="24px" />
+        </view>
+      </view>
+    </view>
+
+    <view class="lkd_item">
+      <view class="van-hairline--bottom flex_row flex_btw min_item">
+        <view>报名期间名单可见：</view>
+        <view class="item_right">
+          <van-switch active-color="#F26746" checked="{{ isVisibleList }}" data-key="isVisibleList"
+            bind:change="onChange" size="24px" />
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="title">赛事时间设置</view>
+  <view>
+
+    <view class="lkd_item">
+      <view class="van-hairline--bottom flex_row flex_btw">
+        <view class="star">截止报名：</view>
+        <view>
+          <van-field placeholder="请选择截止报名时间" value="{{ registrationDeadlineName }}" border="{{ false }}" readonly
+            data-key="registrationDeadline" bindtap="showDate" />
+        </view>
+      </view>
+    </view>
+
+    <view class="lkd_item">
+      <view class="van-hairline--bottom flex_row flex_btw">
+        <view class="star">名单公示：</view>
+        <view>
+          <van-field placeholder="请选择名单公示时间" value="{{ listPublicityTimeName }}" border="{{ false }}" readonly
+            data-key="listPublicityTime" bindtap="showDate" />
+        </view>
+      </view>
+    </view>
+
+    <view class="lkd_item">
+      <view class="van-hairline--bottom flex_row flex_btw">
+        <view class="star">比赛抽签：</view>
+        <view>
+          <van-field placeholder="请选择比赛抽签时间" value="{{ drawTimeName }}" border="{{ false }}" readonly
+            data-key="drawTime" bindtap="showDate" />
+        </view>
+      </view>
+    </view>
+
+    <view class="lkd_item">
+      <view class="van-hairline--bottom flex_row flex_btw">
+        <view class="star">抽签公示：</view>
+        <view>
+          <van-field placeholder="请选择抽签公示时间" value="{{ drawPublicityTimeName }}" border="{{ false }}" readonly
+            data-key="drawPublicityTime" bindtap="showDate" />
+        </view>
+      </view>
+    </view>
+
+    <view class="lkd_item">
+      <view class="van-hairline--bottom flex_row flex_btw">
+        <view class="star">正式比赛：</view>
+        <view class="flex_row small_size item_right">
+          <van-field placeholder="请选择开始时间" value="{{ beginTimeName }}" border="{{ false }}" readonly
+            data-key="beginTime" bindtap="showDate" />
+          <view style="line-height: 60rpx;margin: 0 6rpx;">--</view>
+          <van-field placeholder="请选择结束时间" value="{{ endTimeName }}" border="{{ false }}" readonly data-key="endTime"
+            bindtap="showDate" />
+        </view>
+      </view>
+    </view>
+
+  </view>
+
+  <view class="title">退赛处理</view>
+  <view>
+    <view class="lkd_item">
+      <view class="van-hairline--bottom flex_row flex_btw min_item">
+        <view>是否允许退款(退赛)：</view>
+        <view class="item_right">
+          <van-switch active-color="#F26746" checked="{{ canCancel }}" data-key="canCancel" bind:change="onChange"
+            size="24px" />
+        </view>
+      </view>
+    </view>
+
+    <view class="lkd_item">
+      <view class="van-hairline--bottom flex_row flex_btw">
+        <view>退款(退赛)截止时间：</view>
+        <view>
+          <van-field placeholder="请选择退赛截止时间" value="{{ cancelTimeName }}" border="{{ false }}" readonly
+            data-key="cancelTime" bindtap="showDate" />
+        </view>
+      </view>
+    </view>
+
+    <view class="lkd_item">
+      <view class="van-hairline--bottom flex_row flex_btw min_item">
+        <view class="flex_row_wrap">
+          <view style="font-size: 26rpx;">已报名要求退款，收取报名费</view>
+          <van-stepper value="{{ penalSum }}" step="1" integer min="0" max="30" />%
+        </view>
+        <view class="item_right">
+          <van-switch active-color="#F26746" checked="{{ isPenal }}" data-key="isPenal" bind:change="onChange"
+            size="24px" />
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="title">场馆信息</view>
+  <view>
+    <view>
+      <van-cell-group>
+        <van-field bindtap="bindChooseLocation" value="{{ location }}" readonly required clearable label="场馆地址："
+          placeholder="请选择地址" right-icon-class='address_icon' icon="location" />
+      </van-cell-group>
+    </view>
+
+    <view>
+      <van-field value="{{ stadiumName }}" confirm-type="完成" required clearable="{{true}}" label="场馆名称："
+        placeholder="请输入场馆名称" data-key="stadiumName" bind:input="bindDate" />
+    </view>
+  </view>
+
+  <view class="title">选取信息</view>
+  <view class="lkd_item">
+    <view class="van-hairline--bottom flex_row flex_btw">
+      <view style="width: 460rpx;">选择所需报名者填写的信息</view>
+      <view bindtap="addtag">
+        <van-field color="#F26746" border="{{ false }}" readonly placeholder="添加自定义" />
+      </view>
+    </view>
+  </view>
+  <view class="tag_box">
+    <van-button class="lkd_tag" wx:for="{{freeList}}" wx:key="{{item.id}}" size="small" type="warning">{{item.name}}
+    </van-button>
+    <view style="position: relative;" wx:for="{{infoName}}" wx:key="{{item}}" wx:if='{{infoName.length != 0}}'>
+      <van-button class="lkd_tag" size="small" type="warning">{{item.name}}
+      </van-button>
+      <van-icon size="20" wx:if="{{ edit==-1 }}" catchtap="deltag" data-index="{{index}}" class="delIcon"
+        name="close" />
+    </view>
+  </view>
+
+  <view class="title">报名项目</view>
+  <view>
+    <view class="lkd_item">
+      <view class="van-hairline--bottom flex_row flex_btw">
+        <view class="star">单项赛：</view>
+        <view>
+          <van-field bindtap="toSingle" value="{{ value1 }}" color="#F26746" border="{{ false }}" readonly />
+        </view>
+      </view>
+    </view>
+    <view class="button_box">
+      <view wx:for="{{ singleName }}" wx:key="{{item.id}}" data-id="{{item.id}}" class="lkd_tag btn_padding_right">
+        <van-button  bindtap="toSingle" data-key="1" data-id="{{item.id}}" plain class="lkd_tag"
+          type="warning">
+          <view class="large_btn">
+            <view class="van-ellipsis">{{item.name}}</view>
+            <view class="flex_row" style="flex-shrink: 0;">
+              <view class="mar_r_20">{{item.eventType}}</view>
+              <view>{{item.minAge}}</view>
+              <view>--</view>
+              <view>{{item.maxAge}}岁</view>
+            </view>
+          </view>
+        </van-button>
+        <van-icon size="20" wx:if="{{ edit==-1 }}" catchtap="delSingle" data-index="{{index}}" class="delIcon"
+          name="close" />
+      </view>
+    </view>
+
+    <view class="lkd_item">
+      <view class="van-hairline--bottom flex_row flex_btw">
+        <view class="star">团体赛：</view>
+        <view>
+          <van-field bindtap="toGroup" value="{{ value1 }}" border="{{ false }}" readonly />
+        </view>
+      </view>
+    </view>
+    <view class="tag_box">
+      <view wx:for="{{ teamName }}" wx:key="{{item.id}}" data-id="{{item.id}}" class="lkd_tag btn_padding_right">
+        <van-button  bindtap="toGroup" data-key="1" data-id="{{item.id}}" plain type="warning">
+          <view class="large_btn">
+            <view class="van-ellipsis">{{item.name}}</view>
+            <view class="flex_row" style="flex-shrink: 0;">
+              <view class="mar_r_20">{{item.eventType}}</view>
+              <view>{{item.minAge}}</view>
+              <view>--</view>
+              <view>{{item.maxAge}}岁</view>
+            </view>
+          </view>
+        </van-button>
+        <van-icon size="20" wx:if="{{ edit==-1 }}" catchtap="delTeam" data-index="{{index}}" class="delIcon"
+          name="close" />
+      </view>
+    </view>
+  </view>
+
+  <view class="zh_item">
+    <view class="title">赛事规程</view>
+    <view bindtap="revice_desc" class="zh_btn" hover-class="none" hover-stop-propagation="false">
+      <view>图片</view>
+      <image class="zh_img" src="/pages/images/zh.png"></image>
+      <view>文字</view>
+    </view>
+  </view>
+  <view class="textarea" hover-class="none" hover-stop-propagation="false">
+
+    <textarea hidden="{{detailsType != '0'}}" data-key="detailsDesc" bindinput='bindDateFile' value="{{detailsDesc}}"
+      placeholder-style="color:#999;" maxlength='10000' auto-height
+      style='min-height:140rpx;max-height:300rpx;width:640rpx;' />
+
+    <view wx:for="{{descImagesPath}}" hidden="{{detailsType == '0'}}" wx:key="{{item}}" class="desc_image">
+      <image mode="aspectFill" src="{{item}}"></image>
+      <view bindtap="delImages" data-key="{{index}}" class="del">x</view>
+    </view>
+    <view bindtap="chooseImage" data-type="2" hidden="{{detailsType == '0'}}" class="desc_add" hover-class="none" hover-stop-propagation="false">+</view>
+  </view>
+
+
+  <view class="title">联系方式</view>
+  <view>
+    <view>
+      <van-field value="{{ linkmanName }}" data-key="linkmanName" bind:input="bindDate" confirm-type="完成" required clearable="{{true}}" label="联系人："
+        placeholder="请输入联系人" maxlength='10' />
+    </view>
+
+
+    <view>
+      <van-field value="{{ linkmanPhone }}" maxlength="11" type="number" data-key="linkmanPhone" required clearable label="手机号：" bind:input="bindDate" placeholder="请输入手机号" use-button-slot>
+        <van-button wx:if="{{ linkmanPhone == '' || linkmanPhone == null}}" open-type="getPhoneNumber" bindgetphonenumber="getphonenumber" slot="button" size="small" type="primary">自动填写</van-button>
+      </van-field>
+    </view>
+
+
+    <view>
+      <van-field value="{{ linkmanVx }}" bind:input="bindDate" required data-key="linkmanVx" confirm-type="完成" clearable="{{true}}" label="微信号：" placeholder="请输入微信号" />
+    </view>
+
+  </view>
+
+  <button bindtap="submit" wx:if="{{ edit==-1 }}" class="submit">发布赛事</button>
+  <button bindtap="submit_soft" data-key="1" wx:else class="submit">确认修改</button>
+  <button bindtap="submit_soft" wx:if="{{ edit==-1 }}" data-key='-1' class="submit submit_green">保存草稿</button>
+
+</view>
+
+<authorize id="authorize"></authorize>
+<publishNav type="activity"></publishNav>
+<view hidden="{{isHidden}}" catchtouchmove="touchHandler" catchinput="touchHandler" catchtap="touchHandler" class="loading"></view>
+
+<!-- <view hidden="{{hidden_date}}">
+
+</view> -->
+
+<van-action-sheet show="{{ !hidden_date }}" bind:click-overlay="showDate">
+  <van-datetime-picker
+  type="datetime"
+  value="{{ currentDate }}"
+  min-date="{{ minDate }}"
+  bind:input="onInput"
+  bind:confirm="confirm"
+  bind:cancel="showDate"
+/>
+</van-action-sheet>

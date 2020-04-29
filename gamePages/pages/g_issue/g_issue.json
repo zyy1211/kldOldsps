@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "发布赛事",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTextStyle": "black",
+  "usingComponents":{
+    "mp-dialog": "/pages/component/dialog/dialog",
+    "authorize":"/pages/component/authorize"
+  }
+}
