@@ -50,6 +50,7 @@ Page({
       participantsNum: options.participantsNum,
       usid: options.usid
     });
+    this.getQrCode();
     if (options.type == 1) {
       wx.setNavigationBarTitle({
         title: '修改报名'
@@ -69,6 +70,16 @@ Page({
         isCancel: false,
       })
     }
+  },
+  getQrCode:function(){
+    let self = this;
+    let id = self.data.id
+    http.get('/activities/selectActivitiesByIdImg?id=' + id,'').then(function(res){
+      console.log(res);
+      if(res.data.status == 200){
+        self.setData({qrCodeUrl:res.data.message.qrCodeUrl})
+      }
+    })
   },
   modalAgree: function () {
     let dialogAgree = this.data.dialogAgree;
@@ -289,12 +300,15 @@ Page({
         } else {
           // console.log('fs')
           // let token = wx.getStorageSync('token');
-          console.log('fsfs');
-          let usid = self.data.usid;
+          // console.log('fsfs');
+          // let usid = self.data.usid;
           // console.log(usid);
           // console.log(usid == '1204941003936710657');
           // return;
-          if (usid == '1204941003936710657') {
+          let qrCodeUrl = self.data.qrCodeUrl;
+          console.log(self.data.qrCodeUrl)
+          if (!App.isNull(qrCodeUrl)) {
+            console.log('fsfsfs');
             self.setData({
               show: true
             });
@@ -329,10 +343,12 @@ Page({
   onConfirm: function () {
     let self = this;
     console.log('fsfs')
-    console.log(self.data.scanCode)
+    // scanCode
+    console.log(self.data.qrCodeUrl)
     wx.downloadFile({
-      url: self.data.scanCode,
+      url: self.data.qrCodeUrl,
       success: function (res) {
+        console.log(res);
         wx.saveImageToPhotosAlbum({
           filePath: res.tempFilePath,
           success() {

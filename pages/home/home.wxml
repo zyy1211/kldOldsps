@@ -6,15 +6,16 @@
   </view>
   <view>
     <swiper circular="true" autoplay interval="3000">
-      <swiper-item bindtap="toGzh">
-        <image class="banner" src="{{banner2}}" mode="widthFix"></image>
-      </swiper-item>
-      <swiper-item bindtap="toLanjue">
+
+      <!-- <swiper-item bindtap="toLanjue">
         <image class="banner" src="{{banner1}}" mode="widthFix"></image>
       </swiper-item>
-      <!-- <swiper-item bindtap="toActivityList">
-        <image class="banner" src="/static/banner2.png" mode="widthFix"></image>
+      <swiper-item bindtap="toGzh">
+        <image class="banner" src="{{banner2}}" mode="widthFix"></image>
       </swiper-item> -->
+      <swiper-item wx:for="{{ bannerData }}" wx:key="{{item.id}}" data-url="{{ item.clientRoute }}" bindtap="toActivityDetail">
+        <image class="banner" src="{{ item.bannerUrl }}" mode="widthFix"></image>
+      </swiper-item>
 
     </swiper>
   </view>

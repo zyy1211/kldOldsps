@@ -10,24 +10,24 @@ Page({
    * 页面的初始数据
    */
   data: {
-    activeNames: [''],
+    activeNames: [],
     cardUrl: API.cvs_img + '/20200427/fc732e50c8952077a2df437bdc8b4581.png',
     activitiesList: [],
     beTotal: '',
     total: '',
     api: API.img_host,
-    pageNum: 1,
-    pageSize: 10
   },
 
   onChange(event) {
+    // console.log(event)
     this.setData({
       activeNames: event.detail
     });
   },
   conceCach: function () {
+    let beTotal = this.data.beTotal;
     wx.navigateTo({
-      url: '../cachIn/cachIn',
+      url: '../cachIn/cachIn?beTotal=' + beTotal,
     })
   },
 
@@ -39,12 +39,23 @@ Page({
   },
   queryAccount: function () {
     let self = this;
-    let {pageNum,pageSize} = this.data;
-    http.get('/activities/queryAccount', {pageNum,pageSize}).then(function (res) {
+    http.get('/activities/queryAccount', '').then(function (req) {
+      let res = req.data;
       console.log(res)
       if (res.status == 200) {
+        let activitiesList = [];
+        if(!app.isNull(res.message.activitiesList)){
+          activitiesList = res.message.activitiesList;
+        }
+        activitiesList.forEach(item =>{
+          item['Time'] = (util.timeSlot(item.startTime, item.endTime))
+        })
+        activitiesList = activitiesList.sort(function(a,b){
+          return b.startTime - a.startTime
+        })
+
         self.setData({
-          activitiesList: res.message.activitiesList,
+          activitiesList:activitiesList,
           beTotal: res.message.beTotal,
           total: res.message.total
         })

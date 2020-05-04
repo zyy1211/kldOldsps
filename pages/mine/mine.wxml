@@ -56,11 +56,11 @@
 
     <view class="row_list" hover-class="none" hover-stop-propagation="false">
         <!-- data-url="../myAccount/myAccount" -->
-        <view bindtap="navigate"  class="row_item" hover-class="none" hover-stop-propagation="false">
+        <view bindtap="navigate" data-url="../myAccount/myAccount" class="row_item" hover-class="none" hover-stop-propagation="false">
             <image class="row_img" src="/static/mine3.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false"
                 binderror="" bindload=""></image>
             <view class="row_text">我的账户</view>
-            <view class="icon_text">￥0</view>
+            <view class="icon_text">￥{{ beTotal }}</view>
             <van-icon class="icon_jt" name="arrow" />
         </view>
         <view bindtap="navigate" class="row_item" hover-class="none" hover-stop-propagation="false">
@@ -71,7 +71,8 @@
             <view class="icon_text">10</view>
             <van-icon class="icon_jt" name="arrow" />
         </view>
-        <view bindtap="navigate" data-url="../myCard/myCard" class="row_item" hover-class="none" hover-stop-propagation="false">
+        <view bindtap="navigate" data-url="../myCard/myCard" class="row_item" hover-class="none"
+            hover-stop-propagation="false">
             <image class="row_img" src="/static/mine5.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false"
                 binderror="" bindload=""></image>
             <view class="row_text">我的会员卡</view>

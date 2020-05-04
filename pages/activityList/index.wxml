@@ -50,6 +50,7 @@
             <image class="iocn_h" src="../images/qb.png"></image>
             <view class="text_h">{{item.tag}}</view>
           </view>
+          <view class="row" wx:if="{{ isqueen }}">{{item.id}}</view>
 
           <view class="waterDrop">
             <image class="dropImg" src="../images/drop.png" mode="widthFix" lazy-load="false" binderror="" bindload="">

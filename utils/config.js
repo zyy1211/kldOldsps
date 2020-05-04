@@ -1,6 +1,6 @@
 module.exports = {
-    // API_HOST: "https://www.likedong.top",
-    API_HOST: "http://192.168.0.197:8080",
+    API_HOST: "https://www.likedong.top",
+    // API_HOST: "http://192.168.0.197:8080",
     // API_HOST: "http://192.168.0.107:8080",
     img_host:'https://www.likedong.top/images',
 

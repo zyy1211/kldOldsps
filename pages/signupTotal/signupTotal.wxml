@@ -68,21 +68,24 @@
     <view style="display: inline;" wx:if="{{ chargeMode == 1 }}">
       ({{tools.totalMoney(gender,priceMan,priceWoman,takeMan,takeWoman)}})</view>
   </van-button>
-  <van-button wx:if="{{type != 1 && disabled}}" type="warning" size="large" disabled
+
+  
+
+  <!-- <van-button wx:if="{{type != 1 && disabled}}" type="warning" size="large" disabled
     data-key="{{tools.totalMoney(gender,priceMan,priceWoman,takeMan,takeWoman)}}">立即报名
     <view style="display: inline;" wx:if="{{ chargeMode == 1 }}">
       ({{tools.totalMoney(gender,priceMan,priceWoman,takeMan,takeWoman)}})</view>
-  </van-button>
+  </van-button> -->
 
   <van-button wx:if="{{type == 1 && registrationStatus < 3 && !disabled}}" type="warning" size="large"
     data-key="{{ tools.editMoney(tools.totalMoney(gender,priceMan,priceWoman,takeMan,takeWoman),baseMoney) }}"
     data-edit="1" bindtap="submit">
     修改报名({{ tools.editMoney(tools.totalMoney(gender,priceMan,priceWoman,takeMan,takeWoman),baseMoney) }})</van-button>
 
-  <van-button wx:if="{{type == 1 && registrationStatus < 3 && disabled}}" type="warning" size="large"
+  <!-- <van-button wx:if="{{type == 1 && registrationStatus < 3 && disabled}}" type="warning" size="large"
     data-key="{{ tools.editMoney(tools.totalMoney(gender,priceMan,priceWoman,takeMan,takeWoman),baseMoney) }}"
     data-edit="1">修改报名({{ tools.editMoney(tools.totalMoney(gender,priceMan,priceWoman,takeMan,takeWoman),baseMoney) }})
-  </van-button>
+  </van-button> -->
 
   <view bindtap="cancelSelf" wx:if="{{type == 1 && isCancel == true }}" class="totalBtn t_cancel">
     取消报名
@@ -117,6 +120,6 @@
 
 <van-dialog id="van-dialog" use-slot  show="{{ show }}" show-cancel-button bind:cancel="onClose" bind:confirm="onConfirm" confirm-button-text="保存图片二维码" async-close>
 <view style="display: flex;flex-flow: row nowrap;justify-content: center;align-items: center;padding: 30rpx 0;">
-  <image style="width: 80%;" mode="widthFix" src="{{ scanCode }}" />
+  <image style="width: 80%;" mode="widthFix" src="{{ qrCodeUrl }}" />
 </view>
 </van-dialog>

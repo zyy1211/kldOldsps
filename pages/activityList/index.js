@@ -9,7 +9,7 @@ Page({
   data: {
     dataList: [],
     address: '定位中',
-
+    isqueen:false,
     time: '',
     distance: 99999,
     type: -1,
@@ -243,6 +243,10 @@ Page({
         dataList = records;
       } else {
         dataList = self.data.dataList.concat(records);
+      }
+      let token = wx.getStorageSync('token');
+      if(token == '1204961653178908673'){
+        self.setData({isqueen:true})
       }
       self.setData({
         dataList: dataList,

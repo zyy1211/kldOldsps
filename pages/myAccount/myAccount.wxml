@@ -1,49 +1,48 @@
-<view class="myAccount">
-
-    <view style="position: relative;">
-        <image class="cardImg" src="{{cardUrl}}" mode="widthFix" lazy-load="false" binderror="" bindload=""></image>
-        <view class="cardview cardCont">
-            <view>
-                <view class="text_b">可提现金额(元)</view>
-                <view class="avail">
-                    <view class="number_b">{{beTotal}}</view>
-                    <view class="cash" bindtap="conceCach">立即提现</view>
+<van-sticky>
+    <view class="myAccount">
+        <view style="position: relative;">
+            <image class="cardImg" src="{{cardUrl}}" mode="widthFix" lazy-load="false" binderror="" bindload=""></image>
+            <view class="cardview cardCont">
+                <view>
+                    <view class="text_b">可提现金额(元)</view>
+                    <view class="avail">
+                        <view class="number_b">{{beTotal}}</view>
+                        <view class="cash" bindtap="conceCach">立即提现</view>
+                    </view>
+                </view>
+                <view class="allAvail">
+                    <view class="flex_row">
+                        <view class="actText gray">预收款总额 (元)</view>
+                        <view class="actMoney gray">{{total}}</view>
+                    </view>
+                    <view class="ljtx mar_r_20">
+                        <view class="actText" style="line-height: 30rpx!important;">提现记录</view>
+                        <van-icon class="iconImg" size="15" name="arrow" />
+                    </view>
                 </view>
             </view>
-            <view class="allAvail">
-                <view class="flex_row">
-                    <view class="actText gray">预收款总额 (元)</view>
-                    <view class="actMoney gray">{{total}}</view>
-                </view>
-                <view class="ljtx mar_r_20">
-                    <view class="actText">提现记录</view>
-                    <van-icon class="iconImg" size="15" name="arrow" />
-                </view>
-            </view>
+        </view>
 
-
+        <view class="kld_bottom flex_row titleH">
+            <view class="circel"></view>
+            <view class="circleTitle">报名收款记录</view>
         </view>
     </view>
+</van-sticky>
 
 
-    <view class="kld_bottom flex_row titleH">
-        <view class="circel"></view>
-        <view class="circleTitle">报名收款记录</view>
-    </view>
-
-</view>
 
 <view class="myCol">
     <block wx:for="{{activitiesList}}" wx:key="{{ item.id }}">
         <view class="colItem">
-            <van-collapse border="{{false}}" value="{{ activeNames }}" bind:change="onChange">
-                <van-collapse-item name="1">
+            <van-collapse border="{{false}}" value="{{ activeNames }}" accordion="{{true}}" bind:change="onChange">
+                <van-collapse-item name="{{ item.id }}" is-link="{{false}}" clickable="{{true}}">
                     <view slot="title">
                         <view class="col_view">
                             <view>
                                 <view class="itemTitle">{{item.title}}</view>
                                 <view class="flex_row">
-                                    <view class="time">{{item.endTime}}</view>
+                                    <view class="time">{{item.Time}}</view>
                                     <view class="note">（活动结束后结算）</view>
                                 </view>
                             </view>
@@ -52,15 +51,16 @@
                             </view>
                         </view>
                     </view>
-                    <!-- <image slot="right-icon" src="../../static/down.png" mode="widthFix"></image> -->
-                    <!-- <view slot="value">提供多样店铺模板，快速搭建网上商城111</view> -->
-                    <!-- <van-icon slot="rightIcon" type="icon-right" name="chat-o" />
-                    <van-icon slot="right-icon" type="icon-right" name="chat-o" /> -->
+                    <view slot="right-icon" class="flex_row" style="margin-left: 17rpx;">
+                        <image class="img_right_icon {{ activeNames == item.id ? 'icon_activity' : '' }}"
+                            src="../../static/down.png" mode="widthFix"></image>
+                    </view>
+
                     <view class="contain">
-                        <block wx:for="{{item.receiptsList}}" wx:for-item="pit" :key="{{pit.name}}">
+                        <block wx:for="{{item.receiptsList}}" wx:for-item="pit" wx:key="{{pit.name}}">
                             <view class="flex_row flex_btw mar_b_30">
                                 <view class="flex_row">
-                                    <image src="{{ api + pit.avatarUrl }}" class="userImg" mode="widthFix"></image>
+                                    <image src="{{ pit.avatarUrl }}" class="userImg" mode="widthFix"></image>
                                     <view class="mar_l_30">
                                         <view class="name mar_b_10">{{pit.name}}</view>
                                         <view class="note">已报名</view>
@@ -69,16 +69,16 @@
                                 <view class="money">+ {{pit.payNum}}</view>
                             </view>
                         </block>
-                        <block wx:for="{{item.refundReceiptsList}}" wx:for-item="pit" :key="{{pit.name}}">
+                        <block wx:for="{{item.refundReceiptsList}}" wx:for-item="pit" wx:key="{{pit.name}}">
                             <view class="flex_row flex_btw mar_b_30">
                                 <view class="flex_row">
-                                    <image src="{{ api + pit.avatarUrl }}" class="userImg" mode="widthFix"></image>
+                                    <image src="{{ pit.avatarUrl }}" class="userImg" mode="widthFix"></image>
                                     <view class="mar_l_30">
                                         <view class="name mar_b_10">{{pit.name}}</view>
-                                        <view class="note">已报名</view>
+                                        <view class="note">已退款</view>
                                     </view>
                                 </view>
-                                <view class="money">- {{pit.payNum}}</view>
+                                <view class="money" style="color: #999999;">- {{pit.refundNum}}</view>
                             </view>
                         </block>
                     </view>
@@ -89,3 +89,4 @@
     </block>
 
 </view>
+

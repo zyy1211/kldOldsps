@@ -9,23 +9,28 @@ Page({
    * 页面的初始数据
    */
   data: {
-    minAge:1,
+    show:false,
+    suucess:API.cvs_img + '/20200430/46168b07a26d743f1ce41e4a65133799.png'
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options.beTotal)
+    this.setData({
+      beTotal: options.beTotal
+    })
+    console.log(this.data.beTotal)
   },
-  bindDate:function(e){
+  bindDate: function (e) {
     let key = e.currentTarget.dataset.key;
     let value = e.detail.value;
     if (key == 'money') {
       value = this.validateFixed(value);
     }
     this.setData({
-      [key]:value
+      [key]: value
     })
   },
 
@@ -39,19 +44,47 @@ Page({
     return value;
   },
 
-  toCachIn:function(){
-    let { money,name } = this.data;
-    if(money < 1 ){
+  toCachIn: function () {
+    let self = this;
+    let {
+      money,
+      name,
+      beTotal
+    } = this.data;
+    if (app.isNull(money) || money < 1) {
       return wx.showToast({
         title: '最小提现金额为1元',
         icon: 'none'
       })
     }
-    http.post('/activities/withdrawal',{money,name}).then(function(res){
-      console.log(res);
-      if(res.status == 200){
+    if(parseFloat(money) > parseFloat(beTotal)){
+      return wx.showToast({
+        title: '提现金额不能超过账户金额',
+        icon: 'none'
+      })
+    }
+    if (app.isNull(name)) {
+      return wx.showToast({
+        title: '请输入真实姓名',
+        icon: 'none'
+      })
+    }
 
+    http.post('/activities/withdrawal', {
+      money,
+      name
+    }).then(function (res) {
+      console.log(res);
+      if (res.data.status == 200) {
+        self.setData({show:true})
       }
+    })
+  },
+
+  onConfirm:function(){
+    console.log('fsfs')
+    wx.navigateBack({
+      delta: 1, // 回退前 delta(默认为1) 页面
     })
   },
 

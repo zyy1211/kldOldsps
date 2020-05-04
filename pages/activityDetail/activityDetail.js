@@ -114,7 +114,6 @@
    goSignupTotal: function (e) {
      let self = this;
      console.log(self.data.userInfo)
-     
     app.getLogin(function(){
       let type = e.currentTarget.dataset.type;
       let url = '../signupTotal/signupTotal?type=0&id=' + self.data.activityId + '&withPeople=' + self.data.ActivitiesCondition.withPeople + '&max=' + self.data.Activities.participantsNum + '&chargeMode=' + self.data.Activities.chargeMode + '&priceMan=' + self.data.ActivitiesCondition.priceMan + '&priceWoman=' + self.data.ActivitiesCondition.priceWoman + '&registrationStatus=' + self.data.Activities.registrationStatus + '&needToPay=' + self.data.Activities.needToPay + '&participantsNum=' + self.data.Activities.participantsNum + '&usid=' + self.data.userInfo.MemberBasicInfo.id

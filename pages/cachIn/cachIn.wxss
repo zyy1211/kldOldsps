@@ -37,6 +37,7 @@
     font-weight: bold;
     color: rgba(51, 51, 51, 1);
     margin-bottom: 10rpx;
+    text-align: center;
 }
 
 .text {
@@ -46,7 +47,7 @@
 }
 
 .line {
-    width: 200rpx;
+    width: 300rpx;
     border-bottom: 1rpx solid #E4E3DE;
 }
 
@@ -77,28 +78,10 @@
 
 
 
-input::-webkit-input-placeholder,
-textarea::-webkit-input-placeholder {
-    color: #666;
-    font-size: 24rpx;
-}
-
-input:-moz-placeholder,
-textarea:-moz-placeholder {
-    color: #666;
-    font-size: 24rpx;
-}
-
-input::-moz-placeholder,
-textarea::-moz-placeholder {
-    color: #666;
-    font-size: 24rpx;
-}
-
-input:-ms-input-placeholder,
-textarea:-ms-input-placeholder {
-    color: #666;
-    font-size: 24rpx;
+.place-holder {
+    font-size: 22rpx;
+    color: #999;
+    font-weight: 300;
 }
 
 
@@ -122,4 +105,14 @@ textarea:-ms-input-placeholder {
     color: white;
     position: absolute;
     bottom: 100rpx;
+}
+
+.sucDialog{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+.success_icon{
+    width: 300rpx;
 }

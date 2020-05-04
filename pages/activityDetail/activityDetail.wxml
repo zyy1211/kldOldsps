@@ -136,6 +136,8 @@
       <!-- <view wx:else class="timer">报名已截止</view> -->
       <button wx:if="{{isApply == false && registrationStatus == 1}}" data-type="0" bindtap="goSignupTotal"
         class="sure">立即报名</button>
+
+        
       <button wx:if="{{isApply == true && registrationStatus < 3 && registrationStatus != 0}}" data-type="1"
         bindtap="goSignupTotal" class="sure">修改报名</button>
     </view>

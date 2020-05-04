@@ -12,7 +12,8 @@ Page({
     userLogoUrl: 0,
     userInfo: '',
     isLogin: app.globalData.isLogin,
-    phoneNumber: '13819129737'
+    phoneNumber: '13819129737',
+    beTotal:0,
   },
 
   initPage: function () {
@@ -25,6 +26,7 @@ Page({
         userLogoUrl: userInfo.avatarUrl,
         nickName: userInfo.nickName,
       })
+      self.queryAccount();
     }
   },
 
@@ -47,6 +49,19 @@ Page({
    */
   onLoad: function (options) {
     this.initPage();
+  },
+
+  queryAccount: function () {
+    let self = this;
+    http.get('/activities/queryAccount', '').then(function (req) {
+      let res = req.data;
+      console.log(res)
+      if (res.status == 200) {
+        self.setData({
+          beTotal: res.message.beTotal
+        })
+      }
+    })
   },
 
   onShow: function () {

@@ -14,8 +14,9 @@ Page({
     dataList1: [],
     apiImg: Api.img_host,
     ihidden: true,
-    banner1:Api.cvs_img +'/20200413/2db9c8e13ba873030592e03d06590e79.png',
-    banner2:Api.cvs_img +'/20200413/2cc6b53fbc2f6c7135981dfad0af6af2.png'
+    banner1:Api.cvs_img +'/20200430/4d502c37e1fcdade4207be92c5bdd733.png',
+    banner2:Api.cvs_img +'/20200430/1647fc15194fe420ba00509a6d85ba6e.png',
+    bannerData:[],
   },
 
   toLanjue: function () {
@@ -37,6 +38,12 @@ Page({
       url: '../activityList/index'
     })
   },
+  toActivityDetail:function(e){
+    let url = e.currentTarget.dataset.url
+    wx.navigateTo({
+      url: url,
+    })
+  },
 
   toGzh: function () {
     wx.navigateTo({
@@ -49,6 +56,7 @@ Page({
     App.getToken(function () {
       self.getTypeList();
       self.initPageLogin();
+      self.getBnner();
     })
 
     // this.selectComponent('#pst').getPst();
@@ -69,6 +77,17 @@ Page({
     //   })
     // }, 600);
 
+  },
+  getBnner:function(){
+    let self = this;
+    http.get('/activities/queryBanner','').then(function(res){
+      console.log(res);
+      if(res.data.status == 200){
+        self.setData({
+          bannerData:res.data.message
+        })
+      }
+    })
   },
   initPageLogin: function () {
     let self = this;
