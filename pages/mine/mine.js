@@ -20,7 +20,7 @@ Page({
     let self = this;
     if (app.globalData.isLogin) {
       let userInfo = app.getUserInfo();
-      // console.log(userInfo)
+      console.log(userInfo)
       self.setData({
         userInfo: userInfo,
         userLogoUrl: userInfo.avatarUrl,
@@ -48,7 +48,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.initPage();
+    // this.initPage();
   },
 
   queryAccount: function () {
@@ -69,9 +69,9 @@ Page({
     this.setData({
       isLogin: app.globalData.isLogin
     })
-    if (app.isNull(userInfo)) {
+    // if (app.isNull(userInfo)) {
       this.initPage();
-    }
+    // }
 
   },
   makeCall: function () {

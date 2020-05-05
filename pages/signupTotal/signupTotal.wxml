@@ -118,7 +118,7 @@
   </view>
 </view>
 
-<van-dialog id="van-dialog" use-slot  show="{{ show }}" show-cancel-button bind:cancel="onClose" bind:confirm="onConfirm" confirm-button-text="保存图片二维码" async-close>
+<van-dialog id="van-dialog" confirm-button-color="white" use-slot  show="{{ show }}" bind:cancel="onClose" bind:confirm="onConfirm" confirm-button-text="保存图片二维码" async-close>
 <view style="display: flex;flex-flow: row nowrap;justify-content: center;align-items: center;padding: 30rpx 0;">
   <image style="width: 80%;" mode="widthFix" src="{{ qrCodeUrl }}" />
 </view>

@@ -138,3 +138,7 @@
 .t_over{
     background: #999999;
 }
+.van-dialog__button .van-button--default{
+    background-color: #f8842f;
+    color: white;
+}

@@ -334,6 +334,7 @@
   <van-datetime-picker
   type="datetime"
   min-date="{{ minDate }}"
+  filter="{{ filter }}"
    formatter="{{ formatter }}"
    bind:cancel="showPicker"
    bind:confirm="onConfirm"

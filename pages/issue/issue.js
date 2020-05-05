@@ -8,7 +8,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    minDate:new Date().getTime(),
+
+    minDate:new Date().getTime() + (15*60*1000 - ((new Date().getTime()) % (15*60*1000))),
     registrationUptoTime: '',
     registrationUptoTimeStr:'',
     registrationCancelTime:'',
@@ -17,6 +18,13 @@ Page({
     activityStartTimeStr:'',
     activityEndTime:'',
     activityEndTimeStr:'',
+    filter(type, options) {
+      if (type === 'minute') {
+      // console.log(options)
+        return options.filter(option => option % 15 === 0)
+      }
+      return options;
+    },
     formatter(type, value) {
       if (type === 'year') {
         return `${value}年`;
@@ -139,7 +147,7 @@ Page({
     })
   },
   chooseImage: function (e) {
-    console.log(e);
+    // console.log(e);
     let type = e.currentTarget.dataset.type;
     let count = type === "1" ? 1 : 9;
     let self = this;
@@ -148,14 +156,14 @@ Page({
       sizeType: ['compressed'],
       sourceType: ['album', 'camera'],
       success: function (res) {
-        console.log(res);
-        console.log(type);
+        // console.log(res);
+        // console.log(type);
         if (type == 1) {
           wx.compressImage({
             src:res.tempFilePaths[0],
             quality: 80,
             success:function(tpm){
-              console.log(tpm.tempFilePath)
+              // console.log(tpm.tempFilePath)
               wx.navigateTo({
                 // url: '../pageTemplate/cropper/cropper?url=' + res.tempFilePaths[0]
                 url: '../pageTemplate/cropper/cropper?url=' +tpm.tempFilePath
@@ -171,7 +179,7 @@ Page({
         } else {
           let descImages = self.data.descImages;
           descImages = descImages.concat(res.tempFilePaths);
-          console.log(descImages);
+          // console.log(descImages);
           self.setData({
             descImages: descImages
           })
@@ -180,7 +188,7 @@ Page({
         // success
       },
       fail: function (res) {
-        console.log(res)
+        // console.log(res)
         // fail
       }
     })
@@ -194,7 +202,7 @@ Page({
     });
   },
   bindgetphonenumber: function (e) {
-    console.log(e)
+    // console.log(e)
     if (e.detail.errMsg == "getPhoneNumber:ok") {
 
     }
@@ -231,7 +239,7 @@ Page({
   tapDialogButton(e) {
     let self = this;
     let tag = self.data.tag;
-    console.log(self.data.tagName)
+    // console.log(self.data.tagName)
     if (self.data.tagName == "") {
       return wx.showToast({
         title: '标签内容不能为空',
@@ -252,7 +260,7 @@ Page({
     this.setData({
       tagName: e.detail.value
     })
-    console.log(e)
+    // console.log(e)
   },
 
   switchChange: function (e) {
@@ -299,7 +307,7 @@ Page({
   bindChooseLocation: function () {
     let self = this;
     self.selectComponent("#authorize").getAuthorizeLocation(function (a) {
-      console.log(self.data.editId);
+      // console.log(self.data.editId);
       if (self.data.editId != -1) {
         let latitude = self.data.addressLatitude;
         let longitude = self.data.addressLongitude;
@@ -308,7 +316,7 @@ Page({
           latitude: latitude,
           longitude: longitude,
           success: function (a) {
-            console.log(a);
+            // console.log(a);
             self.setData({
               location: a.name,
               addressLongitude: a.longitude,
@@ -321,7 +329,7 @@ Page({
         wx.chooseLocation({
           type: "gcj02",
           success: function (a) {
-            console.log(a);
+            // console.log(a);
             self.setData({
               location: a.name,
               addressLongitude: a.longitude,
@@ -337,7 +345,7 @@ Page({
     this.setData({
       chargeMode: e.detail.value
     })
-    console.log(e)
+    // console.log(e)
   },
   submit: function () {
     let self = this;
@@ -480,7 +488,7 @@ Page({
       return;
     }
     self.data.defalutTab.forEach(item => {
-      console.log(item);
+      // console.log(item);
       if (item.checked) {
         tag.push(item.name);
       }
@@ -541,14 +549,14 @@ Page({
       }
       params.descImages = urlDescImages;
     }
-    console.log(params);
+    // console.log(params);
     wx.showModal({
       title: '提示',
       content: modalContent,
       success(res) {
         if (res.confirm) {
-          console.log('用户点击确定');
-          console.log(params);
+          // console.log('用户点击确定');
+          // console.log(params);
           self.showLoading();
           if (self.data.editId != -1) {
             let imagePath = self.data.imagePath;
@@ -579,7 +587,7 @@ Page({
                 filePath: file,
                 name: 'image',
                 success(res) {
-                  console.log(res);
+                  // console.log(res);
                   if (params.description == 1) {
                     self.uploading({
                       url: API.API_HOST + '/activities/upLoadImages/' + message + '/1',
@@ -647,7 +655,7 @@ Page({
             }
           });
         } else if (res.cancel) {
-          console.log('用户点击取消')
+          // console.log('用户点击取消')
         }
       }
     })
@@ -660,8 +668,8 @@ Page({
     let i = data.i ? data.i : 0, //当前上传的哪张图片
       success = data.success ? data.success : 0, //上传成功的个数
       fail = data.fail ? data.fail : 0; //上传失败的个数
-      console.log(data.url + '/' + isLast)
-      console.log(data.path[i])
+      // console.log(data.url + '/' + isLast)
+      // console.log(data.path[i])
     wx.uploadFile({
       url: data.url + '/' + isLast,
       header: {
@@ -671,8 +679,8 @@ Page({
       name: 'image',
       formData: null,
       success: (resp) => {
-        console.log(resp)
-        console.log(i);
+        // console.log(resp)
+        // console.log(i);
         if (resp.statusCode == 200) {
           success++;
         } else {
@@ -681,7 +689,7 @@ Page({
       },
       fail: (res) => {
         fail++;
-        console.log('fail:' + i + "fail:" + fail);
+        // console.log('fail:' + i + "fail:" + fail);
       },
       complete: () => {
         this.setData({
@@ -689,7 +697,7 @@ Page({
         });
         i++;
         if (i == data.path.length) {
-          console.log('执行完毕');
+          // console.log('执行完毕');
           self.hideLoading();
           wx.showToast({
             title: '成功：' + success + " 失败：" + fail,
@@ -729,7 +737,7 @@ Page({
   getDetail: function (callback) {
     let self = this;
     http.get('/activities/selectActivitiesById?id=' + self.data.editId, '').then(function (result) {
-      console.log(result);
+      // console.log(result);
       self.setData({
         detailData: result.data
       })
@@ -779,14 +787,14 @@ Page({
       sportName: expand
     }
     descImages = descImages.map(element => {
-      console.log(API.img_host + element);
+      // console.log(API.img_host + element);
       return element = API.img_host + element;
     });
     let isImg = true;
     let imagePath = API.img_host + imageUri;
     let chargeKey;
     if (chargeMode == 0) {
-      console.log(0);
+      // console.log(0);
       chargeKey = 'items[2].checked'
     } else if (chargeMode == 2) {
       chargeKey = 'items[1].checked'
@@ -985,9 +993,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(new Date().getTime() + (15*60*1000 - ((new Date().getTime()) % (15*60*1000))))
     let self = this;
     let userInfo = App.getUserInfo();
-    // console.log(userInfo);
     self.setData({
       editId: options.id,
       draft:options.draft,
@@ -1032,7 +1040,7 @@ Page({
   // 防止穿透
   _touchmove: function () {},
   showPicker:function(event){
-    console.log(event);
+    // console.log(event);
     let key = '';
     if(!App.isNull(event)){
       key = event.currentTarget.dataset.key;
@@ -1047,6 +1055,7 @@ Page({
     let keyStr = key + 'Str';
     let self = this;
     self.showPicker();
+    console.log(event.detail)
     let time = util.formatStamp(event.detail);
     this.setData({
       [key]:event.detail,

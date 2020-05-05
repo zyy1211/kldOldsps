@@ -16,12 +16,20 @@ Page({
     beTotal: '',
     total: '',
     api: API.img_host,
+    stickyId:''
   },
+  onScroll(e){
+    console.log(e)
 
+  },
   onChange(event) {
     // console.log(event)
+    let ids = event.currentTarget.dataset.ids;
+    let key = 'activitiesList[' + ids + '].activity';
+    let activity = this.data.activitiesList[ids].activity;
     this.setData({
-      activeNames: event.detail
+      activeNames: event.detail,
+      [key]:!activity
     });
   },
   conceCach: function () {
@@ -35,6 +43,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    // this.queryAccount();
+  },
+  onShow: function(){
+    console.log('fsfs')
     this.queryAccount();
   },
   queryAccount: function () {
@@ -48,6 +60,7 @@ Page({
           activitiesList = res.message.activitiesList;
         }
         activitiesList.forEach(item =>{
+          item['activity'] = false;
           item['Time'] = (util.timeSlot(item.startTime, item.endTime))
         })
         activitiesList = activitiesList.sort(function(a,b){
@@ -70,12 +83,6 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
 
   /**
    * 生命周期函数--监听页面隐藏
