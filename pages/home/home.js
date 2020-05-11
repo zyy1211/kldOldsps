@@ -14,9 +14,9 @@ Page({
     dataList1: [],
     apiImg: Api.img_host,
     ihidden: true,
-    banner1:Api.cvs_img +'/20200430/4d502c37e1fcdade4207be92c5bdd733.png',
-    banner2:Api.cvs_img +'/20200430/1647fc15194fe420ba00509a6d85ba6e.png',
-    bannerData:[],
+    banner1: Api.cvs_img + '/20200430/4d502c37e1fcdade4207be92c5bdd733.png',
+    banner2: Api.cvs_img + '/20200430/1647fc15194fe420ba00509a6d85ba6e.png',
+    bannerData: [],
   },
 
   toLanjue: function () {
@@ -38,7 +38,7 @@ Page({
       url: '../activityList/index'
     })
   },
-  toActivityDetail:function(e){
+  toActivityDetail: function (e) {
     let url = e.currentTarget.dataset.url
     wx.navigateTo({
       url: url,
@@ -59,12 +59,27 @@ Page({
       self.getBnner();
     })
 
+    // wx.chooseImage({
+    //   success(res) {
+    //     console.log('res:', res)
+    //   },
+    //   complete(res){
+    //     console.log(res)
+    //   }
+    // })
+    // wx.chooseImage().then(res => console.log('res: ', res))
+    // wx.getSystemInfo({
+    //   success(res){
+    //     console.log(res)
+    //   }
+    // })
+
     // this.selectComponent('#pst').getPst();
 
 
     // setTimeout(() => {
     //   wx.navigateTo({
-    //     url: '../myAccount/myAccount',
+    //     url: '/pages/signupList/signupList?activityId=1207561417691131983',
     //     success: function(res){
     //       // success
     //     },
@@ -78,13 +93,13 @@ Page({
     // }, 600);
 
   },
-  getBnner:function(){
+  getBnner: function () {
     let self = this;
-    http.get('/activities/queryBanner','').then(function(res){
+    http.get('/activities/queryBanner', '').then(function (res) {
       console.log(res);
-      if(res.data.status == 200){
+      if (res.data.status == 200) {
         self.setData({
-          bannerData:res.data.message
+          bannerData: res.data.message
         })
       }
     })

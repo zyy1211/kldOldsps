@@ -222,7 +222,7 @@
     </view>
     <view class="funds" hover-class="none" hover-stop-propagation="false">
       <view class="funds_sf" hover-class="none" hover-stop-propagation="false">
-        <view style="margin-left: 10rpx;" hover-class="none" hover-stop-propagation="false">
+        <view hover-class="none" hover-stop-propagation="false">
           收费模式：
         </view>
         <radio-group class="radio-group" value="{{chargeMode}}" bindchange="radioChange">
@@ -231,17 +231,66 @@
           </radio>
         </radio-group>
       </view>
-      <view wx:if="{{chargeMode !=0 }}" class="radio_fy" hover-class="none" hover-stop-propagation="false">
-        <image src="../images/ps_m.png" class="ps_img"></image>
-        <input class="tab_fy" disabled="{{ editId !=-1 && draft != 'true' }}" type="digit" bindchange="bindDate" data-key="priceMan" value="{{priceMan}}" placeholder="" />
-        <view style="margin-right: 50rpx;" hover-class="none" hover-stop-propagation="false">
-          元/人
+      <view wx:if="{{chargeMode !=0 }}"  hover-class="none" hover-stop-propagation="false">
+
+        <view class="flex_row flex_btw pad_b_20" hover-class="none" hover-stop-propagation="false">
+          <view class="left" hover-class="none" hover-stop-propagation="false">会员模式：</view>
+          <view class="right" hover-class="none" hover-stop-propagation="false">
+            <view class="" hover-class="none" hover-stop-propagation="false">
+              <switch  disabled="{{ editId !=-1 && draft != 'true' }}" bindchange="switchChange" data-key="isVip" color="#E8380D" checked="{{isVip}}" />
+            </view>
+          </view>
         </view>
-        <image src="../images/ps_wm.png" class="ps_img_wm"></image>
-        <input class="tab_fy" disabled="{{ editId !=-1 && draft != 'true' }}" type="digit" bindchange="bindDate" data-key="priceWoman" value="{{priceWoman}}" placeholder="" />
-        <view class="" hover-class="none" hover-stop-propagation="false">
-          元/人
+
+
+        <view wx:if="{{ isVip }}">
+          <view class="flex_row pad_b_20">
+            <view style="width: 160rpx;">会员价格:</view>
+            <image src="../images/ps_m.png" class="ps_img"></image>
+            <input class="tab_fy" disabled="{{ editId !=-1 && draft != 'true' }}" type="digit" bindinput="bindDate" data-key="vipPriceMan" value="{{vipPriceMan}}" placeholder="" />
+            <view style="margin-right: 30rpx;" hover-class="none" hover-stop-propagation="false">
+              元/人
+            </view>
+            <image src="../images/ps_wm.png" class="ps_img_wm"></image>
+            <input class="tab_fy" disabled="{{ editId !=-1 && draft != 'true' }}" type="digit" bindinput="bindDate" data-key="vipPriceWoman" value="{{vipPriceWoman}}" placeholder="" />
+            <view class="" hover-class="none" hover-stop-propagation="false">
+              元/人
+            </view>
+          </view>
+          <view class="flex_row pad_b_20">
+            <view style="width: 160rpx;">非会员价格:</view>
+            <image src="../images/ps_m.png" class="ps_img"></image>
+            <input class="tab_fy" disabled="{{ editId !=-1 && draft != 'true' }}" type="digit" bindinput="bindDate" data-key="priceMan" value="{{priceMan}}" placeholder="" />
+            <view style="margin-right: 30rpx;" hover-class="none" hover-stop-propagation="false">
+              元/人
+            </view>
+            <image src="../images/ps_wm.png" class="ps_img_wm"></image>
+            <input class="tab_fy" disabled="{{ editId !=-1 && draft != 'true' }}" type="digit" bindinput="bindDate" data-key="priceWoman" value="{{priceWoman}}" placeholder="" />
+            <view class="" hover-class="none" hover-stop-propagation="false">
+              元/人
+            </view>
+          </view>
         </view>
+
+        <view class="radio_fy" wx:else>
+          <view style="width: 160rpx;">费用:</view>
+          <image src="../images/ps_m.png" class="ps_img"></image>
+          <input class="tab_fy" disabled="{{ editId !=-1 && draft != 'true' }}" type="digit" bindinput="bindDate" data-key="priceMan" value="{{priceMan}}" placeholder="" />
+          <view style="margin-right: 50rpx;" hover-class="none" hover-stop-propagation="false">
+            元/人
+          </view>
+          <image src="../images/ps_wm.png" class="ps_img_wm"></image>
+          <input class="tab_fy" disabled="{{ editId !=-1 && draft != 'true' }}" type="digit" bindinput="bindDate" data-key="priceWoman" value="{{priceWoman}}" placeholder="" />
+          <view class="" hover-class="none" hover-stop-propagation="false">
+            元/人
+          </view>
+        </view>
+
+
+
+
+
+
       </view>
     </view>
     <view hidden="{{chargeMode !=1}}" class="title" hover-class="none" hover-stop-propagation="false">
@@ -344,4 +393,3 @@
 
 <authorize id="authorize"></authorize>
 <view hidden="{{isHidden}}" catchtouchmove="touchHandler" catchinput="touchHandler" catchtap="touchHandler" class="loading"></view>
-

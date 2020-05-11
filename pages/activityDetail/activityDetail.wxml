@@ -91,12 +91,18 @@
       <view>场馆名称：{{ Activities.clubName }} </view>
     </view>
 
+    <view class="item" wx:if="{{isqueen}}">
+      <view>活动id：{{ Activities.id }} </view>
+      <van-button type="danger" data-id="{{Activities.id}}" bindtap="makeId">复制</van-button>
+    </view>
+
     <view class="item">
       <view>场地号：{{ Activities.specificLocation }} </view>
     </view>
 
     <view class="item">
-      <view>费用</view>
+      <view style="width: 180rpx;" wx:if="{{ ActivitiesCondition.isVip }}">非会员费用</view>
+      <view wx:else>费用</view>
       <view class="fy_item">
         <image class="boy" src="../images/ps_m.png"></image>{{ActivitiesCondition.priceMan}}元/人
       </view>
@@ -104,6 +110,19 @@
         <image class="girl" src="../images/ps_wm.png"></image>{{ActivitiesCondition.priceWoman}}元/人
       </view>
     </view>
+
+
+    <view class="item" wx:if="{{ ActivitiesCondition.isVip }}">
+      <view style="width: 180rpx;">会员费用</view>
+      <view class="fy_item">
+        <image class="boy" src="../images/ps_m.png"></image>{{ActivitiesCondition.vipPriceMan}}元/人
+      </view>
+      <view class="fy_item">
+        <image class="girl" src="../images/ps_wm.png"></image>{{ActivitiesCondition.vipPriceWoman}}元/人
+      </view>
+    </view>
+
+
     <view class="sps_item" wx:if="{{ActivitiesCondition.isPenal == true}}">
       <view>违约打球：</view>
       <view wx:if="{{ActivitiesCondition.isPenal}}">取消报名 ，将收取违约金 ，为报名费的{{ActivitiesCondition.penalSum}}%</view>
@@ -111,8 +130,8 @@
   </view>
 
   <view class="act_detail imgBox" wx:if="{{Activities.description}}">
-    <image bindtap="saveImage" data-key="{{ api + item }}" class="detail_img" wx:for="{{Activities.descImages}}" wx:key="{{index}}" mode="widthFix" class=""
-      src="{{api + item}}"></image>
+    <image bindtap="saveImage" data-key="{{ api + item }}" class="detail_img" wx:for="{{Activities.descImages}}"
+      wx:key="{{index}}" mode="widthFix" class="" src="{{api + item}}"></image>
   </view>
 
 
@@ -137,7 +156,7 @@
       <button wx:if="{{isApply == false && registrationStatus == 1}}" data-type="0" bindtap="goSignupTotal"
         class="sure">立即报名</button>
 
-        
+
       <button wx:if="{{isApply == true && registrationStatus < 3 && registrationStatus != 0}}" data-type="1"
         bindtap="goSignupTotal" class="sure">修改报名</button>
     </view>

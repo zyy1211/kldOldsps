@@ -4,25 +4,30 @@
         <block wx:for="{{signupList}}" wx:key="{{index}}">
             <view class="{{self=='true' ? 'signup_radius' : ''}}">
                 <view class="signup_item {{type ? '' : 'signup_bottom'}} ">
+                    <image wx:if="{{ item.isVip }}" class="sig_img" src="../../static/vip.png"></image>
                     <image class="signup_img" src="{{item.basicInfo.avatarUrl}}"></image>
                     <view class="signup_info">
                         <view class="signup_min">
                             <view class="signup_name">{{item.basicInfo.nickName}}
-                            <image wx:if="{{item.gender==1}}" class="signup_sex" src="../images/sex_b_a.png" bindload="" binderror=""></image>
-                            <image wx:if="{{item.gender==0}}" class="signup_sex" src="../images/sex_g_a.png" bindload="" binderror=""></image>
-                            </view>
-                            <view class="signup_carry" hover-class="none" hover-stop-propagation="false">
-                                <view class="signup_girl">带女生 {{item.takeWoman}}人</view>
-                                <view>男生 {{item.takeMan}}人</view>
+                                <image wx:if="{{item.gender==1}}" class="signup_sex" src="../images/sex_b_a.png"
+                                    bindload="" binderror=""></image>
+                                <image wx:if="{{item.gender==0}}" class="signup_sex" src="../images/sex_g_a.png"
+                                    bindload="" binderror=""></image>
                             </view>
                         </view>
                         <view class="signup_time">{{item.createTime}}</view>
+                    </view>
+                    <view class="signup_carry" hover-class="none" hover-stop-propagation="false">
+                        <view class="signup_girl">带女生 {{item.takeWoman}}人</view>
+                        <view>男生 {{item.takeMan}}人</view>
                     </view>
                 </view>
                 <view hidden="{{self =='false' }}" class="signup_real">
                     <view class="signup_real_top">
                         <view>姓名：{{item.name}}</view>
-                        <view class="signup_tel" bindtap="makeCall" data-phone="{{item.phone}}">电话：{{item.phone}} <image class="vote_tel" src="../images/vote_tel.png"></image></view>
+                        <view class="signup_tel" bindtap="makeCall" data-phone="{{item.phone}}">电话：{{item.phone}} <image
+                                class="vote_tel" src="../images/vote_tel.png"></image>
+                        </view>
                         <view>备注：{{item.expand == null ? '' : item.expand}}</view>
                     </view>
                 </view>

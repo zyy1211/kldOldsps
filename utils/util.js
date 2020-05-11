@@ -90,11 +90,16 @@ const distance = function (la1,lo1,la2,lo2) {
 
 };
 
-let totalMoney = function (gender,priceMan,priceWoman,takeMan,takeWoman) {
+let totalMoney = function (gender,priceMan,priceWoman,takeMan,takeWoman,isVip,vipPriceMan,vipPriceWoman) {
   var base = gender==1 ? priceMan : priceWoman;
   var takenM = takeMan ? takeMan : '0';
   var takenWm = takeWoman ? takeWoman : '0';
-  var total =  parseFloat(base) + (parseFloat(takenM) * parseFloat(priceMan)) + (parseFloat(takenWm) * parseFloat(priceWoman));
+  var total = 0;
+  if(isVip){
+    base = gender==1 ? vipPriceMan : vipPriceWoman;
+    // console.log(base)
+  }
+  total =  parseFloat(base) + (parseFloat(takenM) * parseFloat(priceMan)) + (parseFloat(takenWm) * parseFloat(priceWoman));
   return (total.toFixed(2));
 
   }

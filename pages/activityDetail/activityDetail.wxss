@@ -271,7 +271,7 @@
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
-    margin-left: 100rpx;
+    margin-left: 60rpx;
 }
 
 .sps_item {

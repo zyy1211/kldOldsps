@@ -24,6 +24,7 @@
      disableUpload: true,
      isFlag: false,
      editHeart: false,
+     isqueen:false,
      actions: [{
        name: '生成海报'
      }, {
@@ -116,9 +117,9 @@
      console.log(self.data.userInfo)
     app.getLogin(function(){
       let type = e.currentTarget.dataset.type;
-      let url = '../signupTotal/signupTotal?type=0&id=' + self.data.activityId + '&withPeople=' + self.data.ActivitiesCondition.withPeople + '&max=' + self.data.Activities.participantsNum + '&chargeMode=' + self.data.Activities.chargeMode + '&priceMan=' + self.data.ActivitiesCondition.priceMan + '&priceWoman=' + self.data.ActivitiesCondition.priceWoman + '&registrationStatus=' + self.data.Activities.registrationStatus + '&needToPay=' + self.data.Activities.needToPay + '&participantsNum=' + self.data.Activities.participantsNum + '&usid=' + self.data.userInfo.MemberBasicInfo.id
+      let url = '../signupTotal/signupTotal?type=0&id=' + self.data.activityId + '&withPeople=' + self.data.ActivitiesCondition.withPeople + '&max=' + self.data.Activities.participantsNum + '&chargeMode=' + self.data.Activities.chargeMode + '&priceMan=' + self.data.ActivitiesCondition.priceMan + '&priceWoman=' + self.data.ActivitiesCondition.priceWoman + '&registrationStatus=' + self.data.Activities.registrationStatus + '&needToPay=' + self.data.Activities.needToPay + '&participantsNum=' + self.data.Activities.participantsNum + '&usid=' + self.data.userInfo.MemberBasicInfo.id + '&isVip=' + self.data.ActivitiesCondition.isVip + '&vipPriceWoman=' + self.data.ActivitiesCondition.vipPriceWoman + '&vipPriceMan=' +  self.data.ActivitiesCondition.vipPriceMan
       if (type == 1) {
-        url = '../signupTotal/signupTotal?type=1&id=' + self.data.activityId + '&withPeople=' + self.data.ActivitiesCondition.withPeople + '&time=' + self.data.Activities.registrationCancelTime + '&max=' + self.data.Activities.participantsNum + '&chargeMode=' + self.data.Activities.chargeMode + '&priceMan=' + self.data.ActivitiesCondition.priceMan + '&priceWoman=' + self.data.ActivitiesCondition.priceWoman + '&registrationStatus=' + self.data.Activities.registrationStatus + '&needToPay=' + self.data.Activities.needToPay + '&participantsNum=' + self.data.Activities.participantsNum + '&usid=' + self.data.userInfo.MemberBasicInfo.id
+        url = '../signupTotal/signupTotal?type=1&id=' + self.data.activityId + '&withPeople=' + self.data.ActivitiesCondition.withPeople + '&time=' + self.data.Activities.registrationCancelTime + '&max=' + self.data.Activities.participantsNum + '&chargeMode=' + self.data.Activities.chargeMode + '&priceMan=' + self.data.ActivitiesCondition.priceMan + '&priceWoman=' + self.data.ActivitiesCondition.priceWoman + '&registrationStatus=' + self.data.Activities.registrationStatus + '&needToPay=' + self.data.Activities.needToPay + '&participantsNum=' + self.data.Activities.participantsNum + '&usid=' + self.data.userInfo.MemberBasicInfo.id + '&isVip=' + self.data.ActivitiesCondition.isVip + '&vipPriceWoman=' + self.data.ActivitiesCondition.vipPriceWoman + '&vipPriceMan=' +  self.data.ActivitiesCondition.vipPriceMan
       }
       wx.navigateTo({
         url: url
@@ -156,6 +157,19 @@
        }
      });
    },
+   makeId:function(e){
+     let id = e.currentTarget.dataset.id
+    wx.setClipboardData({
+      data: id,
+      success: function () {
+        wx.showModal({
+          title: "提示",
+          content: "微信号已复制到剪切板",
+          confirmText: "知道了"
+        });
+      }
+    });
+   },
 
    /**
     * 生命周期函数--监听页面加载
@@ -184,6 +198,12 @@
        }
        self.setData({id,userId});
        self.initData();
+
+       let token = wx.getStorageSync('token');
+       if(token == '1204961653178908673'){
+         self.setData({isqueen:true})
+       }
+
      })
    },
    reloadPage: function () {

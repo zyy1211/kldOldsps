@@ -10,7 +10,6 @@ Page({
     signupList: [],
     self: true,
     activityId: ''
-
   },
 
   /**

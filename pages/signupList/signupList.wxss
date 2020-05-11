@@ -23,6 +23,14 @@
     box-sizing: border-box;
     display: flex;
     flex-flow: row nowrap;
+    position: relative;
+}
+.sig_img{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 46rpx;
+    height: 46rpx;
 }
 .signup_bottom{
     border-bottom: 2rpx solid #F0F0F0;
@@ -74,6 +82,8 @@
     color: #666;
     display: flex;
     flex-flow: row nowrap;
+    align-items: center;
+    /* justify-content: center; */
 }
 .signup_girl{
     margin-right: 20rpx;

@@ -33,6 +33,18 @@
           placeholder="" />
       </view>
     </view>
+
+
+    <view wx:if="{{isVipAble == 'true' }}" class="totalItem flex_row flex_btw" hover-class="none" hover-stop-propagation="false">
+      <view class="left" hover-class="none" hover-stop-propagation="false">是否会员：</view>
+      <view class="right" hover-class="none" hover-stop-propagation="false">
+        <view class="" hover-class="none" hover-stop-propagation="false">
+          <switch disabled="{{ type == 1 }}" bindchange="switchChange" data-key="isVip" color="#E8380D" checked="{{isVip}}" />
+        </view>
+      </view>
+    </view>
+
+
     <view class="totalMore" wx:if="{{withPeople == 'true' }}">
       <view class="totalItem">
         <view class="totalLeft">带人：</view>
@@ -45,14 +57,25 @@
             placeholder="" />
         </view>
       </view>
-      <view class="totalMoney" wx:if="{{chargeMode == 1}}">
+
+      <view class="totalItem">
+        <view class="totalLeft">参与人数：</view>
+        <view class="moreRight">
+          <!-- 男生{{takeMan ? ( gender=='1' ? (takeMan + 1) : takeMan) : (gender=='1' ? 1 : 0)}}人，
+          女生{{takeWoman ? ( gender=='0' ? (takeWoman + 1) : takeWoman) : (gender=='0' ? 1 : 0)}}人 -->
+            男生{{gender=='1' ? (takeMan*1 +1) : takeMan*1}}
+            女生{{gender=='0' ? (takeWoman*1 +1) : takeWoman*1}}
+        </view>
+      </view>
+
+      <!-- <view class="totalMoney" wx:if="{{chargeMode == 1}}">
         <view>合计结算：</view>
         <view class="totalRight">
           <view class="first">{{gender==1 ? priceMan : priceWoman}}</view>+<view class="second">
             {{priceMan}}*{{takeMan ? takeMan : 0}}</view>+<view class="third">
             {{priceWoman}}*{{takeWoman ? takeWoman : 0}}</view> 元
         </view>
-      </view>
+      </view> -->
     </view>
   </view>
   <view wx:if="{{type != 1}}" class="agreeBox" hover-class="none" hover-stop-propagation="false">
@@ -63,36 +86,31 @@
   </view>
   <wxs src="../filter.wxs" module="tools" />
   <view style="height: 40rpx;"></view>
-  <van-button wx:if="{{type != 1 && !disabled}}" type="warning" size="large"
-    data-key="{{tools.totalMoney(gender,priceMan,priceWoman,takeMan,takeWoman)}}" bindtap="submit">立即报名
+  <van-button data-key="{{tools.totalMoney(gender,priceMan,priceWoman,takeMan,takeWoman,isVip,vipPriceMan,vipPriceWoman)}}" wx:if="{{type != 1 && !disabled}}" type="warning" size="large"
+     bindtap="submit">立即报名
     <view style="display: inline;" wx:if="{{ chargeMode == 1 }}">
-      ({{tools.totalMoney(gender,priceMan,priceWoman,takeMan,takeWoman)}})</view>
+      ({{tools.totalMoney(gender,priceMan,priceWoman,takeMan,takeWoman,isVip,vipPriceMan,vipPriceWoman)}})</view>
   </van-button>
 
   
 
   <!-- <van-button wx:if="{{type != 1 && disabled}}" type="warning" size="large" disabled
-    data-key="{{tools.totalMoney(gender,priceMan,priceWoman,takeMan,takeWoman)}}">立即报名
+    >立即报名
     <view style="display: inline;" wx:if="{{ chargeMode == 1 }}">
       ({{tools.totalMoney(gender,priceMan,priceWoman,takeMan,takeWoman)}})</view>
   </van-button> -->
 
-  <van-button wx:if="{{type == 1 && registrationStatus < 3 && !disabled}}" type="warning" size="large"
-    data-key="{{ tools.editMoney(tools.totalMoney(gender,priceMan,priceWoman,takeMan,takeWoman),baseMoney) }}"
+  <van-button wx:if="{{type == 1 && registrationStatus < 3 && !disabled}}" type="warning" size="large" data-key="{{ tools.editMoney(tools.totalMoney(gender,priceMan,priceWoman,takeMan,takeWoman,isVip,vipPriceMan,vipPriceWoman),baseMoney) }}"
     data-edit="1" bindtap="submit">
-    修改报名({{ tools.editMoney(tools.totalMoney(gender,priceMan,priceWoman,takeMan,takeWoman),baseMoney) }})</van-button>
+    修改报名({{ tools.editMoney(tools.totalMoney(gender,priceMan,priceWoman,takeMan,takeWoman,isVip,vipPriceMan,vipPriceWoman),baseMoney) }})</van-button>
 
-  <!-- <van-button wx:if="{{type == 1 && registrationStatus < 3 && disabled}}" type="warning" size="large"
-    data-key="{{ tools.editMoney(tools.totalMoney(gender,priceMan,priceWoman,takeMan,takeWoman),baseMoney) }}"
-    data-edit="1">修改报名({{ tools.editMoney(tools.totalMoney(gender,priceMan,priceWoman,takeMan,takeWoman),baseMoney) }})
-  </van-button> -->
+
 
   <view bindtap="cancelSelf" wx:if="{{type == 1 && isCancel == true }}" class="totalBtn t_cancel">
     取消报名
     <view style="display: inline;" wx:if="{{chargeMode == 1 && needToPay == 'true'}}">并申请退款</view>
   </view>
-  <!-- <view wx:if="{{type == 1 && isCancel == false }}" class="totalBtn t_cancel_disable">取消报名</view> -->
-  <!-- <view class="totalBtn t_over">报名结束</view> -->
+
 </view>
 
 <view class="wxapp-modal" hidden="{{dialogAgree}}" catchtouchmove="_touchmove">

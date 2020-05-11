@@ -30,9 +30,9 @@ let $http = {
           reject(res)
         },
         complete:function(){
-          // setTimeout(() => {  
-          //   wx.hideLoading();  
-          // }); 
+          setTimeout(() => {  
+            wx.hideLoading();  
+          }); 
         }
       })
     })

@@ -94,6 +94,7 @@ Page({
     descImages: [],
     priceMan: '',
     priceWoman: '',
+
     penalSum: 30,
     initiator: '',
     phoneNum: '',
@@ -107,6 +108,7 @@ Page({
       text: '确定'
     }],
     tagName: '',
+    isVip:false,
     // date1: '',
     // time1: '18:00',
     // date2: '',
@@ -286,7 +288,8 @@ Page({
       })
       return;
     }
-    if (key == 'priceMan' || key == 'priceWoman') {
+    if (key == 'priceMan' || key == 'priceWoman' || key == 'vipPriceMan' || key == 'vipPriceWoman') {
+      console.log('fsfsfsf')
       let value = this.validateFixed(e.detail.value);
       this.setData({
         [key]: value
@@ -393,7 +396,10 @@ Page({
       priceMan,
       priceWoman,
       isPenal,
-      penalSum
+      penalSum,
+      vipPriceMan,
+      vipPriceWoman,
+      isVip
     } = this.data;
     let expand = type.sportName;
     let editId = self.data.editId;
@@ -469,11 +475,19 @@ Page({
         title: '请输入正确的联系电话',
         icon: 'none'
       })
-    } else if (chargeMode != 0 && (priceWoman == '' || priceMan == '')) {
-      return wx.showToast({
-        title: '收费金额不能为空',
-        icon: 'none'
-      })
+    } else if (chargeMode != 0) {
+      if(isVip && (priceWoman == '' || priceMan == '' || App.isNull(vipPriceWoman) || App.isNull(vipPriceMan))){
+        return wx.showToast({
+          title: '非会员金额、会员金额不能为空',
+          icon: 'none'
+        })
+      }
+      if(!isVip && (priceWoman == '' || priceMan == '')){
+        return wx.showToast({
+          title: '收费金额不能为空',
+          icon: 'none'
+        })
+      }
     }
     let {
       isvali
@@ -522,7 +536,10 @@ Page({
       priceMan,
       priceWoman,
       isPenal,
-      penalSum
+      penalSum,
+      vipPriceMan,
+      vipPriceWoman,
+      isVip
     };
     let url = '/activities/create';
     let modalContent = '发布后的活动经过审核后可以在首页展示，用户可在我的发布中追踪审核状态。确定要发布活动？'
@@ -770,17 +787,24 @@ Page({
       activityStartTime,
       activityEndTime,
       isOpen,
+
     } = this.data.detailData.message.Activities;
     let {
       chargeMode,
       priceMan,
       priceWoman,
+      isVip,
+      vipPriceMan,
+      vipPriceWoman,
       isPenal,
       penalSum,
       signIn,
-
       withPeople,
     } = this.data.detailData.message.ActivitiesCondition;
+    isVip = App.isNull(isVip) ? false : isVip;
+    console.log(vipPriceMan);
+    vipPriceMan = App.isNull(vipPriceMan) ? 0 : vipPriceMan;
+    vipPriceWoman = App.isNull(vipPriceWoman) ? 0 : vipPriceWoman;
   
     type = {
       id: type,
@@ -875,7 +899,10 @@ Page({
       description,
       descDetails,
       descImages,
-      agree:true
+      agree:true,
+      vipPriceMan,
+      vipPriceWoman,
+      isVip
     })
   },
   touchHandler: function () {

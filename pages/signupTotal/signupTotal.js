@@ -26,6 +26,8 @@ Page({
     show: false,
     scanCode: Api.cvs_img + '/20200428/8ec1771a3f39d557fa893d3e22cb25cf.jpg',
     usid: '',
+    isVipAble:"false",
+    isVip:false,
   },
 
   /**
@@ -48,7 +50,10 @@ Page({
       phone: userInfo.phoneNum,
       name: userInfo.nickName,
       participantsNum: options.participantsNum,
-      usid: options.usid
+      usid: options.usid,
+      isVipAble:options.isVip,
+      vipPriceWoman:options.vipPriceWoman,
+      vipPriceMan:options.vipPriceMan
     });
     this.getQrCode();
     if (options.type == 1) {
@@ -70,6 +75,12 @@ Page({
         isCancel: false,
       })
     }
+  },
+  switchChange: function (e) {
+    let key = e.currentTarget.dataset.key;
+    this.setData({
+      [key]: e.detail.value
+    })
   },
   getQrCode:function(){
     let self = this;
@@ -106,8 +117,11 @@ Page({
     http.get('/activities/apply/queryDescByUidAndActivityId', params).then(function (res) {
       // console.log(res);
       let data = res.data.message;
-      let baseMoney = unit.totalMoney(data.gender, self.data.priceMan, self.data.priceWoman, data.takeMan, data.takeWoman);
-      // console.log(baseMoney);
+      let baseMoney = unit.totalMoney(data.gender, self.data.priceMan, self.data.priceWoman, data.takeMan, data.takeWoman,data.isVip,self.data.vipPriceMan,self.data.vipPriceWoman);
+      // console.log(data.isVip);
+      // console.log(self.data.vipPriceMan);
+      // console.log(self.data.vipPriceWoman);
+      console.log(baseMoney);
       self.setData({
         name: data.name,
         phone: data.phone,
@@ -115,7 +129,8 @@ Page({
         expand: data.expand,
         takeMan: data.takeMan,
         takeWoman: data.takeWoman,
-        baseMoney: baseMoney
+        baseMoney: baseMoney,
+        isVip:data.isVip
       })
     })
   },
@@ -204,7 +219,9 @@ Page({
         icon: 'none',
       })
     }
+    console.log(self.data.chargeMode);
     console.log(self.data.needToPay);
+    console.log(money);
     let url = '/activities/apply';
     if (self.data.chargeMode == 1 && self.data.needToPay == "true" && money > 0) {
       url = '/activities/apply/pay';
@@ -218,7 +235,8 @@ Page({
       takeWoman,
       id,
       gender,
-      expand
+      expand,
+      isVip
     } = this.data;
 
     if (takeMan == '') {
@@ -232,7 +250,8 @@ Page({
       phone,
       id,
       gender,
-      expand
+      expand,
+      isVip
     };
     if (self.data.withPeople != "false") {
       params = {
@@ -242,7 +261,8 @@ Page({
         takeWoman,
         id,
         gender,
-        expand
+        expand,
+        isVip
       };
     };
     let total = Number(takeMan) + Number(takeWoman);
@@ -252,7 +272,7 @@ Page({
         title: '姓名不能为空',
         icon: 'none'
       })
-    } else if (phone === '' || phone.length != 11) {
+    } else if ( App.isNull(phone) || phone.length != 11) {
       return wx.showToast({
         title: '请输入正确的联系电话',
         icon: 'none'
