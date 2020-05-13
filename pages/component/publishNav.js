@@ -4,10 +4,10 @@
 let App = getApp();
 
 Component({
-    properties:{
+    properties: {
         type: {
             type: String,
-            value: '',  
+            value: '',
         }
     },
     data: {
@@ -26,7 +26,7 @@ Component({
                     type: "game"
                 }]
             })
-        }else{
+        } else {
             self.setData({
                 dataList: [{
                     pagePath: "/pages/issue/issue?id=-1",
@@ -34,7 +34,7 @@ Component({
                     iconPath: "/pages/images/m_huod.png",
                     type: "activity"
                 }]
-            }) 
+            })
         }
     },
     methods: {
@@ -58,11 +58,15 @@ Component({
             let self = this;
             this.bindShowAddModal();
             let url = e.currentTarget.dataset.url;
-            App.isToDetail(function () {
-                wx.navigateTo({
-                    url: url
+            // console.log('fsfsfs')
+            App.getLogin(function () {
+                App.isToDetail(function () {
+                    wx.navigateTo({
+                        url: url
+                    })
                 })
             })
+
         },
     }
 });

@@ -60,7 +60,9 @@ App({
           self.setCode(res.code);
           http.get('/login/' + res.code, '').then(function (data) {
             self.globalData.isToken = 1;
+            console.log(data);
             self.setToken(data.header.token)
+            console.log(data.header.token)
             http.get('/login/getUserInfo', '').then(function (data) {
               self.setUserInfo(data.data.message);
               // self.setUserInfo('');
@@ -77,7 +79,7 @@ App({
     let self = this;
     if (!self.globalData.isLogin) {
       wx.navigateTo({
-        url: '../userInfo/userInfo',
+        url: '/pages/userInfo/userInfo',
       });
     } else {
       callback();
