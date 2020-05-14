@@ -4,7 +4,7 @@
       <view class="totalLeft">姓名：</view>
       <view class="totalRight">
         <!-- <input type="text"> -->
-        <input style="text-align: right;" class="issue_input" data-key="name" bindinput='bindDate' value="{{name}}"
+        <input style="text-align: right;" disabled="{{ type == 1 }}" class="issue_input" data-key="name" bindinput='bindDate' value="{{name}}"
           placeholder="请输入姓名" />
       </view>
     </view>
@@ -15,7 +15,7 @@
           lang="zh_CN" bindgetphonenumber="getphonenumber" size="mini">获取</van-button>
       </view>
       <view class="totalRight">
-        <input style="text-align: right;" class="issue_input" data-key="phone" maxlength="11" bindinput='bindDate'
+        <input style="text-align: right;" disabled="{{ type == 1 }}" class="issue_input" data-key="phone" maxlength="11" bindinput='bindDate'
           value="{{phone}}" placeholder="请输入联系电话" />
       </view>
     </view>
@@ -29,7 +29,7 @@
     <view class="totalItem">
       <view class="totalLeft">备注：</view>
       <view class="totalRight">
-        <input style="text-align: right;" class="issue_input" data-key="expand" bindinput='bindDate' value="{{expand}}"
+        <input style="text-align: right;" disabled="{{ type == 1 }}" class="issue_input" data-key="expand" bindinput='bindDate' value="{{expand}}"
           placeholder="" />
       </view>
     </view>
@@ -50,10 +50,10 @@
         <view class="totalLeft">带人：</view>
         <view class="moreRight">
           <image class="m_img" src="../images/ps_m.png"></image>
-          <input class="tab_fy" type="number" bindinput="bindDate" data-key="takeMan" value="{{takeMan}}"
+          <input class="tab_fy" disabled="{{ type == 1 }}" type="number" bindinput="bindDate" data-key="takeMan" value="{{takeMan}}"
             placeholder="" />
           <image class="w_img" src="../images/ps_wm.png"></image>
-          <input class="tab_fy" type="number" bindinput="bindDate" data-key="takeWoman" value="{{takeWoman}}"
+          <input class="tab_fy" disabled="{{ type == 1 }}" type="number" bindinput="bindDate" data-key="takeWoman" value="{{takeWoman}}"
             placeholder="" />
         </view>
       </view>
@@ -100,9 +100,9 @@
       ({{tools.totalMoney(gender,priceMan,priceWoman,takeMan,takeWoman)}})</view>
   </van-button> -->
 
-  <van-button wx:if="{{type == 1 && registrationStatus < 3 && !disabled}}" type="warning" size="large" data-key="{{ tools.editMoney(tools.totalMoney(gender,priceMan,priceWoman,takeMan,takeWoman,isVip,vipPriceMan,vipPriceWoman),baseMoney) }}"
+  <!-- <van-button wx:if="{{type == 1 && registrationStatus < 3 && !disabled}}" type="warning" size="large" data-key="{{ tools.editMoney(tools.totalMoney(gender,priceMan,priceWoman,takeMan,takeWoman,isVip,vipPriceMan,vipPriceWoman),baseMoney) }}"
     data-edit="1" bindtap="submit">
-    修改报名({{ tools.editMoney(tools.totalMoney(gender,priceMan,priceWoman,takeMan,takeWoman,isVip,vipPriceMan,vipPriceWoman),baseMoney) }})</van-button>
+    修改报名({{ tools.editMoney(tools.totalMoney(gender,priceMan,priceWoman,takeMan,takeWoman,isVip,vipPriceMan,vipPriceWoman),baseMoney) }})</van-button> -->
 
 
 

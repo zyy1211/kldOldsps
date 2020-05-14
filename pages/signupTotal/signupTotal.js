@@ -175,6 +175,9 @@ Page({
     return time_diff;
   },
   chosed: function (e) {
+    if(this.data.type == 1){
+      return
+    }
 
     let key = e.currentTarget.dataset.key;
     this.setData({
