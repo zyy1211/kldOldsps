@@ -51,7 +51,7 @@
   </view>
 
   <!-- 公开赛事 -->
-  <view class="cardList">
+  <!-- <view class="cardList">
     <view class="title flex_row flex_btw pad_b_20">
       <view class="font_weight title_left">公开赛事</view>
       <view class="flex_row flex_middle" bindtap="toGameList">
@@ -63,19 +63,15 @@
       <view class="atv_item" wx:for="{{dataList1}}" wx:key="{{item.id}}" data-cid="{{item.id}}" bindtap="toDetail1">
         <view class="flex_row flex_btw">
           <view class="van-ellipsis flex_grow font_30">{{item.name}}</view>
-          <!-- <view class="flew_shrink" style="color: #F26746;" wx:if="{{ item.chargeMode == 0 }}">免费</view> -->
-          <!-- <view class="flew_shrink" style="color: #F26746;" wx:if="{{ item.chargeMode == 1 }}">线上收费</view> -->
-          <!-- <view class="flew_shrink" style="color: #F26746;" wx:if="{{ item.chargeMode == 2 }}">线下收费</view> -->
         </view>
         <view class="font_28 font_time">活动时间：{{item.setime}}</view>
         <van-button class="mar_r_40" plain type="primary" size="mini">{{item.sportName}}</van-button>
         <van-button class="mar_r_40" wx:if="{{item.single}}" plain type="primary" size="mini">单项赛</van-button>
         <van-button wx:if="{{item.team}}" plain type="primary" size="mini">团体赛</van-button>
-        <!-- <van-button plain type="primary" size="mini">{{item.expand}}</van-button> -->
       </view>
     </view>
     <view class="border_10"></view>
-  </view>
+  </view> -->
 
   <!-- 活动发布 -->
   <view class="cardList">
