@@ -4,8 +4,8 @@
       <view class="totalLeft">姓名：</view>
       <view class="totalRight">
         <!-- <input type="text"> -->
-        <input style="text-align: right;" disabled="{{ type == 1 }}" class="issue_input" data-key="name" bindinput='bindDate' value="{{name}}"
-          placeholder="请输入姓名" />
+        <input style="text-align: right;" disabled="{{ type == 1 }}" class="issue_input" data-key="name"
+          bindinput='bindDate' value="{{name}}" placeholder="请输入姓名" />
       </view>
     </view>
     <view class="totalItem">
@@ -15,8 +15,8 @@
           lang="zh_CN" bindgetphonenumber="getphonenumber" size="mini">获取</van-button>
       </view>
       <view class="totalRight">
-        <input style="text-align: right;" disabled="{{ type == 1 }}" class="issue_input" data-key="phone" maxlength="11" bindinput='bindDate'
-          value="{{phone}}" placeholder="请输入联系电话" />
+        <input style="text-align: right;" disabled="{{ type == 1 }}" class="issue_input" data-key="phone" maxlength="11"
+          bindinput='bindDate' value="{{phone}}" placeholder="请输入联系电话" />
       </view>
     </view>
     <view class="totalItem">
@@ -29,32 +29,40 @@
     <view class="totalItem">
       <view class="totalLeft">备注：</view>
       <view class="totalRight">
-        <input style="text-align: right;" disabled="{{ type == 1 }}" class="issue_input" data-key="expand" bindinput='bindDate' value="{{expand}}"
-          placeholder="" />
+        <input style="text-align: right;" disabled="{{ type == 1 }}" class="issue_input" data-key="expand"
+          bindinput='bindDate' value="{{expand}}" placeholder="" />
       </view>
     </view>
 
 
-    <view wx:if="{{isVipAble == 'true' }}" class="totalItem flex_row flex_btw" hover-class="none" hover-stop-propagation="false">
+    <view wx:if="{{isVipAble == 'true' }}" class="totalItem flex_row flex_btw" hover-class="none"
+      hover-stop-propagation="false">
       <view class="left" hover-class="none" hover-stop-propagation="false">是否会员：</view>
       <view class="right" hover-class="none" hover-stop-propagation="false">
         <view class="" hover-class="none" hover-stop-propagation="false">
-          <switch disabled="{{ type == 1 }}" bindchange="switchChange" data-key="isVip" color="#E8380D" checked="{{isVip}}" />
+          <switch disabled="{{ type == 1 }}" bindchange="switchChange" data-key="isVip" color="#E8380D"
+            checked="{{isVip}}" />
         </view>
       </view>
     </view>
 
+    <view style="padding:10rpx">
+        <view class="note vipnote">
+      <view style="flex-shrink: 0;padding:0 10rpx;">温馨提示：</view>
+      <view class="vipni">您已经确认为本次活动的会员用户，将享受活动的会员价格； 如经组织者核实为非会员，将再次支付本次的活动费用差价。</view>
+    </view>
+    </view>
 
     <view class="totalMore" wx:if="{{withPeople == 'true' }}">
       <view class="totalItem">
         <view class="totalLeft">带人：</view>
         <view class="moreRight">
           <image class="m_img" src="../images/ps_m.png"></image>
-          <input class="tab_fy" disabled="{{ type == 1 }}" type="number" bindinput="bindDate" data-key="takeMan" value="{{takeMan}}"
-            placeholder="" />
+          <input class="tab_fy" disabled="{{ type == 1 }}" type="number" bindinput="bindDate" data-key="takeMan"
+            value="{{takeMan}}" placeholder="" />
           <image class="w_img" src="../images/ps_wm.png"></image>
-          <input class="tab_fy" disabled="{{ type == 1 }}" type="number" bindinput="bindDate" data-key="takeWoman" value="{{takeWoman}}"
-            placeholder="" />
+          <input class="tab_fy" disabled="{{ type == 1 }}" type="number" bindinput="bindDate" data-key="takeWoman"
+            value="{{takeWoman}}" placeholder="" />
         </view>
       </view>
 
@@ -63,8 +71,8 @@
         <view class="moreRight">
           <!-- 男生{{takeMan ? ( gender=='1' ? (takeMan + 1) : takeMan) : (gender=='1' ? 1 : 0)}}人，
           女生{{takeWoman ? ( gender=='0' ? (takeWoman + 1) : takeWoman) : (gender=='0' ? 1 : 0)}}人 -->
-            男生{{gender=='1' ? (takeMan*1 +1) : takeMan*1}}
-            女生{{gender=='0' ? (takeWoman*1 +1) : takeWoman*1}}
+          男生{{gender=='1' ? (takeMan*1 +1) : takeMan*1}}
+          女生{{gender=='0' ? (takeWoman*1 +1) : takeWoman*1}}
         </view>
       </view>
 
@@ -86,13 +94,14 @@
   </view>
   <wxs src="../filter.wxs" module="tools" />
   <view style="height: 40rpx;"></view>
-  <van-button data-key="{{tools.totalMoney(gender,priceMan,priceWoman,takeMan,takeWoman,isVip,vipPriceMan,vipPriceWoman)}}" wx:if="{{type != 1 && !disabled}}" type="warning" size="large"
-     bindtap="submit">立即报名
+  <van-button
+    data-key="{{tools.totalMoney(gender,priceMan,priceWoman,takeMan,takeWoman,isVip,vipPriceMan,vipPriceWoman)}}"
+    wx:if="{{type != 1 && !disabled}}" type="warning" size="large" bindtap="submit">立即报名
     <view style="display: inline;" wx:if="{{ chargeMode == 1 }}">
       ({{tools.totalMoney(gender,priceMan,priceWoman,takeMan,takeWoman,isVip,vipPriceMan,vipPriceWoman)}})</view>
   </van-button>
 
-  
+
 
   <!-- <van-button wx:if="{{type != 1 && disabled}}" type="warning" size="large" disabled
     >立即报名
@@ -105,11 +114,14 @@
     修改报名({{ tools.editMoney(tools.totalMoney(gender,priceMan,priceWoman,takeMan,takeWoman,isVip,vipPriceMan,vipPriceWoman),baseMoney) }})</van-button> -->
 
 
-
-  <view bindtap="cancelSelf" wx:if="{{type == 1 && isCancel == true }}" class="totalBtn t_cancel">
-    取消报名
-    <view style="display: inline;" wx:if="{{chargeMode == 1 && needToPay == 'true'}}">并申请退款</view>
+  <view wx:if="{{type == 1 && isCancel == true }}">
+    <view bindtap="cancelSelf" class="totalBtn t_cancel">
+      取消报名
+      <view style="display: inline;" wx:if="{{chargeMode == 1 && needToPay == 'true'}}">并申请退款</view>
+    </view>
+    <view class="note">如果需要更改报名信息（需要带人/需要减人），请先取消报名，然后 根据自身需要再重新报名即可。</view>
   </view>
+
 
 </view>
 
@@ -136,8 +148,9 @@
   </view>
 </view>
 
-<van-dialog id="van-dialog" confirm-button-color="white" use-slot  show="{{ show }}" bind:cancel="onClose" bind:confirm="onConfirm" confirm-button-text="保存图片二维码" async-close>
-<view style="display: flex;flex-flow: row nowrap;justify-content: center;align-items: center;padding: 30rpx 0;">
-  <image style="width: 80%;" mode="widthFix" src="{{ qrCodeUrl }}" />
-</view>
+<van-dialog id="van-dialog" confirm-button-color="white" use-slot show="{{ show }}" bind:cancel="onClose"
+  bind:confirm="onConfirm" confirm-button-text="保存图片二维码" async-close>
+  <view style="display: flex;flex-flow: row nowrap;justify-content: center;align-items: center;padding: 30rpx 0;">
+    <image style="width: 80%;" mode="widthFix" src="{{ qrCodeUrl }}" />
+  </view>
 </van-dialog>

@@ -142,3 +142,28 @@
     background-color: #f8842f;
     color: white;
 }
+
+.note{
+    font-size: 20rpx;
+    color: #E8380D;
+    line-height: 33rpx;
+    padding: 22rpx 50rpx;
+    text-align: center;
+    letter-spacing: 2rpx;
+    background-color: rgba(232, 56, 13, 0.07);
+    border-bottom-left-radius: 10rpx;
+    border-bottom-right-radius: 10rpx;
+    
+}
+.vipnote{
+    background-color: rgba(247, 247, 247, 1);
+    padding: 20rpx 20rpx 20rpx 0;
+    letter-spacing: 0;
+    display: flex;
+    flex-flow: row nowrap;
+
+
+}
+.vipni{
+    text-align: justify;
+}
