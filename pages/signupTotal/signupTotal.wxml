@@ -46,7 +46,7 @@
       </view>
     </view>
 
-    <view style="padding:10rpx">
+    <view style="padding:10rpx" wx:if="{{isVipAble == 'true' }}">
         <view class="note vipnote">
       <view style="flex-shrink: 0;padding:0 10rpx;">温馨提示：</view>
       <view class="vipni">您已经确认为本次活动的会员用户，将享受活动的会员价格； 如经组织者核实为非会员，将再次支付本次的活动费用差价。</view>
@@ -119,7 +119,7 @@
       取消报名
       <view style="display: inline;" wx:if="{{chargeMode == 1 && needToPay == 'true'}}">并申请退款</view>
     </view>
-    <view class="note">如果需要更改报名信息（需要带人/需要减人），请先取消报名，然后 根据自身需要再重新报名即可。</view>
+    <view class="note">如果需要更改报名信息(需要带人/需要减人),请先取消报名，然后根据自身需要再重新报名即可。</view>
   </view>
 
 
